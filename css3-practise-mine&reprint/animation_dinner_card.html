@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="TID - 90(Joinli)" />
+<title>嘀卡萌CSS3动画</title>
+<style type="text/css">
+*{padding:0;margin:0;}
+body{background-color:#FDFDFD;}
+
+/* [banner动画效果] */
+.banner{padding-top:1px;}  /* 解决子容器双倍间距 */
+.banner-bg{background:url(dikamon_ie.jpg) no-repeat;width:566px;height:187px;overflow:hidden;margin:134px auto 0;}  /* html使用了条件注释，ie9及以下版本生效 */
+.banner-animation{display:none\9;position:relative;width:566px;height:300px;margin:0 auto;}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){  /* ie10 */
+	.banner-animation:not(tid){display:block;}
+}
+.banner .dikamon, .banner .note, .banner .star, .banner-title-wrap, .banner .horizon{background:url(dikamon.png) no-repeat -999px -999px;background:none\9;}  /* ie不加载动画图片 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){  /* ie10 */
+	.banner .dikamon, .banner .note, .banner .star, .banner-title-wrap, .banner .horizon{background:url(dikamon.png) no-repeat -999px -999px;}
+}
+.banner .stage{position:absolute;left:16px;bottom:0;}
+.banner .stage-inner{position:relative;width:529px;height:165px;background-color:#C9DCF2;overflow:hidden;
+	-webkit-border-radius:235px 197px 197px 120px/105px 97px 68px 60px;-moz-border-radius:235px 197px 197px 120px/105px 97px 68px 60px;border-radius:235px 197px 197px 120px/105px 97px 68px 60px;
+}
+.banner .light-pink{position:absolute;left:196px;top:-5px;width:50px;border-bottom:190px solid #F8E8E8;border-right:90px solid transparent;height:0;
+	-webkit-transform-origin:center top;
+	-moz-transform-origin:center top;
+	transform-origin:center top;
+}
+.banner .light-green{position:absolute;left:240px;top:-5px;width:45px;border-bottom:190px solid #F0F8E8;border-left:72px solid transparent;height:0;
+	-webkit-transform:skew(-8deg);-webkit-transform-origin:center top;
+	-moz-transform:skew(-8deg);-moz-transform-origin:center top;
+	transform:skew(-8deg);transform-origin:center top;
+}
+.banner .note1{background-position:-332px 0;width:35px;height:33px;position:absolute;left:128px;top:132px;}
+.banner .note2{background-position:-367px 0;width:33px;height:38px;position:absolute;left:173px;top:116px;}
+.banner .note3{background-position:-401px 0;width:20px;height:29px;position:absolute;left:221px;top:118px;}
+.banner .star1{background-position:-422px 0;width:26px;height:26px;position:absolute;left:188px;top:190px;
+	-webkit-transform:scale(0.7);
+	-moz-transform:scale(0.7);
+	transform:scale(0.7);
+}
+.banner .star2{background-position:-422px 0;width:26px;height:26px;position:absolute;left:330px;top:154px;}
+.banner .star3{background-position:-422px 0;width:26px;height:26px;position:absolute;left:350px;top:260px;
+	-webkit-transform:scale(0.4);
+	-moz-transform:scale(0.4);
+	transform:scale(0.4);
+}
+.banner-title-wrap{position:absolute;right:12px;top:100px;background-position:0 -103px;width:279px;height:79px;text-indent:-999px;overflow:hidden;}
+.banner-title{content:'';position:absolute;top:-40px;left:-38px;width:300px;height:300px;background-color:#FDFDFD;
+	-webkit-transform:rotate(7deg);-webkit-transform-origin:center bottom;
+	-moz-transform:rotate(7deg);-moz-transform-origin:center bottom;
+	transform:rotate(7deg);transform-origin:center bottom;
+}
+
+.banner .dikamon, .banner .dikamon-coat{position:absolute;width:82px;height:102px;}
+.banner .dikamon-hand-l, .banner .dikamon-hand-r{position:absolute;width:16px;height:16px;border:4px solid #333333;background-color:#CCCCCC;
+	-webkit-border-radius:16px;-moz-border-radius:16px;border-radius:16px;
+}
+.banner .dikamon-hand-l{left:-29px;top:54px;}
+.banner .dikamon-hand-r{right:-29px;top:54px;}
+.banner .dikamon-leg-l, .banner .dikamon-leg-r{z-index:3;position:absolute;width:4px;height:11px;bottom:-10px;background-color:#333333;
+	-webkit-transform-origin:center top;
+	-moz-transform-origin:center top;
+	transform-origin:center top;
+}
+.banner .dikamon-leg-l{left:28px;}
+.banner .dikamon-leg-r{right:28px;}
+.banner .dikamon-foot-l, .banner .dikamon-foot-r{position:absolute;width:100%;height:11px;bottom:-10px;background-color:#333333;
+	-webkit-transform-origin:center top;
+	-moz-transform-origin:center top;
+	transform-origin:center top;
+}
+.banner .dikamon1{background-position:-83px 0;bottom:20px;}
+.banner .dikamon-coat-l, .banner .dikamon-coat-r{position:absolute;width:50%;height:100%;background-position:-252px 0;top:0;}
+.banner .dikamon-coat-l{background-position:-249px 0;left:0;}
+.banner .dikamon-coat-r{background-position:-290px 0;right:0;}
+.banner .dikamon2{left:70px;background-position:0 0;}
+.banner .dikamon2 .dikamon-hand-l, .banner .dikamon2 .dikamon-hand-r{background-color:#F91D39;}
+.banner .dikamon3{left:414px;background-position:-166px 0;}
+.banner .dikamon3 .dikamon-hand-l, .banner .dikamon3 .dikamon-hand-r{background-color:#1ED019;}
+.banner .horizon{background-position:0 -183px;width:566px;height:15px;position:absolute;bottom:-10px;left:0;}
+
+/* [动画] */
+.banner .dikamon1{left:29px;background-position:-999px -999px;
+	-webkit-animation:walk 1.5s linear forwards 1s, dressing .1s linear 3.2s forwards, dikamon1-body 1s linear 4.2s infinite;
+	-moz-animation:walk 1.5s linear forwards 1s, dressing .1s linear 3.2s forwards, dikamon1-body 1s linear 4.2s infinite;
+	animation:walk 1.5s linear forwards 1s, dressing .1s linear 3.2s forwards, dikamon1-body 1s linear 4.2s infinite;
+}
+@-webkit-keyframes dressing{ 0%,100%{background-position:-83px 0;} }  /* 穿衣 */
+@-moz-keyframes dressing{ 0%,100%{background-position:-83px 0;} }  /* 穿衣 */
+@keyframes dressing{ 0%,100%{background-position:-83px 0;} }  /* 穿衣 */
+
+
+.banner .dikamon1 .dikamon-hand-l{
+	-webkit-animation:walk-hand-l .6s linear 5, divestment-hand-l .8s linear 3s forwards, dikamon1-hand-l 1s linear 4.2s infinite;
+	-moz-animation:walk-hand-l .6s linear 5, divestment-hand-l .8s linear 3s forwards, dikamon1-hand-l 1s linear 4.2s infinite;
+	animation:walk-hand-l .6s linear 5, divestment-hand-l .8s linear 3s forwards, dikamon1-hand-l 1s linear 4.2s infinite;
+}
+.banner .dikamon1 .dikamon-hand-r{
+	-webkit-animation:walk-hand-r .6s linear 5, divestment-hand-r .8s linear 3s forwards, dikamon1-hand-r 1s linear 4.2s infinite;
+	-moz-animation:walk-hand-r .6s linear 5, divestment-hand-r .8s linear 3s forwards, dikamon1-hand-r 1s linear 4.2s infinite;
+	animation:walk-hand-r .6s linear 5, divestment-hand-r .8s linear 3s forwards, dikamon1-hand-r 1s linear 4.2s infinite;
+}
+.banner .dikamon1 .dikamon-leg-l{
+	-webkit-animation:walk-leg-l .6s linear 5, dikamon1-leg-l 1s linear 4.2s infinite;
+	-moz-animation:walk-leg-l .6s linear 5, dikamon1-leg-l 1s linear 4.2s infinite;
+	animation:walk-leg-l .6s linear 5, dikamon1-leg-l 1s linear 4.2s infinite;
+}
+.banner .dikamon1 .dikamon-foot-l{
+	-webkit-animation:dikamon1-foot-l 1s linear 4.2s infinite;
+	-moz-animation:dikamon1-foot-l 1s linear 4.2s infinite;
+	animation:dikamon1-foot-l 1s linear 4.2s infinite;
+}
+.banner .dikamon1 .dikamon-leg-r{
+	-webkit-animation:walk-leg-r .6s linear 5, dikamon1-leg-r 1s linear 4.2s infinite;
+	-moz-animation:walk-leg-r .6s linear 5, dikamon1-leg-r 1s linear 4.2s infinite;
+	animation:walk-leg-r .6s linear 5, dikamon1-leg-r 1s linear 4.2s infinite;
+}
+.banner .dikamon1 .dikamon-foot-r{
+	-webkit-animation:dikamon1-foot-r 1s linear 4.2s infinite;
+	-moz-animation:dikamon1-foot-r 1s linear 4.2s infinite;
+	animation:dikamon1-foot-r 1s linear 4.2s infinite;
+}
+.banner .dikamon1 .dikamon-coat{
+	-webkit-animation:walk-body .3s linear 10;
+	-moz-animation:walk-body .3s linear 10;
+	animation:walk-body .3s linear 10;
+}
+.banner .dikamon1 .dikamon-coat-l{
+	-webkit-animation:divestment-coat-l .2s linear 3.7s forwards;
+	-moz-animation:divestment-coat-l .2s linear 3.7s forwards;
+	animation:divestment-coat-l .2s linear 3.7s forwards;
+}
+.banner .dikamon1 .dikamon-coat-r{
+	-webkit-animation:divestment-coat-r .2s linear 3.7s forwards;
+	-moz-animation:divestment-coat-r .2s linear 3.7s forwards;
+	animation:divestment-coat-r .2s linear 3.7s forwards;
+}
+
+
+.banner-title{
+	-webkit-animation:banner-title .6s ease-out 3.8s forwards;
+	-moz-animation:banner-title .6s ease-out 3.8s forwards;
+	animation:banner-title .6s ease-out 3.8s forwards;
+}
+.banner .stage{opacity:0;
+	-webkit-animation:stage-scale .6s ease-out 3.8s forwards;-webkit-transform:scale(0.4);
+	-moz-animation:stage-scale .6s ease-out 3.8s forwards;-moz-transform:scale(0.4);
+	animation:stage-scale .6s ease-out 3.8s forwards;transform:scale(0.4);
+}
+.banner .light-pink{
+	-webkit-animation:light-pink 1s linear 3.8s infinite, light-pink-sway 4s linear 3.8s infinite;
+	-moz-animation:light-pink 1s linear 3.8s infinite, light-pink-sway 4s linear 3.8s infinite;
+	animation:light-pink 1s linear 3.8s infinite, light-pink-sway 4s linear 3.8s infinite;
+}
+.banner .light-green{
+	-webkit-animation:light-green 1s linear 3.8s infinite, light-green-sway 4s linear 3.8s infinite;
+	-moz-animation:light-green 1s linear 3.8s infinite, light-green-sway 4s linear 3.8s infinite;
+	animation:light-green 1s linear 3.8s infinite, light-green-sway 4s linear 3.8s infinite;
+}
+
+.banner .decoration{opacity:0;
+	-webkit-animation:decoration .6s ease-out 3.8s forwards;
+	-moz-animation:decoration .6s ease-out 3.8s forwards;
+	animation:decoration .6s ease-out 3.8s forwards;
+}
+.banner .note1{
+	-webkit-animation:note1 1s linear 3.8s infinite;
+	-moz-animation:note1 1s linear 3.8s infinite;
+	animation:note1 1s linear 3.8s infinite;
+}
+.banner .note2{
+	-webkit-animation:note2 1s linear 3.8s infinite;
+	-moz-animation:note2 1s linear 3.8s infinite;
+	animation:note2 1s linear 3.8s infinite;
+}
+.banner .note3{
+	-webkit-animation:note3 1s linear 3.8s infinite;
+	-moz-animation:note3 1s linear 3.8s infinite;
+	animation:note3 1s linear 3.8s infinite;
+}
+.banner .star1{
+	-webkit-animation:star1 .8s linear 3.8s infinite;
+	-moz-animation:star1 .8s linear 3.8s infinite;
+	animation:star1 .8s linear 3.8s infinite;
+}
+.banner .star2{
+	-webkit-animation:star2 1.2s linear 3.8s infinite;
+	-moz-animation:star2 1.2s linear 3.8s infinite;
+	animation:star2 1.2s linear 3.8s infinite;
+}
+.banner .star3{
+	-webkit-animation:star3 1s linear 3.8s infinite;
+	-moz-animation:star3 1s linear 3.8s infinite;
+	animation:star3 1s linear 3.8s infinite;
+}
+
+
+.banner .dikamon2{bottom:180px;opacity:0;
+	-webkit-animation:dikamon-drop .3s ease-in 3.7s forwards, dikamon2-body 2s linear 4.2s infinite;
+	-moz-animation:dikamon-drop .3s ease-in 3.7s forwards, dikamon2-body 2s linear 4.2s infinite;
+	animation:dikamon-drop .3s ease-in 3.7s forwards, dikamon2-body 2s linear 4.2s infinite;
+}
+.banner .dikamon2 .dikamon-hand-l{
+	-webkit-animation:dikamon2-hand-l 2s linear 4.2s infinite;
+	-moz-animation:dikamon2-hand-l 2s linear 4.2s infinite;
+	animation:dikamon2-hand-l 2s linear 4.2s infinite;
+}
+.banner .dikamon2 .dikamon-hand-r{
+	-webkit-animation:dikamon2-hand-r 2s linear 4.2s infinite;
+	-moz-animation:dikamon2-hand-r 2s linear 4.2s infinite;
+	animation:dikamon2-hand-r 2s linear 4.2s infinite;
+}
+.banner .dikamon2 .dikamon-leg-l{
+	-webkit-animation:dikamon2-leg-l 2s linear 4.2s infinite;
+	-moz-animation:dikamon2-leg-l 2s linear 4.2s infinite;
+	animation:dikamon2-leg-l 2s linear 4.2s infinite;
+}
+.banner .dikamon2 .dikamon-foot-l{
+	-webkit-animation:dikamon2-foot-l 2s linear 4.2s infinite;
+	-moz-animation:dikamon2-foot-l 2s linear 4.2s infinite;
+	animation:dikamon2-foot-l 2s linear 4.2s infinite;
+}
+.banner .dikamon2 .dikamon-leg-r{
+	-webkit-animation:dikamon2-leg-r 2s linear 4.2s infinite;
+	-moz-animation:dikamon2-leg-r 2s linear 4.2s infinite;
+	animation:dikamon2-leg-r 2s linear 4.2s infinite;
+}
+.banner .dikamon2 .dikamon-foot-r{
+	-webkit-animation:dikamon2-foot-r 2s linear 4.2s infinite;
+	-moz-animation:dikamon2-foot-r 2s linear 4.2s infinite;
+	animation:dikamon2-foot-r 2s linear 4.2s infinite;
+}
+
+
+.banner .dikamon3{bottom:180px;opacity:0;
+	-webkit-animation:dikamon-drop .3s ease-in 3.7s forwards, dikamon3-body 1s linear 4.2s infinite;
+	-moz-animation:dikamon-drop .3s ease-in 3.7s forwards, dikamon3-body 1s linear 4.2s infinite;
+	animation:dikamon-drop .3s ease-in 3.7s forwards, dikamon3-body 1s linear 4.2s infinite;
+}
+.banner .dikamon3 .dikamon-hand-l{
+	-webkit-animation:dikamon3-hand-l 1s linear 4.2s infinite;
+	-moz-animation:dikamon3-hand-l 1s linear 4.2s infinite;
+	animation:dikamon3-hand-l 1s linear 4.2s infinite;
+}
+.banner .dikamon3 .dikamon-hand-r{
+	-webkit-animation:dikamon3-hand-r 1s linear 4.2s infinite;
+	-moz-animation:dikamon3-hand-r 1s linear 4.2s infinite;
+	animation:dikamon3-hand-r 1s linear 4.2s infinite;
+}
+.banner .dikamon3 .dikamon-leg-l{
+	-webkit-animation:dikamon3-leg-l 1s linear 4.2s infinite;
+	-moz-animation:dikamon3-leg-l 1s linear 4.2s infinite;
+	animation:dikamon3-leg-l 1s linear 4.2s infinite;
+}
+.banner .dikamon3 .dikamon-foot-l{
+	-webkit-animation:dikamon3-foot-l 1s linear 4.2s infinite;
+	-moz-animation:dikamon3-foot-l 1s linear 4.2s infinite;
+	animation:dikamon3-foot-l 1s linear 4.2s infinite;
+}
+.banner .dikamon3 .dikamon-leg-r{
+	-webkit-animation:dikamon3-leg-r 1s linear 4.2s infinite;
+	-moz-animation:dikamon3-leg-r 1s linear 4.2s infinite;
+	animation:dikamon3-leg-r 1s linear 4.2s infinite;
+}
+.banner .dikamon3 .dikamon-foot-r{
+	-webkit-animation:dikamon3-foot-r 1s linear 4.2s infinite;
+	-moz-animation:dikamon3-foot-r 1s linear 4.2s infinite;
+	animation:dikamon3-foot-r 1s linear 4.2s infinite;
+}
+
+
+/* [动画1] 走路 */
+@-webkit-keyframes walk{ 100%{left:242px;} }  /* 走路 - 左右平移 */
+@-webkit-keyframes walk-body{ 0%,100%{top:0;} 50%{top:5px;} }  /* 走路 - 身体 */
+@-webkit-keyframes walk-hand-l{ 0%,50%,100%{top:54px;} 25%{top:70px;} }  /* 走路 - 左手 */
+@-webkit-keyframes walk-hand-r{ 0%,50%,100%{top:54px;} 75%{top:70px;} }  /* 走路 - 右手 */
+@-webkit-keyframes walk-leg-l{ 0%,50%,100%{bottom:-10px;} 25%{bottom:-5px;} }  /* 走路 - 左腿 */
+@-webkit-keyframes walk-leg-r{ 0%,50%,100%{bottom:-10px;} 75%{bottom:-5px;} }  /* 走路 - 右腿 */
+
+@-moz-keyframes walk{ 100%{left:242px;} }  /* 走路 - 左右平移 */
+@-moz-keyframes walk-body{ 0%,100%{top:0;} 50%{top:5px;} }  /* 走路 - 身体 */
+@-moz-keyframes walk-hand-l{ 0%,50%,100%{top:54px;} 25%{top:70px;} }  /* 走路 - 左手 */
+@-moz-keyframes walk-hand-r{ 0%,50%,100%{top:54px;} 75%{top:70px;} }  /* 走路 - 右手 */
+@-moz-keyframes walk-leg-l{ 0%,50%,100%{bottom:-10px;} 25%{bottom:-5px;} }  /* 走路 - 左腿 */
+@-moz-keyframes walk-leg-r{ 0%,50%,100%{bottom:-10px;} 75%{bottom:-5px;} }  /* 走路 - 右腿 */
+
+@keyframes walk{ 100%{left:242px;} }  /* 走路 - 左右平移 */
+@keyframes walk-body{ 0%,100%{top:0;} 50%{top:5px;} }  /* 走路 - 身体 */
+@keyframes walk-hand-l{ 0%,50%,100%{top:54px;} 25%{top:70px;} }  /* 走路 - 左手 */
+@keyframes walk-hand-r{ 0%,50%,100%{top:54px;} 75%{top:70px;} }  /* 走路 - 右手 */
+@keyframes walk-leg-l{ 0%,50%,100%{bottom:-10px;} 25%{bottom:-5px;} }  /* 走路 - 左腿 */
+@keyframes walk-leg-r{ 0%,50%,100%{bottom:-10px;} 75%{bottom:-5px;} }  /* 走路 - 右腿 */
+
+/* [动画2] 脱衣 */
+@-webkit-keyframes divestment-hand-l{ 0%{left:-29px;} 30%,90%{left:18px;} 99%{left:-29px;background-color:#CCCCCC;} 100%{left:-29px;background-color:#0060BB;} }  /* 脱衣 - 左手 */
+@-webkit-keyframes divestment-hand-r{ 0%{right:-29px;} 30%,90%{right:18px;}  99%{right:-29px;background-color:#CCCCCC;} 100%{right:-29px;background-color:#0060BB;} }  /* 脱衣 - 右手 */
+@-webkit-keyframes divestment-coat-l{ 100%{width:0;} }  /* 脱衣 - 左外套 */
+@-webkit-keyframes divestment-coat-r{ 100%{background-position:-331px 0;width:0;} }  /* 脱衣 - 右外套 */
+
+@-moz-keyframes divestment-hand-l{ 0%{left:-29px;} 30%,90%{left:18px;} 99%{left:-29px;background-color:#CCCCCC;} 100%{left:-29px;background-color:#0060BB;} }  /* 脱衣 - 左手 */
+@-moz-keyframes divestment-hand-r{ 0%{right:-29px;} 30%,90%{right:18px;}  99%{right:-29px;background-color:#CCCCCC;} 100%{right:-29px;background-color:#0060BB;} }  /* 脱衣 - 右手 */
+@-moz-keyframes divestment-coat-l{ 100%{width:0;} }  /* 脱衣 - 左外套 */
+@-moz-keyframes divestment-coat-r{ 100%{background-position:-331px 0;width:0;} }  /* 脱衣 - 右外套 */
+
+@keyframes divestment-hand-l{ 0%{left:-29px;} 30%,90%{left:18px;} 99%{left:-29px;background-color:#CCCCCC;} 100%{left:-29px;background-color:#0060BB;} }  /* 脱衣 - 左手 */
+@keyframes divestment-hand-r{ 0%{right:-29px;} 30%,90%{right:18px;}  99%{right:-29px;background-color:#CCCCCC;} 100%{right:-29px;background-color:#0060BB;} }  /* 脱衣 - 右手 */
+@keyframes divestment-coat-l{ 100%{width:0;} }  /* 脱衣 - 左外套 */
+@keyframes divestment-coat-r{ 100%{background-position:-331px 0;width:0;} }  /* 脱衣 - 右外套 */
+
+/* [动画3] D卡萌舞伴出场 */
+@-webkit-keyframes dikamon-drop{ 100%{bottom:20px;opacity:1;} }
+@-webkit-keyframes banner-title{ 100%{-webkit-transform:rotate(90deg);} }
+@-webkit-keyframes stage-scale{ 20%{-webkit-transform:scale(1.2);} 40%{-webkit-transform:scale(0.8);} 60%{-webkit-transform:scale(1.1);} 80%,100%{-webkit-transform:scale(1);opacity:1;} }
+@-webkit-keyframes light-pink{ 0%,20%,80%,100%{ border-bottom-color:#F8E8E8; } 30%,70%{ border-bottom-color:#F0F8E8; } }
+@-webkit-keyframes light-pink-sway{ 0%,100%{-webkit-transform:rotate(0);} 25%{-webkit-transform:rotate(4deg);} 75%{-webkit-transform:rotate(-6deg);} }
+@-webkit-keyframes light-green{ 0%,20%,80%,100%{ border-bottom-color:#F0F8E8; } 30%,70%{ border-bottom-color:#F8E8E8; } }
+@-webkit-keyframes light-green-sway{ 0%,100%{-webkit-transform:rotate(0);} 25%{-webkit-transform:rotate(-4deg);} 75%{-webkit-transform:rotate(6deg);} }
+@-webkit-keyframes decoration{ 100%{opacity:1;} }
+@-webkit-keyframes note1{ 0%,100%{ -webkit-transform:rotate(-30deg); } 50%{ -webkit-transform:rotate(0); } }
+@-webkit-keyframes note2{ 0%,100%{ -webkit-transform:rotate(10deg); } 50%{ -webkit-transform:rotate(-5deg); } }
+@-webkit-keyframes note3{ 0%,100%{ -webkit-transform:rotate(0); } 50%{ -webkit-transform:rotate(20deg); } }
+@-webkit-keyframes star1{ 0%,100%{ -webkit-transform:scale(0.7); } 50%{ -webkit-transform:scale(0.9); } }
+@-webkit-keyframes star2{ 0%,100%{ -webkit-transform:scale(1); } 50%{ -webkit-transform:scale(1.2); } }
+@-webkit-keyframes star3{ 0%,100%{ -webkit-transform:scale(0.4); } 50%{ -webkit-transform:scale(0.6); } }
+
+@-moz-keyframes dikamon-drop{ 100%{bottom:20px;opacity:1;} }
+@-moz-keyframes banner-title{ 100%{-moz-transform:rotate(90deg);} }
+@-moz-keyframes stage-scale{ 20%{-moz-transform:scale(1.2);} 40%{-moz-transform:scale(0.8);} 60%{-moz-transform:scale(1.1);} 80%,100%{-moz-transform:scale(1);opacity:1;} }
+@-moz-keyframes light-pink{ 0%,20%,80%,100%{ border-bottom-color:#F8E8E8; } 30%,70%{ border-bottom-color:#F0F8E8; } }
+@-moz-keyframes light-pink-sway{ 0%,100%{-moz-transform:rotate(0);} 25%{-moz-transform:rotate(4deg);} 75%{-moz-transform:rotate(-6deg);} }
+@-moz-keyframes light-green{ 0%,20%,80%,100%{ border-bottom-color:#F0F8E8; } 30%,70%{ border-bottom-color:#F8E8E8; } }
+@-moz-keyframes light-green-sway{ 0%,100%{-moz-transform:rotate(0);} 25%{-moz-transform:rotate(-4deg);} 75%{-moz-transform:rotate(6deg);} }
+@-moz-keyframes decoration{ 100%{opacity:1;} }
+@-moz-keyframes note1{ 0%,100%{ -moz-transform:rotate(-30deg); } 50%{ -moz-transform:rotate(0); } }
+@-moz-keyframes note2{ 0%,100%{ -moz-transform:rotate(10deg); } 50%{ -moz-transform:rotate(-5deg); } }
+@-moz-keyframes note3{ 0%,100%{ -moz-transform:rotate(0); } 50%{ -moz-transform:rotate(20deg); } }
+@-moz-keyframes star1{ 0%,100%{ -moz-transform:scale(0.7); } 50%{ -moz-transform:scale(0.9); } }
+@-moz-keyframes star2{ 0%,100%{ -moz-transform:scale(1); } 50%{ -moz-transform:scale(1.2); } }
+@-moz-keyframes star3{ 0%,100%{ -moz-transform:scale(0.4); } 50%{ -moz-transform:scale(0.6); } }
+
+@keyframes dikamon-drop{ 100%{bottom:20px;opacity:1;} }
+@keyframes banner-title{ 100%{transform:rotate(90deg);} }
+@keyframes stage-scale{ 20%{transform:scale(1.2);} 40%{transform:scale(0.8);} 60%{transform:scale(1.1);} 80%,100%{transform:scale(1);opacity:1;} }
+@keyframes light-pink{ 0%,20%,80%,100%{ border-bottom-color:#F8E8E8; } 30%,70%{ border-bottom-color:#F0F8E8; } }
+@keyframes light-pink-sway{ 0%,100%{transform:rotate(0);} 25%{transform:rotate(4deg);} 75%{transform:rotate(-6deg);} }
+@keyframes light-green{ 0%,20%,80%,100%{ border-bottom-color:#F0F8E8; } 30%,70%{ border-bottom-color:#F8E8E8; } }
+@keyframes light-green-sway{ 0%,100%{transform:rotate(0);} 25%{transform:rotate(-4deg);} 75%{transform:rotate(6deg);} }
+@keyframes decoration{ 100%{opacity:1;} }
+@keyframes note1{ 0%,100%{ transform:rotate(-30deg); } 50%{ transform:rotate(0); } }
+@keyframes note2{ 0%,100%{ transform:rotate(10deg); } 50%{ transform:rotate(-5deg); } }
+@keyframes note3{ 0%,100%{ transform:rotate(0); } 50%{ transform:rotate(20deg); } }
+@keyframes star1{ 0%,100%{ transform:scale(0.7); } 50%{ transform:scale(0.9); } }
+@keyframes star2{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.2); } }
+@keyframes star3{ 0%,100%{ transform:scale(0.4); } 50%{ transform:scale(0.6); } }
+
+/* [动画4] D卡萌群舞 */
+@-webkit-keyframes dikamon1-hand-l{ 0%,20%,80%,100%{left:-24px;} 30%,70%{left:0;} }
+@-webkit-keyframes dikamon1-hand-r{ 0%,20%,80%,100%{right:0;} 30%,70%{right:-24px;} }
+@-webkit-keyframes dikamon1-leg-l{ 0%,100%{ height:15px;bottom:-13px;-webkit-transform:rotate(40deg); } }
+@-webkit-keyframes dikamon1-foot-l{ 0%,20%,80%,100%{ height:15px;bottom:-13px;-webkit-transform:rotate(-80deg); } 30%,70%{ height:15px;bottom:-13px;-webkit-transform:rotate(0); } }
+@-webkit-keyframes dikamon1-leg-r{ 0%,100%{ height:15px;bottom:-13px;-webkit-transform:rotate(-40deg); } }
+@-webkit-keyframes dikamon1-foot-r{ 0%,20%,80%,100%{ height:15px;bottom:-13px;-webkit-transform:rotate(0); } 30%,70%{ height:15px;bottom:-13px;-webkit-transform:rotate(80deg); } }
+@-webkit-keyframes dikamon1-body{ 0%,20%,80%,100%{left:239px;} 30%,70%{left:245px;} }
+
+@-webkit-keyframes dikamon2-hand-l{ 0%,10%,40%,60%,90%,100%{top:38px;left:-29px;} 15%,35%,65%,85%{top:54px;left:-24px;} }
+@-webkit-keyframes dikamon2-hand-r{ 0%,10%,40%,60%,90%,100%{top:38px;right:-29px;} 15%,35%,65%,85%{top:54px;right:-24px;} }
+@-webkit-keyframes dikamon2-leg-l{ 0%,10%,40%,60%,90%,100%{ height:11px;bottom:-10px;-webkit-transform:rotate(0); } 15%,35%{ height:14px;bottom:-12px;-webkit-transform:rotate(28deg); } }
+@-webkit-keyframes dikamon2-foot-l{ 0%,10%,40%,60%,90%,100%{ height:11px;bottom:-10px;-webkit-transform:rotate(0); } 15%,35%{ height:14px;bottom:-12px;-webkit-transform:rotate(90deg); } }
+@-webkit-keyframes dikamon2-leg-r{ 0%,10%,40%,60%,90%,100%{ height:11px;bottom:-10px;-webkit-transform:rotate(0); } 65%,85%{ height:14px;bottom:-12px;-webkit-transform:rotate(-28deg); } }
+@-webkit-keyframes dikamon2-foot-r{ 0%,10%,40%,60%,90%,100%{ height:11px;bottom:-10px;-webkit-transform:rotate(0); } 65%,85%{ height:14px;bottom:-12px;-webkit-transform:rotate(-90deg); } }
+@-webkit-keyframes dikamon2-body{ 0%,10%,40%,60%,90%,100%{bottom:20px;} 15%,35%,65%,85%{bottom:15px;} }
+
+@-webkit-keyframes dikamon3-hand-l{ 0%,20%,80%,100%{top:50px;left:-18px;} 30%,70%{top:66px;left:16px;} }
+@-webkit-keyframes dikamon3-hand-r{ 0%,20%,80%,100%{top:50px;right:-16px;} 30%,70%{top:66px;right:14px;} }
+@-webkit-keyframes dikamon3-leg-l{ 0%,20%,80%,100%{ -webkit-transform:rotate(0); } 30%,70%{ -webkit-transform:rotate(45deg); } }
+@-webkit-keyframes dikamon3-foot-l{ 0%,20%,80%,100%{ -webkit-transform:rotate(0);height:11px;bottom:-10px; } 30%,70%{ -webkit-transform:rotate(-90deg);height:13px;bottom:-12px; } }
+@-webkit-keyframes dikamon3-leg-r{ 0%,20%,80%,100%{ -webkit-transform:rotate(0); } 30%,70%{ -webkit-transform:rotate(-45deg); } }
+@-webkit-keyframes dikamon3-foot-r{ 0%,20%,80%,100%{ -webkit-transform:rotate(0);height:11px;bottom:-10px; } 30%,70%{ -webkit-transform:rotate(90deg);height:13px;bottom:-12px; } }
+@-webkit-keyframes dikamon3-body{ 0%,20%,80%,100%{bottom:20px;} 30%,70%{bottom:15px;} }
+
+
+@-moz-keyframes dikamon1-hand-l{ 0%,20%,80%,100%{left:-24px;} 30%,70%{left:0;} }
+@-moz-keyframes dikamon1-hand-r{ 0%,20%,80%,100%{right:0;} 30%,70%{right:-24px;} }
+@-moz-keyframes dikamon1-leg-l{ 0%,100%{ height:15px;bottom:-13px;-moz-transform:rotate(40deg); } }
+@-moz-keyframes dikamon1-foot-l{ 0%,20%,80%,100%{ height:15px;bottom:-13px;-moz-transform:rotate(-80deg); } 30%,70%{ height:15px;bottom:-13px;-moz-transform:rotate(0); } }
+@-moz-keyframes dikamon1-leg-r{ 0%,100%{ height:15px;bottom:-13px;-moz-transform:rotate(-40deg); } }
+@-moz-keyframes dikamon1-foot-r{ 0%,20%,80%,100%{ height:15px;bottom:-13px;-moz-transform:rotate(0); } 30%,70%{ height:15px;bottom:-13px;-moz-transform:rotate(80deg); } }
+@-moz-keyframes dikamon1-body{ 0%,20%,80%,100%{left:239px;} 30%,70%{left:245px;} }
+
+@-moz-keyframes dikamon2-hand-l{ 0%,10%,40%,60%,90%,100%{top:38px;left:-29px;} 15%,35%,65%,85%{top:54px;left:-24px;} }
+@-moz-keyframes dikamon2-hand-r{ 0%,10%,40%,60%,90%,100%{top:38px;right:-29px;} 15%,35%,65%,85%{top:54px;right:-24px;} }
+@-moz-keyframes dikamon2-leg-l{ 0%,10%,40%,60%,90%,100%{ height:11px;bottom:-10px;-moz-transform:rotate(0); } 15%,35%{ height:14px;bottom:-12px;-moz-transform:rotate(28deg); } }
+@-moz-keyframes dikamon2-foot-l{ 0%,10%,40%,60%,90%,100%{ height:11px;bottom:-10px;-moz-transform:rotate(0); } 15%,35%{ height:14px;bottom:-12px;-moz-transform:rotate(90deg); } }
+@-moz-keyframes dikamon2-leg-r{ 0%,10%,40%,60%,90%,100%{ height:11px;bottom:-10px;-moz-transform:rotate(0); } 65%,85%{ height:14px;bottom:-12px;-moz-transform:rotate(-28deg); } }
+@-moz-keyframes dikamon2-foot-r{ 0%,10%,40%,60%,90%,100%{ height:11px;bottom:-10px;-moz-transform:rotate(0); } 65%,85%{ height:14px;bottom:-12px;-moz-transform:rotate(-90deg); } }
+@-moz-keyframes dikamon2-body{ 0%,10%,40%,60%,90%,100%{bottom:20px;} 15%,35%,65%,85%{bottom:15px;} }
+
+@-moz-keyframes dikamon3-hand-l{ 0%,20%,80%,100%{top:50px;left:-18px;} 30%,70%{top:66px;left:16px;} }
+@-moz-keyframes dikamon3-hand-r{ 0%,20%,80%,100%{top:50px;right:-16px;} 30%,70%{top:66px;right:14px;} }
+@-moz-keyframes dikamon3-leg-l{ 0%,20%,80%,100%{ -moz-transform:rotate(0); } 30%,70%{ -moz-transform:rotate(45deg); } }
+@-moz-keyframes dikamon3-foot-l{ 0%,20%,80%,100%{ -moz-transform:rotate(0);height:11px;bottom:-10px; } 30%,70%{ -moz-transform:rotate(-90deg);height:13px;bottom:-12px; } }
+@-moz-keyframes dikamon3-leg-r{ 0%,20%,80%,100%{ -moz-transform:rotate(0); } 30%,70%{ -moz-transform:rotate(-45deg); } }
+@-moz-keyframes dikamon3-foot-r{ 0%,20%,80%,100%{ -moz-transform:rotate(0);height:11px;bottom:-10px; } 30%,70%{ -moz-transform:rotate(90deg);height:13px;bottom:-12px; } }
+@-moz-keyframes dikamon3-body{ 0%,20%,80%,100%{bottom:20px;} 30%,70%{bottom:15px;} }
+
+
+@keyframes dikamon1-hand-l{ 0%,20%,80%,100%{left:-24px;} 30%,70%{left:0;} }
+@keyframes dikamon1-hand-r{ 0%,20%,80%,100%{right:0;} 30%,70%{right:-24px;} }
+@keyframes dikamon1-leg-l{ 0%,100%{ height:15px;bottom:-13px;transform:rotate(40deg); } }
+@keyframes dikamon1-foot-l{ 0%,20%,80%,100%{ height:15px;bottom:-13px;transform:rotate(-80deg); } 30%,70%{ height:15px;bottom:-13px;transform:rotate(0); } }
+@keyframes dikamon1-leg-r{ 0%,100%{ height:15px;bottom:-13px;transform:rotate(-40deg); } }
+@keyframes dikamon1-foot-r{ 0%,20%,80%,100%{ height:15px;bottom:-13px;transform:rotate(0); } 30%,70%{ height:15px;bottom:-13px;transform:rotate(80deg); } }
+@keyframes dikamon1-body{ 0%,20%,80%,100%{left:239px;} 30%,70%{left:245px;} }
+
+@keyframes dikamon2-hand-l{ 0%,10%,40%,60%,90%,100%{top:38px;left:-29px;} 15%,35%,65%,85%{top:54px;left:-24px;} }
+@keyframes dikamon2-hand-r{ 0%,10%,40%,60%,90%,100%{top:38px;right:-29px;} 15%,35%,65%,85%{top:54px;right:-24px;} }
+@keyframes dikamon2-leg-l{ 0%,10%,40%,60%,90%,100%{ height:11px;bottom:-10px;transform:rotate(0); } 15%,35%{ height:14px;bottom:-12px;transform:rotate(28deg); } }
+@keyframes dikamon2-foot-l{ 0%,10%,40%,60%,90%,100%{ height:11px;bottom:-10px;transform:rotate(0); } 15%,35%{ height:14px;bottom:-12px;transform:rotate(90deg); } }
+@keyframes dikamon2-leg-r{ 0%,10%,40%,60%,90%,100%{ height:11px;bottom:-10px;transform:rotate(0); } 65%,85%{ height:14px;bottom:-12px;transform:rotate(-28deg); } }
+@keyframes dikamon2-foot-r{ 0%,10%,40%,60%,90%,100%{ height:11px;bottom:-10px;transform:rotate(0); } 65%,85%{ height:14px;bottom:-12px;transform:rotate(-90deg); } }
+@keyframes dikamon2-body{ 0%,10%,40%,60%,90%,100%{bottom:20px;} 15%,35%,65%,85%{bottom:15px;} }
+
+@keyframes dikamon3-hand-l{ 0%,20%,80%,100%{top:50px;left:-18px;} 30%,70%{top:66px;left:16px;} }
+@keyframes dikamon3-hand-r{ 0%,20%,80%,100%{top:50px;right:-16px;} 30%,70%{top:66px;right:14px;} }
+@keyframes dikamon3-leg-l{ 0%,20%,80%,100%{ transform:rotate(0); } 30%,70%{ transform:rotate(45deg); } }
+@keyframes dikamon3-foot-l{ 0%,20%,80%,100%{ transform:rotate(0);height:11px;bottom:-10px; } 30%,70%{ transform:rotate(-90deg);height:13px;bottom:-12px; } }
+@keyframes dikamon3-leg-r{ 0%,20%,80%,100%{ transform:rotate(0); } 30%,70%{ transform:rotate(-45deg); } }
+@keyframes dikamon3-foot-r{ 0%,20%,80%,100%{ transform:rotate(0);height:11px;bottom:-10px; } 30%,70%{ transform:rotate(90deg);height:13px;bottom:-12px; } }
+@keyframes dikamon3-body{ 0%,20%,80%,100%{bottom:20px;} 30%,70%{bottom:15px;} }
+</style>
+
+</head>
+
+<body>
+
+
+
+<!-- banner [[ -->
+<div class="banner">
+	<!-- 动画版 [[ -->
+	<div class="banner-animation">
+		<div class="banner-title-wrap">
+			<h2 class="banner-title">饭卡充值，大！变！装！</h2>
+		</div>
+
+		<!-- 舞台 [[ -->
+		<div class="stage">
+			<div class="stage-inner">
+				<div class="light-pink"></div>
+				<div class="light-green"></div>
+			</div>
+		</div>
+		<!-- 舞台 ]] -->
+
+		<!-- 音符 & 星星 [[ -->
+		<div class="decoration">
+			<div class="note note1"></div>
+			<div class="note note2"></div>
+			<div class="note note3"></div>
+			<div class="star star1"></div>
+			<div class="star star2"></div>
+			<div class="star star3"></div>
+		</div>
+		<!-- 音符 & 星星 ]] -->
+
+		<!-- D卡萌，中 [[ -->
+		<div class="dikamon dikamon1">
+			<div class="dikamon dikamon-coat">
+				<div class="dikamon dikamon-coat-l"></div>
+				<div class="dikamon dikamon-coat-r"></div>
+			</div>
+
+			<div class="dikamon-hand-l"></div>
+			<div class="dikamon-hand-r"></div>
+			<div class="dikamon-leg-l"><div class="dikamon-foot-l"></div></div>
+			<div class="dikamon-leg-r"><div class="dikamon-foot-r"></div></div>
+		</div>
+		<!-- D卡萌，中 ]] -->
+
+		<!-- D卡萌，左 [[ -->
+		<div class="dikamon dikamon2">
+			<div class="dikamon-hand-l"></div>
+			<div class="dikamon-hand-r"></div>
+			<div class="dikamon-leg-l"><div class="dikamon-foot-l"></div></div>
+			<div class="dikamon-leg-r"><div class="dikamon-foot-r"></div></div>
+		</div>
+		<!-- D卡萌，左 ]] -->
+
+		<!-- D卡萌，右 [[ -->
+		<div class="dikamon dikamon3">
+			<div class="dikamon-hand-l"></div>
+			<div class="dikamon-hand-r"></div>
+			<div class="dikamon-leg-l"><div class="dikamon-foot-l"></div></div>
+			<div class="dikamon-leg-r"><div class="dikamon-foot-r"></div></div>
+		</div>
+		<!-- D卡萌，右 ]] -->
+
+		<div class="horizon"><!-- 地平线 --></div>
+	</div>
+	<!-- 动画版 ]] -->
+
+	<!--[if lte IE 9]><div class="banner-bg"></div><![endif]-->
+</div>
+<!-- banner ]] -->
+
+
+
+
+
+
+</body>
+</html>

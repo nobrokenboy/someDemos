@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>时钟动态效果实现</title>
+		<style>
+			 body{
+			 	background:#FFEBCD;
+			 	overflow:hidden;
+			 }
+			 .t_theme{
+			 	font-size:80px;
+			 	color: #f35626;
+				background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+			    -webkit-background-clip: text;
+			    -webkit-text-fill-color: transparent;
+			 	text-shadow:0 -5px 5px rgba(1,1,1,.3);
+			 	-webkit-animation:titleIn 1s ease-in,hue 60s infinite linear;
+			 	animation:titleIn 1s ease-in,hue 60s infinite linear;
+			 }
+			 @-webkit-keyframes titleIn{
+			 	0%{
+			 	    margin-top:-300px;
+			 	}
+			 	100%{
+			 		 margin-top:100px;
+			 	}
+			 }
+			 @keyframes titleIn{
+			    0%{
+			 	   margin-top:-300px;
+			 	}
+			 	100%{
+			 	   margin-top:100px;
+			 	}
+			 }
+			 @keyframes hue{
+				0% {
+				    -webkit-filter: hue-rotate(0deg); 
+				}
+				
+				100% {
+				     -webkit-filter: hue-rotate(-360deg); 
+				}
+			}
+			 @keyframes re-hue{
+				0% {
+				    -webkit-filter: hue-rotate(-360deg); 
+				}
+				
+				100% {
+				     -webkit-filter: hue-rotate(0deg); 
+				}
+			}
+			 .c_clock_wrapper{
+			 	position:absolute;
+			 	top:200px;
+			 	left:50%;
+			 	-webkit-transform:translateX(-50%);
+			 	transform:translateX(-50%);
+			 	width:300px;
+			 	height:300px;
+			 	border-radius:50%;
+			 	background-color:#fff;
+			 	box-shadow:5px 0 2px rgba(1,1,1,0.3);
+			 	-webkit-animation:timeBound 1s 1  ease-in;
+			 	animation:timeBound 1s 1  ease-in;
+			 }
+			 @-webkit-keyframes timeBound{
+			 	
+			 }
+			 @keyframes timeBound{
+			 	
+			 }
+			 .c_clock_wrapper>div{
+			 	position:absolute;
+			 	border-radius:50%;
+			 	left:50%;
+			 	top:50%;
+			 	-webkit-transform:translate(-50%,-50%);
+			 	transform:translate(-50%,-50%);
+			 }
+			 .c_clock_wrapper .c_clock_second_minute{
+			 	width:100%;
+			 	height:100%;
+			 }
+			 .c_clock_wrapper .c_clock_second_minute .c_clock_sm_scale{
+			 	    display: inline-block;
+				    width: 1px;
+				    height: 280px;
+				    background-color: #FEAB3A;
+				    position: absolute;
+				    bottom: 10px;
+				    left: 50%;
+			 }
+			 .c_clock_wrapper .c_clock_hours{
+			 	width:80%;
+			 	height:80%;
+			 	background-color:#eee;
+			 	
+			 }
+			 .c_clock_wrapper .c_clock_hours .c_clock_h_scale{
+			 	 display:inline-block;
+			 	 color:#FEAB3A;
+			 	 position:absolute;
+			 	 font-size:24px;
+			 	 font-family: "arial, helvetica, sans-serif";
+			 }
+			 .c_clock_wrapper .c_clock_hours .c_clock_h_scale:nth-child(1){
+			 	  top: 8%;
+                  right: 25%;
+			 }
+			  .c_clock_wrapper .c_clock_hours .c_clock_h_scale:nth-child(2){
+			 	 top: 22%;
+                 right: 8%;
+			 }
+			  .c_clock_wrapper .c_clock_hours .c_clock_h_scale:nth-child(3){
+			 	 right:3px;
+			 	 top:50%;
+			 }
+			  .c_clock_wrapper .c_clock_hours .c_clock_h_scale:nth-child(4){
+			 	 bottom: 22%;
+                 right: 8%;
+			 }
+			  .c_clock_wrapper .c_clock_hours .c_clock_h_scale:nth-child(5){
+			 	 bottom: 8%;
+                 right: 25%;
+			 }
+			  .c_clock_wrapper .c_clock_hours .c_clock_h_scale:nth-child(6){
+			 	 bottom:3px;
+			 	 left:50%;
+			 }
+			  .c_clock_wrapper .c_clock_hours .c_clock_h_scale:nth-child(7){
+			 	 bottom: 8%;
+                 left: 25%;
+			 }
+			  .c_clock_wrapper .c_clock_hours .c_clock_h_scale:nth-child(8){
+			 	 bottom: 22%;
+                 left: 8%;
+			 }
+			  .c_clock_wrapper .c_clock_hours .c_clock_h_scale:nth-child(9){
+			 	 left:3px;
+			 	 top:50%;
+			 }
+			  .c_clock_wrapper .c_clock_hours .c_clock_h_scale:nth-child(10){
+			 	 top: 22%;
+                 left: 8%;
+			 }
+			  .c_clock_wrapper .c_clock_hours .c_clock_h_scale:nth-child(11){
+			 	 top: 8%;
+                 left: 25%;
+			 }
+			  .c_clock_wrapper .c_clock_hours .c_clock_h_scale:nth-child(12){
+			 	 top:3px;
+			 	 left:50%;
+			 }
+			 .c_clock_wrapper .c_clock_hours .c_clock_h_scale:nth-child(3n+3){
+			 	 -webkit-transform:translateY(-50%);
+			 	 transform:translateY(-50%);
+			 }
+			 .c_clock_wrapper .c_clock_hours .c_clock_h_scale:nth-child(6n+6){
+			 	 -webkit-transform:translateX(-50%);
+			 	 transform:translateX(-50%);
+			 }
+			 .c_clock_wrapper .c_clock_rotation_s{
+			 	 width:20px;
+			 	 height:20px;
+			 	 background-color:#F35626;
+			 	 z-index:9;
+			 }
+			  .c_clock_wrapper .c_clock_rotation_m{
+			 	 width:15px;
+			 	 height:15px;
+			 	 background-color:#FFD700;
+			 	 z-index:99;
+			 }
+			  .c_clock_wrapper .c_clock_rotation_h{
+			 	 width:10px;
+			 	 height:10px;
+			 	 background-color:#000;
+			 	 z-index:999;
+			 }
+			 .c_clock_wrapper .c_clock_rotate_panel_h{
+			 	width:35%;
+			 	height:35%;
+			 	
+			 }
+			  .c_clock_wrapper .c_clock_rotate_panel_m{
+			 	width:45%;
+			 	height:45%;
+			 }
+			 .c_clock_wrapper .c_clock_rotate_panel_s{
+			 	width:60%;
+			 	height:60%;
+			 }
+			 .c_clock_wrapper .c_clock_rotate_panel>div{
+			 	display:inline-block;
+			 	 position:absolute;
+			 	 left:50%;
+			 	 -webkit-transform:translateX(-50%) rotate(0deg);
+			 	 transform:translateX(-50%) rotate(0deg);
+			 	 
+			 }
+			 .c_clock_wrapper .c_clock_rotate_panel_h .c_clock_needle_h{
+			 	width:3px;
+			 	height:100%;
+			 	background-color:#FFD700;
+			 	-webkit-animation:needleRotate 21600s steps(60, end) infinite;
+			 	animation:needleRotate 21600s steps(60, end) infinite;
+			 	
+			 }
+			 .c_clock_wrapper .c_clock_rotate_panel_h .c_clock_needle_h:before{
+			  	content:"";
+			  	position:absolute;
+			 	width:3px;
+			 	height:50%;
+
+			 }
+			  .c_clock_wrapper .c_clock_rotate_panel_h .c_clock_needle_h:after{
+			  	content:"";
+			  	position:absolute;
+			 	width:3px;
+			 	height:50%;
+			 	background:#eee;
+			 	top:50%;
+			 	
+			 }
+			 .c_clock_wrapper .c_clock_rotate_panel_m .c_clock_needle_m{
+			 	width:2px;
+			 	height:100%;
+			 	background-color:#FFD700;
+			 	-webkit-animation:needleRotate 3600s steps(60, end) infinite;
+			 	animation:needleRotate 3600s steps(60, end) infinite;
+			 }
+			 .c_clock_wrapper .c_clock_rotate_panel_m .c_clock_needle_m:before{
+			 	content:"";
+			  	position:absolute;
+			 	width:2px;
+			 	height:50%;
+			 }
+			  .c_clock_wrapper .c_clock_rotate_panel_m .c_clock_needle_m:after{
+			 	content:"";
+			  	position:absolute;
+			 	width:2px;
+			 	height:50%;
+			 	background:#eee;
+			    top:50%;
+			 }
+			 .c_clock_wrapper .c_clock_rotate_panel_s .c_clock_needle_s{
+			 	width:1px;
+			 	height:100%;
+			 	background-color:#F35626;
+			 	-webkit-animation:needleRotate 60s steps(60, end) infinite;
+			 	animation:needleRotate 60s steps(60, end) infinite;
+                
+			 }
+			 /*
+			  *   秒针旋转一个周期是360deg,即60s,
+			  *   同时分针一个周期是60s*60
+			  *   此外时针旋转一个周期是60s*60*60
+			  *   秒针，分针以及时针的旋转步长为6deg，所以总步数为60,
+			  *   周期为无限长，即infinite
+			  */
+			  .c_clock_wrapper .c_clock_rotate_panel_s .c_clock_needle_s:before{
+			 	content:"";
+			  	position:absolute;
+			 	width:1px;
+			 	height:50%;
+                
+			 }
+			 .c_clock_wrapper .c_clock_rotate_panel_s .c_clock_needle_s:after{
+			 	content:"";
+			  	position:absolute;
+			 	width:1px;
+			 	height:50%;
+			 	background:#eee;
+			 	top:50%;
+                
+			 }
+			 @-webkit-keyframes needleRotate{
+			 	to{
+			 		transform:rotate(360deg) translate3d(0,0,0);
+			 	}
+			 }
+			 @keyframes needleRotate{
+			 	to{
+			 		transform:rotate(360deg);
+			 	}
+			 }
+			 .dream-bubble-wrapper{
+			    position:absolute;
+			    width:100%;
+			    height:768px !important;
+			    z-index:999;
+			    overflow:hidden;
+			 }
+			 .dream-bubble-wrapper .dream-bubble{
+			 	 width:100px;
+			 	 height:100px;
+			 	 position:relative;
+			 	 border-radius:50%;
+			 	 background-color:rgba(1,1,1,0);
+			 	 -webkit-transform:scale(1);
+			 	 transform:scale(1);
+			 	 -webkit-animation:1s infinite linear;
+			 	 animation:1s infinite linear;
+			 }
+			 @-webkit-keyframes bubbleChange{
+			 	0%{
+			 		-webkit-transform:rotate(30deg) scale(1);
+			 	}
+			 	100%{
+			 		-webkit-transform:rotate(270deg) scale(1.2);
+			 	}
+			 }
+			 @-webkit-keyframes bubbleChange{
+			 	0%{
+			 		-webkit-transform:rotate(30deg) scale(1);
+			 	}
+			 	100%{
+			 		-webkit-transform:rotate(270deg) scale(1.2);
+			 	}
+			 }
+			 @-webkit-keyframes bubbleChange1{
+			 	0%{
+			 		-webkit-transform:rotate(0deg) scale(1);
+			 	}
+			 	100%{
+			 		-webkit-transform:rotate(-360deg) scale(.7);
+			 	}
+			 }
+			 @-webkit-keyframes bubbleChange1{
+			 	0%{
+			 		-webkit-transform:rotate(0) scale(1);
+			 	}
+			 	100%{
+			 		-webkit-transform:rotate(-360deg) scale(.7);
+			 	}
+			 }
+			 @-webkit-keyframes bubbleChange2{
+			 	0%{
+			 		-webkit-transform:scale(1);
+			 	}
+			 	100%{
+			 		-webkit-transform:scale(1.5);
+			 	}
+			 }
+			 @-webkit-keyframes bubbleChange2{
+			 	0%{
+			 		-webkit-transform:scale(1);
+			 	}
+			 	100%{
+			 		-webkit-transform:scale(1.5);
+			 	}
+			 }
+			 @-webkit-keyframes bubbleChange3{
+			 	0%{
+			 		-webkit-transform:scale(1);
+			 	}
+			 	100%{
+			 		-webkit-transform:scale(1.5);
+			 	}
+			 }
+			 @-webkit-keyframes bubbleChange4{
+			 	0%{
+			 		-webkit-transform:translateY(0) scale(1);
+			 	}
+			 	100%{
+			 		-webkit-transform:translateY(200) scale(1.5);
+			 	}
+			 }
+			 .dream-bubble-wrapper .dream-bubble .bubble-blank{
+			 	 position:absolute;
+			 	 left:15%;
+			 	 top:25%;
+			 	 width:30px;
+			 	 height:20px;
+			 	 border-radius:20px;
+			 	 background-color:#fff;
+			 	 -webkit-transform:rotate(-50deg); 
+			 	 transform:rotate(-50deg);
+			 	 
+			 }
+		</style>
+	</head>
+	<body>
+		<h1 class="t_theme" align="center">梦幻时钟</h1>
+		 <div class="c_clock_wrapper">
+		 	  <div class="c_clock_second_minute">
+		 	  	  <div class="c_clock_sm_scale"></div>
+		 	  	  <div class="c_clock_sm_scale"></div>
+		 	  	  <div class="c_clock_sm_scale"></div>
+		 	  	  <div class="c_clock_sm_scale"></div>
+		 	  	  <div class="c_clock_sm_scale"></div>
+		 	  	  <div class="c_clock_sm_scale"></div>
+		 	  	  <div class="c_clock_sm_scale"></div>
+		 	  	  <div class="c_clock_sm_scale"></div>
+		 	  	  <div class="c_clock_sm_scale"></div>
+		 	  	  <div class="c_clock_sm_scale"></div>
+		 	  	  <div class="c_clock_sm_scale"></div>
+		 	  	  <div class="c_clock_sm_scale"></div>
+		 	  </div>
+	 	      <div class="c_clock_hours">
+	 	  	 	   <div class="c_clock_h_scale">1</div>
+	 	  	 	   <div class="c_clock_h_scale">2</div>
+	 	  	 	   <div class="c_clock_h_scale">3</div>
+	 	  	 	   <div class="c_clock_h_scale">4</div>
+	 	  	 	   <div class="c_clock_h_scale">5</div>
+	 	  	 	   <div class="c_clock_h_scale">6</div>
+	 	  	 	   <div class="c_clock_h_scale">7</div>
+	 	  	 	   <div class="c_clock_h_scale">8</div>
+	 	  	 	   <div class="c_clock_h_scale">9</div>
+	 	  	 	   <div class="c_clock_h_scale">10</div>
+	 	  	 	   <div class="c_clock_h_scale">11</div>
+	 	  	 	   <div class="c_clock_h_scale">12</div>
+	 	  	  </div>
+	 	  	  <div class="c_clock_rotate_panel_h c_clock_rotate_panel">
+	 	  	  	   <div class="c_clock_needle_h"></div>
+	 	  	  </div>
+	 	  	  <div class="c_clock_rotate_panel_m c_clock_rotate_panel">
+	 	  	  	   <div class="c_clock_needle_m"></div>
+	 	  	  </div>
+	 	  	  <div class="c_clock_rotate_panel_s c_clock_rotate_panel">
+	 	  	  	   <div class="c_clock_needle_s"></div>
+	 	  	  </div>
+	 	  	  <div class="c_clock_rotation_h"></div>
+	 	  	  <div class="c_clock_rotation_m"></div>
+	 	  	  <div class="c_clock_rotation_s"></div>
+ 	  	  	 
+		 </div><!--时钟外包-->
+		 <div class="dream-bubble-wrapper"><!--梦幻气泡-->
+		 </div><!--梦幻气泡-->
+	</body>
+	<script src="//cdn.bootcss.com/jquery/3.0.0-rc1/jquery.js"></script>
+	<script src="js/rbeix.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/sy_common.js"></script>
+	<script>
+		$(function(){
+			  
+			 //获取到秒钟以及时钟线对象
+			 var $smScale=$(".c_clock_second_minute>.c_clock_sm_scale");
+			 $smScale.each(function(){
+			 	var $this=$(this);
+			 	var index=$this.index();
+			 	$(this).css({
+			 		"-webkit-transform":"rotate("+index*30+"deg)",
+			 		"transform":"rotate("+index*30+"deg)"
+			 	});
+			 });
+             
+             //获取当前系统时间
+             var date1=new Date();
+             var dateNow=new Date().toLocaleDateString();
+             var hour=date1.getHours();
+             var minute=date1.getMinutes();
+             var second=date1.getSeconds();
+             
+             console.log(hour+"时"+minute+"分"+second+"秒");
+             debugger;
+             //对时针的处理
+             var  $hourNeedle=$(".c_clock_needle_h");
+             if(hour>12){
+             	hour=hour-12;
+             }
+             //时针旋转的角度
+             var hRotateDeg=hour*30+minute*0.5;//时针旋转一小时是30deg,共有60分钟，每分钟走了有0.5deg
+             $hourNeedle.css({
+             	"-webkit-transform":"rotate("+hRotateDeg+"deg)",
+             	"transform":"rotate("+hRotateDeg+"deg)"
+             	
+             });
+             //对分针的处理 
+             var $minuteNeedle=$(".c_clock_needle_m");
+             var mRotateDeg=minute*6+second*0.1;//分针旋转一分钟是6deg，每秒走了有0.1deg
+             $minuteNeedle.css({
+             	"-webkit-transform":"rotate("+mRotateDeg+"deg)",
+             	"transform":"rotate("+mRotateDeg+"deg)"
+             	
+             });
+             
+             
+             //对秒钟的处理
+             var $secondNeedle=$(".c_clock_needle_s");
+             var sRotateDeg=second*6;
+             $secondNeedle.css({
+             	"-webkit-transform":"rotate("+sRotateDeg+"deg)",
+             	"transform":"rotate("+sRotateDeg+"deg)"
+             	
+             });
+             
+             
+              /* ---------- 梦幻气泡处理---------*/
+             var bubbleNums=2000;
+             var bubbleX=$(window).width()-100;
+             var bubbleY=$(window).height();
+             genBubble();
+             var animationName=["bubbleChange","bubbleChange1","bubbleChange2","bubbleChange3"];
+             //随机给气泡阴影赋值，位置,处理一下每个气泡间的间距（X）
+             $(".dream-bubble-wrapper>.dream-bubble").each(function(){
+             	 var $this=$(this);
+             	 var color=window.utils.randomColor();
+             	 var bubbleAnimationIndex=(Math.random()*3).toFixed();
+             	 console.log(bubbleAnimationIndex);
+	             $this.css({
+	             	"boxShadow":"inset 2px 2px 3px "+color,
+	             	"left":Math.random()*bubbleX+100,
+	             	"top":Math.random()*bubbleY-700,
+	             	"margin":"10px",
+	             	"-webkit-animation-name":animationName[bubbleAnimationIndex],
+	             	"animation-name":animationName[bubbleAnimationIndex]
+	             });
+             });
+             //生成气泡函数
+             function genBubble(){
+             	 var $bubbleWrapper=$(".dream-bubble-wrapper"); 
+             	 var insertHtml="";
+             	 for(var i=0;i<bubbleNums;i++){
+             	 	insertHtml+="<div class=\"dream-bubble\">"+
+					 	 	"<div class=\"bubble-blank\">"+"</div>"+
+					 	 "</div>";
+             	 }
+             	 $bubbleWrapper.html(insertHtml);
+             }
+		});
+	</script>
+</html>

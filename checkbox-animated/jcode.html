@@ -1,0 +1,509 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <title>施工直播</title>
+    <link rel="icon" type="image/x-ico" href="img/icon/logo.ico">
+    <link rel="stylesheet" href="lib/swiper/3.3.1/swiper.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        body{
+            line-height: 1.5;
+        }
+        .t-live-wrapper{
+            padding: 10px;
+        }
+        .t-live-pix{
+            float: left;
+            width: 100%;
+            height: 175px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 6px;
+        }
+        .t-live-pix .img{
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+        }
+        .t-live-pix.one{
+            width: 100%;
+            display: none;
+        }
+        .t-live-pix.one:nth-child(1){
+            display: block;
+        }
+        .t-live-pix.two{
+            width: 49%;
+            display: none;
+        }
+        .t-live-pix.two:nth-child(1){
+            display: block;
+        }
+        .t-live-pix.two:nth-child(2){
+            display: block;
+        }
+        .t-live-pix.three{
+            width: 32%;
+            height: 100px;
+            display: none;
+        }
+        .t-live-pix.three:nth-child(1){
+            display: block;
+        }
+        .t-live-pix.three:nth-child(2){
+            display: block;
+        }
+        .t-live-pix.three:nth-child(3){
+            display: block;
+        }
+        .t-live-wrapper .item .t-live-pix.two:nth-child(1){
+            margin-right: 1%;
+        }
+        .t-live-wrapper .item .t-live-pix.two:nth-child(2){
+            margin-left: 1%;
+        }
+        .t-live-wrapper .item .t-live-pix.three:nth-child(3n-1){
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+        .t-live-wrapper .item{padding-bottom: 25px;}
+        .font-grey{
+            color: #999999;
+        }
+        .t-live-overlay{
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: -100%;
+            left: 0;
+            background-color: #000;
+        }
+        .fade-transition {
+            transition: all .3s ease;
+        }
+        .fade-enter, .fade-leave {
+            opacity: 0;
+        }
+        .t-live-swiper-container{
+            position: fixed;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+        }
+        .swiper-container{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="t-live-wrapper">
+        <div class="item" v-for="i in items">
+            <div class="clearfix">
+                <pix-wrap v-for="s in i.src" track-by="$index" :src="s" :type="i.type" @click="swiperInit(i,$index)"></pix-wrap>
+                <!--<pix-box v-for="s in i.src" :src="s" :item-length="i.src.length" @click="swiperInit(i,$index)"></pix-box>-->
+            </div>
+            <p class="clearfix"><span class="fl">{{i.name}}</span><span class="fr font-grey">{{i.type|typeFilter}}</span></p>
+            <p class="font-grey">{{i.content}}</p>
+        </div>
+    </div>
+
+    <div class="t-live-overlay" v-show="isOpen" @click="closeModal" transition="fade"></div>
+    <div class="t-live-swiper-container" v-if="isOpen" transition="fade">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="sl in swiperList" track-by="$index">
+                    <img class="t-swiper-item" :src="sl" width="100%">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var $pub = "";
+</script>
+<script src="lib/zepto/1.1.6/zepto.min.js"></script>
+<script src="lib/swiper/3.3.1/swiper.min.js"></script>
+<script src="lib/pinchzoom/1.0.0/pinchzoom.min.js"></script>
+<script src="lib/vue/1.0.26/vue.min.js"></script>
+<script>
+    var rooms = [
+        {
+            name:"现代中式",
+            src:["img/liveTemp/688/01-keting.jpg",
+                "img/liveTemp/688/02-zhuwo.jpg",
+                "img/liveTemp/688/03-ciwo.jpg",
+                "img/liveTemp/688/04-chufang.jpg",
+                "img/liveTemp/688/05-weishengjian.jpg",
+                "img/liveTemp/688/04-chufang.jpg"],
+            content:"时尚、独特、优雅的女性化的空间。整个空间采用淡雅色调，白色的线框搭配浅灰蓝的背景墙烘托出雅致的气氛，家具部分主要以白色为主，搭配胡桃木色、灰紫布艺；点缀时尚的金属灯艺造型，渲染出优雅浪漫的生活氛围。",
+            type:"0"
+        },
+        {
+            name:"DlOR小姐—欧式简约",
+            src:["img/liveTemp/soft/01dior/01-keting.jpg",
+                "img/liveTemp/soft/01dior/02-ciwo.jpg",
+                "img/liveTemp/soft/01dior/03-keting1.jpg",
+                "img/liveTemp/soft/01dior/04-keting2.jpg",
+                "img/liveTemp/soft/01dior/05-zhuwo.jpg",],
+            content:"时尚、独特、优雅的女性化的空间。整个空间采用淡雅色调，白色的线框搭配浅灰蓝的背景墙烘托出雅致的气氛，家具部分主要以白色为主，搭配胡桃木色、灰紫布艺；点缀时尚的金属灯艺造型，渲染出优雅浪漫的生活氛围。",
+            type:"1"
+        },
+        {
+            name:"北欧之温婉女人--现代风格1",
+            src:["img/liveTemp/soft/02xiandai1/01-keting.jpg",
+                "img/liveTemp/soft/02xiandai1/02-ertongfang.jpg",
+                "img/liveTemp/soft/02xiandai1/03-keting2.jpg",
+                "img/liveTemp/soft/02xiandai1/04-keting3.jpg",
+                "img/liveTemp/soft/02xiandai1/05-keting4.jpg",
+                "img/liveTemp/soft/02xiandai1/06-keting5.jpg",
+                "img/liveTemp/soft/02xiandai1/07-zhuwo.jpg",],
+            content:"黄+紫+高级灰的色彩搭配营造出都市轻熟女性的气息。空间中的经典反差配色，能够巧妙的进行互补，让空间凝聚简约优雅氛围，浪漫而纯粹，高贵却不冷艳。",
+            type:"1"
+        },
+        {
+            name:"北欧嘎嘎小姐—现代风格2",
+            src:["img/liveTemp/soft/3gagaxiaojie/1.jpg",
+                "img/liveTemp/soft/3gagaxiaojie/2.jpg",
+                "img/liveTemp/soft/3gagaxiaojie/3.jpg",
+                "img/liveTemp/soft/3gagaxiaojie/4.jpg",
+                "img/liveTemp/soft/3gagaxiaojie/5.jpg"],
+            content:"以“家”为核心的简约北欧设计理念。极简的家居，采用鲜明的对比色彩，满足了空间与个性的需要，简约而不简单。",
+            type:"1"
+        },
+        {
+            name:"橙市暖男--现代风格3",
+            src:["img/liveTemp/soft/4chengshinuannan/1.jpg",
+                "img/liveTemp/soft/4chengshinuannan/2.jpg",
+                "img/liveTemp/soft/4chengshinuannan/3.jpg",
+                "img/liveTemp/soft/4chengshinuannan/4.jpg",
+                "img/liveTemp/soft/4chengshinuannan/5.jpg",
+                "img/liveTemp/soft/4chengshinuannan/6.jpg",
+                "img/liveTemp/soft/4chengshinuannan/7.jpg"],
+            content:"在家居空间中，主色调黑与白的组合，这样极致的选择简单却经典。整体布局干净、整齐、有序，跳跃的爱马仕橙和白色的巧妙组合赋予整体空间活力，搭配钻石切面般的吊灯更多了几分视觉上的美感。",
+            type:"1"
+        },
+        {
+            name:"北欧之柯达—现代风格4",
+            src:["img/liveTemp/soft/5keda/1.jpg",
+                "img/liveTemp/soft/5keda/2.jpg",
+                "img/liveTemp/soft/5keda/3.jpg",
+                "img/liveTemp/soft/5keda/4.jpg",
+                "img/liveTemp/soft/5keda/5.jpg",
+                "img/liveTemp/soft/5keda/6.jpg"],
+            content:"原木的家具线条让整个北欧风格变得更加纯粹、温暖。原木色的家具点缀明黄、蓝搭配上深色家具面料复古又清新，像一张照片一样，点燃我们对生活的热爱与向往。",
+            type:"1"
+        },
+        {
+            name:"北欧之自由女神--现代风格5",
+            src:["img/liveTemp/soft/6ziyounvshen/1.jpg",
+                "img/liveTemp/soft/6ziyounvshen/2.jpg",
+                "img/liveTemp/soft/6ziyounvshen/3.jpg",
+                "img/liveTemp/soft/6ziyounvshen/4.jpg",
+                "img/liveTemp/soft/6ziyounvshen/5.jpg",
+                "img/liveTemp/soft/6ziyounvshen/6.jpg",
+                "img/liveTemp/soft/6ziyounvshen/7.jpg"],
+            content:"黄色+高级灰，活泼的黄色搭配明亮的白色调，再点缀清新的蓝色令人心生愉快。简约的设计，功能至上，更合适现代都市简约的家居生活。",
+            type:"1"
+        },
+        {
+            name:"北欧之马卡龙—现代风格6",
+            src:["img/liveTemp/soft/7makalong/1.jpg",
+                "img/liveTemp/soft/7makalong/2.jpg",
+                "img/liveTemp/soft/7makalong/3.jpg",
+                "img/liveTemp/soft/7makalong/4.jpg",
+                "img/liveTemp/soft/7makalong/5.jpg",
+                "img/liveTemp/soft/7makalong/6.jpg",
+                "img/liveTemp/soft/7makalong/7.jpg",
+                "img/liveTemp/soft/7makalong/8.jpg"],
+            content:"黄+红的色彩搭配，色调明亮跳跃。家具的简约线条，高级灰与个性鲜明的颜色搭配，就像精致的美女般的耀眼时尚，明艳而不庸俗，简约更显精致。",
+            type:"1"
+        },
+        {
+            name:"工业化之歌帝梵—现代风格7",
+            src:["img/liveTemp/soft/8gongyehua/1.jpg",
+                "img/liveTemp/soft/8gongyehua/2.jpg",
+                "img/liveTemp/soft/8gongyehua/3.jpg",
+                "img/liveTemp/soft/8gongyehua/4.jpg",
+                "img/liveTemp/soft/8gongyehua/5.jpg",
+                "img/liveTemp/soft/8gongyehua/6.jpg"],
+            content:"赋予家居男性化的硬派感受，浓情巧克力暖色贯穿整个空间，造型简洁流畅的现代家具结合，胡桃木手抓纹处处可见做工的精细，形成不拘一格空间布局，极具现代感和收纳的设计无处不在。",
+            type:"1"
+        },
+        {
+            name:"佛罗伦萨—后现代风格",
+            src:["img/liveTemp/soft/9fuluolunsha/1.jpg",
+                "img/liveTemp/soft/9fuluolunsha/2.jpg",
+                "img/liveTemp/soft/9fuluolunsha/3.jpg",
+                "img/liveTemp/soft/9fuluolunsha/4.jpg",
+                "img/liveTemp/soft/9fuluolunsha/5.jpg",
+                "img/liveTemp/soft/9fuluolunsha/6.jpg",
+                "img/liveTemp/soft/9fuluolunsha/7.jpg",
+                "img/liveTemp/soft/9fuluolunsha/8.jpg"],
+            content:"后现代的风格更像是一种多元化的思考方式，家具的功能与色彩呈现出典雅与时尚现代的气息。搭配线条优雅灯艺、现代的配饰，营造出像绅士般的优雅且富有内涵的气韵。",
+            type:"1"
+        },
+        {
+            name:"西溪花园—新中式风格",
+            src:["img/liveTemp/soft/10xixihuayuan/1.jpg",
+                "img/liveTemp/soft/10xixihuayuan/2.jpg",
+                "img/liveTemp/soft/10xixihuayuan/3.jpg",
+                "img/liveTemp/soft/10xixihuayuan/4.jpg",
+                "img/liveTemp/soft/10xixihuayuan/5.jpg",
+                "img/liveTemp/soft/10xixihuayuan/6.jpg"],
+            content:"墨色与灰白的经典颜色搭配，就像宣纸上画的一幅水墨。后现代的表现手法，中式纹样运用，再融入传统中国红点缀；让整个空间传统中透着现代，现代中揉着古典，打造出极具东方色彩的居所——雅致、静逸。",
+            type:"1"
+        },
+        {
+            name:"自有工人培训",
+            src:["img/liveTemp/diary/1.gongrenpeixun/1.jpg",
+                    "img/liveTemp/diary/1.gongrenpeixun/2.jpg",
+                "img/liveTemp/diary/1.gongrenpeixun/3.jpg"],
+            content:"反复培训，多次考试，只为提供最优质的服务",
+            type:"4"
+        },
+        {
+            name:"施工保护",
+            src:["img/liveTemp/diary/2.xingxianggongcheng/1.jpg",
+                "img/liveTemp/diary/2.xingxianggongcheng/2.png",
+                "img/liveTemp/diary/2.xingxianggongcheng/3.png"],
+            content:"采用耐用材料，全屋边角保护齐全",
+            type:"4"
+        },
+        {
+            name:"弹线工程",
+            src:["img/liveTemp/diary/3.tanfangliuxian/1.jpg",
+                "img/liveTemp/diary/3.tanfangliuxian/2.jpg"],
+            content:"五线明显标识，确保房屋平直整齐",
+            type:"4"
+        },
+        {
+            name:"门洞拆改、包管",
+            src:["img/liveTemp/diary/4.mentongchaigai/1.jpg",
+                "img/liveTemp/diary/4.mentongchaigai/2.png",
+                "img/liveTemp/diary/4.mentongchaigai/3.jpg"],
+            content:"门洞要修补完整",
+            type:"4"
+        },
+        {
+            name:"水电弹线定位",
+            src:["img/liveTemp/diary/5.shuidiantanxiandingwei/1.png",
+                "img/liveTemp/diary/5.shuidiantanxiandingwei/2.jpg",
+                "img/liveTemp/diary/5.shuidiantanxiandingwei/3.png"],
+            content:"开槽前弹线，对开关插座和水电线管定位",
+            type:"4"
+        },
+        {
+            name:"水电开槽",
+            src:["img/liveTemp/diary/6.shuidiankaicao/1.png",
+                "img/liveTemp/diary/6.shuidiankaicao/2.jpg"],
+            content:"",
+            type:"4"
+        },
+        {
+            name:"布管",
+            src:["img/liveTemp/diary/7.buguan/1.jpg",
+                "img/liveTemp/diary/7.buguan/2.jpg",
+                "img/liveTemp/diary/7.buguan/3.jpg"],
+            content:"横平竖直，线管压水管，给水管管道间间距为15CM",
+            type:"4"
+        },
+        {
+            name:"底盒固定",
+            src:["img/liveTemp/diary/8.diheguding/1.jpg"],
+            content:"",
+            type:"4"
+        },
+        {
+            name:"安装底盒保护盖",
+            src:["img/liveTemp/diary/9.anzhuangdihebaohugai/1.jpg",
+                "img/liveTemp/diary/9.anzhuangdihebaohugai/2.jpg"],
+            content:"",
+            type:"4"
+        },
+        {
+            name:"打压验收",
+            src:["img/liveTemp/diary/10.dayayanshou/1.png",
+                "img/liveTemp/diary/10.dayayanshou/2.png",
+                "img/liveTemp/diary/10.dayayanshou/3.JPG"],
+            content:"",
+            type:"4"
+        },
+        {
+            name:"二次找坡",
+            src:["img/liveTemp/diary/11.ercizhaopo/1.png"],
+            content:"",
+            type:"4"
+        },
+        {
+            name:"阳台卫生间防水",
+            src:["img/liveTemp/diary/12.fangshui/1.jpg",
+                "img/liveTemp/diary/12.fangshui/2.jpg",
+                "img/liveTemp/diary/12.fangshui/3.png"],
+            content:"",
+            type:"4"
+        },
+        {
+            name:"闭水试验",
+            src:["img/liveTemp/diary/13.bishuishiyan/1.png",
+                "img/liveTemp/diary/13.bishuishiyan/2.png"],
+            content:"",
+            type:"4"
+        },
+        {
+            name:"卫生间沉箱",
+            src:["img/liveTemp/diary/14.weishengjianchenxiang/1.jpg",
+                "img/liveTemp/diary/14.weishengjianchenxiang/2.jpg",
+                "img/liveTemp/diary/14.weishengjianchenxiang/3.png",
+                "img/liveTemp/diary/14.weishengjianchenxiang/4.png",
+                "img/liveTemp/diary/14.weishengjianchenxiang/5.jpg"],
+            content:"",
+            type:"4"
+        },
+        {
+            name:"贴砖",
+            src:["img/liveTemp/diary/15.tiezhuan/1.jpg",
+                "img/liveTemp/diary/15.tiezhuan/2.jpg",
+                "img/liveTemp/diary/15.tiezhuan/3.png"],
+            content:"",
+            type:"4"
+        },
+        {
+            name:"地面找平",
+            src:["img/liveTemp/diary/16.dimianzhaoping/1.jpg"],
+            content:"",
+            type:"4"
+        },
+        {
+            name:"天花吊顶放线",
+            src:["img/liveTemp/diary/17.tianhuadiaoding/1.jpg"],
+            content:"",
+            type:"4"
+        },
+        {
+            name:"轻钢龙骨吊顶安装",
+            src:["img/liveTemp/diary/18.diaodinganzhuang/1.jpg",
+                "img/liveTemp/diary/18.diaodinganzhuang/2.png",
+                "img/liveTemp/diary/18.diaodinganzhuang/3.png"],
+            content:"",
+            type:"4"
+        },
+        {
+            name:"铝扣板天花安装",
+            src:["img/liveTemp/diary/19.tianhuaanzhuang/1.jpg",
+                "img/liveTemp/diary/19.tianhuaanzhuang/2.jpg"],
+            content:"",
+            type:"4"
+        },
+        {
+            name:"安装石膏板",
+            src:["img/liveTemp/diary/20.shigaobananzhuang/1.png",
+                "img/liveTemp/diary/20.shigaobananzhuang/2.png",
+                "img/liveTemp/diary/20.shigaobananzhuang/3.jpg"],
+            content:"",
+            type:"4"
+        },
+        {
+            name:"油漆批灰",
+            src:["img/liveTemp/diary/21.youqipihui/1.png",
+                "img/liveTemp/diary/21.youqipihui/2.png",
+                "img/liveTemp/diary/21.youqipihui/3.png",
+                "img/liveTemp/diary/21.youqipihui/4.png",
+                "img/liveTemp/diary/21.youqipihui/5.png",
+                "img/liveTemp/diary/21.youqipihui/6.jpg"],
+            content:"",
+            type:"4"
+        },
+        {
+            name:"橱柜安装",
+            src:["img/liveTemp/diary/22.anzhuang/1.jpg",
+                "img/liveTemp/diary/22.anzhuang/2.jpg",
+                "img/liveTemp/diary/22.anzhuang/3.jpg",
+                "img/liveTemp/diary/22.anzhuang/4.jpg",
+                "img/liveTemp/diary/22.anzhuang/5.jpg",
+                "img/liveTemp/diary/22.anzhuang/6.jpg"],
+            content:"",
+            type:"4"
+        }
+    ]
+    Vue.filter('typeFilter', function (value) {
+        switch (parseInt(value)){
+            case 0: return "效果图";break;
+            case 1: return "样板房";break;
+            case 2: return "工艺展示";break;
+            case 3: return "工地视图";break;
+            default:return "工艺展示";
+        }
+    })
+    var vm =new Vue({
+        el:'body',
+        data:{
+            items:rooms,
+            isOpen:false,
+            swiperList:[],
+            swiper:{}
+        },
+        components:{
+            //++，废了
+            "pix-box":{
+                props:["src","item-length"],
+                computed:{
+                    classname:function(){
+                        switch (parseInt(this.itemLength)){
+                            case 1: return "one";break;
+                            case 2: return "two";break;
+                            default:return "three";
+                        }
+                    }
+                },
+                template:"<div class='t-live-pix {{classname}}'><div class='img' :style='background-image: url({{src}})'></div></div>"
+            },
+            "pix-wrap":{
+                props:["src","type"],
+                computed:{
+                    classname:function(){
+                        switch (parseInt(this.type)){
+                            case 0: return "one";break;
+                            case 1: return "one";break;
+                            default:return "three";
+                        }
+                    },
+                    style: function () {
+                        return {backgroundImage:"url("+this.src+")"}
+                    }
+                },
+                template:"<div class='t-live-pix {{classname}}'><div class='img' :style='style'></div></div>"
+            }
+        },
+        methods:{
+            swiperInit: function (swiper,index) {
+                var self = this;
+                self.swiperList = swiper.src;
+                self.$el.style.overflow = 'hidden';
+                self.isOpen = true;
+                setTimeout(function () {
+                    self.swiper = new Swiper('.swiper-container',{
+                        observer:true,
+                        observeParents:true,
+                        spaceBetween: 30
+                    });
+                    self.swiper.slideTo(index);
+                    $('.t-swiper-item').each(function () {
+                        var $this = $(this)
+                        $this = new RTP.PinchZoom($this,{})
+                    })
+                },100)
+            },
+            closeModal: function () {
+                this.$el.style.overflow = 'auto';
+                this.isOpen = false;
+            }
+        },
+        ready:function(){
+        }
+    })
+</script>
+</html>

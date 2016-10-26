@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#yin-yang {
+			    width: 96px;
+			    height: 48px;
+			    background: #eee;
+			    border-color: red;
+			    border-style: solid;
+			    border-width: 2px 2px 50px 2px;
+			    border-radius: 100%;
+			    position: relative;
+			    margin:100px;
+			}
+			
+			#yin-yang:before {
+			    content: "";
+			    position: absolute;
+			    top: 50%;
+			    left: 0;
+			    background: #eee;
+			    border: 18px solid red;
+			    border-radius: 100%;
+			    width: 12px;
+			    height: 12px;
+			}
+			
+			#yin-yang:after {
+			    content: "";
+			    position: absolute;
+			    top: 50%;
+			    left: 50%;
+			    background: red;
+			    border: 18px solid #eee;
+			    border-radius:100%;
+			    width: 12px;
+			    height: 12px;
+			}
+			blockquote::before {  
+			    content: open-quote;  
+			    position: absolute;  
+			    z-index: -1;  
+			    color: #DDD;  
+			    font-size: 120px;  
+			    font-family: serif;  
+			    font-weight: bolder;  
+			}
+			h2:before { counter-increment: chapter; content: "Chapter " counter(chapter) ". " }
+
+			.slide-nav{
+				width:700px;
+				margin:200px auto;
+			}
+			.slide-nav ul{
+				overflow:hidden;
+			}
+			.slide-nav ul li{
+				float:left;
+				list-style:none;
+				width:120px;
+				height:40px;
+				line-height:40px;
+				text-align:center;
+				cursor: pointer;
+			}
+			.slide-nav ul li a{
+				position:relative;
+				display:block;
+				width:80px;
+				margin:0 auto;
+				height:100%;
+				font-size:30px;
+				color: #f35626;
+				background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+			    -webkit-background-clip: text;
+			    -webkit-text-fill-color: transparent;
+			    -webkit-animation: hue 60s infinite linear;
+			}
+				
+			@keyframes hue{
+				0% {
+				    -webkit-filter: hue-rotate(0deg); 
+				}
+				
+				100% {
+				     -webkit-filter: hue-rotate(-360deg); 
+				}
+			}
+			.slide-nav ul li a:after{
+				position:absolute;
+				content:"";
+				bottom:0;
+				left:50%;
+				right:50%;
+				height:4px;
+				background-color:#00BFFF;
+				-webkit-transition:left .5s ease-out,right .5s ease-out;
+				-moz-transition:left .5s ease-out,right .5s ease-out;
+				transition:left .5s ease-out,right .5s ease-out;
+			}
+			.slide-nav ul li:hover a{
+				color:#00BFFF;
+			}
+			.slide-nav ul li:hover a:after{
+				left:0;
+				right:0;
+			}
+			.two-active{
+				width:200px;
+				height:200px;
+				margin:20px auto;
+				background-color:#1ED019;
+				text-align:center;
+			}
+			.two-active a{
+				display:inline-block;
+				overflow:hidden;
+				position:relative;
+				width:150px;
+				height:40px;
+				line-height:40px;
+				margin:80px auto;
+				background-color:#1ED019;
+				color:#fff;
+				font-size:18px;
+				text-align:center;
+				border:1px solid #fff;
+				cursor:pointer;
+			}
+			.two-active a:before,.two-active a:after{
+				content:"";
+				position:absolute;
+				left:50%;
+				width:20%;
+				height:0;
+				border:2px solid #fff;
+				-webkit-transform:translateX(-50%);
+				transform:translateX(-50%);
+				-webkit-transition:width .4s ease-out .2s,height .4s ease-out .2s;
+				transition:width .4s ease-out .2s,height .4s ease-out .2s;
+				margin: 0;
+			    padding: 0;
+			    -webkit-box-sizing: border-box;
+			    -moz-box-sizing: border-box;
+			    box-sizing: border-box;
+			}
+			.two-active a:before{
+				top:0;
+				border-bottom:0;
+			}
+			.two-active a:after{
+				bottom:0;
+				border-top:0;
+			}
+			.two-active a:hover:before,.two-active a:hover:after{
+				width:100%;
+				height:20px;
+				-webkit-transition:width .4s ease-in,height .4s ease-in;
+				transition:width .4s ease-in,height .4s ease-in;
+				
+			}
+			
+			[data-icon]:before {
+			  font-family: icons; /* BYO icon font, mapped smartly */
+			  content: attr(data-icon);
+			  speak: none; /* Not to be trusted, but hey. */
+			}
+
+		</style>
+	</head>
+	<body>
+		 <div id="yin-yang"></div>
+		 
+		 <blockquote>sdjddjfjhf</blockquote>
+         
+         
+         <h2 align="center">伪类实现导航栏菜单active效果</h2>
+		 <!--实现思路：利用伪元素设置active效果，必须设置content:"",然后想象效果由中间向两边辐射，因此可以利用left和right属性
+		 	先left:50%,right:50%,可以将长度变为0，之后通过transition将left:0,right:0就可以设置长度为100%	 	
+		 -->
+		 <div class="slide-nav">
+		 	<ul>
+		 		<li><a>音乐</a></li>
+		 		<li><a>科技</a></li>
+		 		<li><a>艺术</a></li>
+		 		<li><a>化学</a></li>
+		 	</ul>
+		 </div>
+		 
+		 <h2 align="center">伪类实现上下边同时动态效果</h2>
+		 <!--实现思路：-->
+		 <div class="two-active">
+		 	<a>幻影神话</a>
+		 </div>
+		 
+		 <h3>
+		  <span aria-hidden="true" data-icon="&#x25a8;"></span>
+		  Stats
+        </h3>
+	</body>
+</html>

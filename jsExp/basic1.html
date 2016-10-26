@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		section{
+			width:80%;
+			margin:0 auto;
+			font-family: "微软雅黑";
+			font-size:18px;
+			line-height:2;
+		}
+	</style>
+	<body>
+		 <section>
+		 	<h2 align="center">例子1：构造函数使用prototype和不使用prototype的区别1</h2>
+		 	 var Human=function(){
+		 	
+			 };<br/>
+			 //使用prototype添加属性
+			 Human.prototype.walk=function(){
+			 	console.log("I can walk!");
+			 };
+			 
+			 //不使用protype添加属性<br/>
+			 Human.play=function(){
+			 	console.log("I want to playing!");
+			 };<br/>
+			 
+			 Human.walk();//会报错，原因是使用prototype添加的属性是属于非静态方法，需要用在实例化的对象上使用<br/>
+			 Human.play();<br/>
+			 
+			 var jack=new Human();<br/>
+			 jack.walk();<br/>
+			 jack.play();//会报错，原因是不使用prototype添加的属性是属于静态方法，只能用类名去调用
+		 </section>
+		 <section>
+		 	  <h2 align="center">例子2：构造函数使用prototype和不使用prototype的区别2</h2>
+			 var monkey=function(name,sex){
+			 	 this.name=name;
+			 	 this.sex=sex;
+			 };
+			 //使用prototype来添加属性<br/>
+			 monkey.prototype.speak=function(){
+			 	 console.log("My name is "+this.name);
+			 }
+			 //不使用prototype来添加属性<br/>
+			 monkey.display=function(){
+			 	console.log("我是"+this.sex);
+			 }
+			 
+	         //类名调用属性<br/>
+			 monkey.display();//静态方法中无法使用this变量来调用对象其他的属性！<br/>
+			 //实例化对象<br/>
+			 var kafi=new monkey("kafi","女");//其方法内部可以this来引用对象自身中的其他属性！<br/>
+			 kafi.speak();
+		 </section>
+	</body>
+	<script>
+	     //构造函数
+		 var Human=function(){
+		 	
+		 };
+		 //使用prototype添加属性
+		 Human.prototype.walk=function(){
+		 	console.log("I can walk!");
+		 };
+		 
+		 //不使用protype添加属性
+		 Human.play=function(){
+		 	console.log("I want to playing!");
+		 };
+		 
+		 //Human.walk();//会报错，原因是使用prototype添加的属性是属于非静态方法，需要用在实例化的对象上使用
+		 Human.play();
+		 
+		 var jack=new Human();
+		 jack.walk();
+		 //jack.play();//会报错，原因是不使用prototype添加的属性是属于静态方法，只能用类名去调用
+		 
+		 
+		 //构造函数
+		 var monkey=function(name,sex){
+		 	 this.name=name;
+		 	 this.sex=sex;
+		 };
+		 //使用prototype来添加属性
+		 monkey.prototype.speak=function(){
+		 	 console.log("My name is "+this.name);
+		 }
+		 //不使用prototype来添加属性
+		 monkey.display=function(){
+		 	console.log("我是"+this.sex);
+		 }
+		 
+         //类名调用属性
+		 monkey.display();//静态方法中无法使用this变量来调用对象其他的属性！
+		 //实例化对象
+		 var kafi=new monkey("kafi","女");//其方法内部可以this来引用对象自身中的其他属性！
+		 kafi.speak();
+		 
+		 
+	</script>
+</html>

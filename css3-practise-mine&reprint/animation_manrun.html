@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css3demo</title>
+		<link href="animate.css" type="text/css" rel="stylesheet">
+		<style>
+			.round{
+				width:100px;
+				height:100px;
+				-webkit-border-radius:50%;
+				border-radius:50%;
+				background:-webkit-linear-gradient(blue,green);
+				background:-moz-linear-gradient(blue,green);
+				background:-ms-linear-gradient(blue,green);
+				background:-linear-gradient(blue,green);
+				margin: 200px auto;
+			}
+			.pie{
+				width:200px;
+				height:200px;
+				border-radius:50%;
+				position:absolute;
+				background:dodgerblue;
+				clip:rect(0,100px,100px,0);
+			}
+			
+			
+			.test1{
+				 margin:200px auto;
+				 width:90px;
+				 height:100px;
+				 background:url(http://img.xiaoho.com/2014/12/test.png) no-repeat 0 0;
+				 -webkit-animation:run 350ms step-end infinite 0s;}
+				@-webkit-keyframes run {    
+				    0% {
+				           background-position:0;
+				    }
+				    20% {
+				       background-position:-90px 0;
+				    }
+				    40% {
+				       background-position:-180px 0;
+				    }
+				    60% {
+				       background-position:-270px 0;
+				    }
+				    80% {
+				       background-position:-360px 0;
+				    }
+				    100% {
+				       background-position:-450px 0;
+				    }
+				
+				}
+				.test2{
+			     margin:200px auto;
+				 width:90px;
+				 height:100px;
+				 background:url(http://img.xiaoho.com/2014/12/test.png) no-repeat 0 0;
+				 -webkit-animation:run1 350ms steps(5) infinite 0s;}
+				
+				@-webkit-keyframes run1 {
+				    100% {
+				       background-position:-450px 0;
+				    }
+				
+				}
+		</style>
+		<script src="//cdn.bootcss.com/jquery/3.0.0-rc1/jquery.min.js"></script>
+	</head>
+	<body>
+		<!--<div class="round animated pulse">
+		 	
+		</div>-->
+		
+		<div class="test1"></div>
+	     <div class="test2"></div>
+	</body>
+</html>
+<script>
+	/*
+	   		空的就等一会,
+		再判断是不是空的,
+		知道不是空的,
+		再赋值
+	 * 
+	 * 
+	 * 
+	 * */
+	/*var wait = function(dtd){
+　　　　var dtd = $.Deferred(); //在函数内部，新建一个Deferred对象
+　　　　var tasks = function(){
+　　　　　　dtd.resolve(); // 改变Deferred对象的执行状态
+　　　　};
+
+　　　　setTimeout(tasks,1000);
+　　　　return dtd.promise(); // 返回promise对象
+　　};
+　　$.when($.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"),wait())
+　　.done(function(){ 
+	    var data=remote_ip_info["city"];
+		console.log(data);
+	})
+　　.fail(function(){ alert("出错啦！"); });*/
+</script>

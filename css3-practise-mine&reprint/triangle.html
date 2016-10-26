@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		    /*div{display:inline-block;}*/
+			.rectangle{width:200px;height:100px;background-color:cornflowerblue;border:20px solid #C4E3F3;}
+			.rectangle-without-width{height:100px;width:0;background-color:cornflowerblue;border:20px solid #C4E3F3;}
+			.rectangle-without-width-length{width:0;height:0;background-color:cornflowerblue;border:20px solid #C4E3F3;}
+			.leftTop{
+				width:0;
+				height:0;
+				border-left:20px solid #C4E3F3;
+				border-top:20px solid #C4E3F3;
+				border-right:20px solid #C4E3F3;
+			}
+			.triangle1{
+				width:0;
+				height:0;
+				border-width:20px;
+				border-style:solid;
+				border-color:#C4E3F3  transparent transparent transparent; 
+				}
+			.triangle2{
+				width:0;
+				height:0;
+				border-width:20px;
+				border-style:solid;
+				border-color:transparent #C4E3F3 transparent transparent; 
+			}
+			.triangle3{
+				width:0;
+				height:0;
+				border-width:20px;
+				border-style:solid;
+				border-color:transparent transparent #C4E3F3 transparent; 
+			}
+			.triangle4{
+				width:0;
+				height:0;
+				border-width:20px;
+				border-style:solid;
+				border-color:transparent transparent transparent #C4E3F3; 
+				}
+			.triangle5{
+			    width:0;
+				height:0;
+				border-width:20px;
+				border-left-width:10px;
+				border-style:solid;
+				border-color:transparent transparent transparent #C4E3F3; 
+			}
+			.triangle6{
+				width:0;
+				height:0;
+				border-left:20px solid #C4E3F3;
+				border-top:20px solid transparent;
+			}
+			.paper{
+			    width:500px;
+			    height:500px;
+			    position: relative;
+			    background:#00b5e9;
+			}
+			
+			.paper:after{
+			    content:"";
+			    position: absolute;
+			    right:0;
+			    bottom:-100px;
+			    display: block;
+			    border: 50px solid;
+			    border-color:#0095be transparent transparent #0095be;
+			}
+			
+			.paper:before{
+			    content:"";
+			    background:#00b5e9;
+			    width:400px;
+			    height:100px;
+			    position: absolute;
+			    bottom:-100px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>前提是将div设置为display:inline-block</h1>
+		 <h2>长方形1</h2>
+		 <div class="rectangle">
+		 	 
+		 </div>
+		 <h2>长方形宽度为0</h2>
+		 <div class="rectangle-without-width">
+		 	
+		 </div>
+		 <h2>长方形宽度高度为0</h2>
+		 <div class="rectangle-without-width-length">
+		 	
+		 </div>
+		 <h2>左下右</h2>
+		 <div class="leftTop">
+		 	
+		 </div>
+		 <h2>三角形1</h2>
+		 <div class="triangle1">
+		 	
+		 </div>
+		 <h2>三角形2</h2>
+		 <div class="triangle2">
+		 	
+		 </div>
+		 <h2>三角形3</h2>
+		 <div class="triangle3">
+		 	
+		 </div>
+		 <h2>三角形4</h2>
+		 <div class="triangle4">
+		 	
+		 </div>
+		 <h2>三角形5</h2>
+		 <div class="triangle5">
+		 	
+		 </div>
+		  <h2>直角三角形</h2>
+		 <div class="triangle6">
+		 	
+		 </div>
+		 
+		 
+		 <h2>xxxxx</h2>
+		 <div class="paper"></div>
+
+
+	</body>
+</html>

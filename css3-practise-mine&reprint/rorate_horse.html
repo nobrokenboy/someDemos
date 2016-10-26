@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.container{
+				width:210px;
+				height:140px;
+				position:relative;
+				-webkit-perspective:1200px;
+				perspective:1200px;
+				margin:200px auto;
+			}
+			.cube{
+				width:100%;
+				height:100%;
+				position:absolute;
+				transform-style:preserve-3d;
+			/*	backface-visibility:visible;*/
+			    /*-webkit-animation:rotateHorse 8s infinite linear;
+			    animation:rotateHorse 8s infinite linear;*/
+			    transition:transform .4s linear;
+			    -webkit-transform:rotateY(0);
+					transform:rotateY(0);
+			}
+			@-webkit-keyframes rotateHorse{
+				from{
+					-webkit-transform:rotateY(0);
+					transform:rotateY(0);
+				}
+				to{
+					-webkit-transform:rotateY(-360deg);
+					transform:rotateY(-360deg);
+				}
+			}@keyframes rotateHorse{
+				from{
+					-webkit-transform:rotateY(0);
+					transform:rotateY(0);
+				}
+				to{
+					-webkit-transform:rotateY(-360deg);
+					transform:rotateY(-360deg);
+				}
+			}
+			
+			.cube figure{
+				position:absolute;
+				display:block;
+				width:186px;
+				height:115px;
+				border:2px solid #000;
+				left:10px;
+				top:10px;
+				text-align:center;
+				line-height:115px;
+				color:#fff;
+				font-size:28px;
+				opacity:.7;
+				cursor:pointer;
+				text-shadow:2px 3px 3px chocolate;
+				transition:all .5s ease-in-out;
+			}
+			.cube figure:hover{
+				border:2px solid #fff;
+				opacity:.9;
+
+			}
+
+			.cube figure:nth-child(1){
+				background-color:red;
+				-webkit-transform:rotateY(0deg) translateZ(288px);
+				transform:rotateY(0deg) translateZ(288px);
+			}
+			.cube figure:nth-child(2){
+				background-color:blueviolet;
+				-webkit-transform:rotateY(40deg) translateZ(288px);
+				transform:rotateY(40deg) translateZ(288px);
+			}
+			.cube figure:nth-child(3){
+				background-color:yellow;
+				-webkit-transform:rotateY(80deg) translateZ(288px);
+				transform:rotateY(80deg) translateZ(288px);
+			}
+			.cube figure:nth-child(4){
+				background-color:gold;
+				-webkit-transform:rotateY(120deg) translateZ(288px);
+				transform:rotateY(120deg) translateZ(288px);
+			}
+			.cube figure:nth-child(5){
+				background-color:greenyellow;
+				-webkit-transform:rotateY(160deg) translateZ(288px);
+				transform:rotateY(160deg) translateZ(288px);
+			}
+			.cube figure:nth-child(6){
+				background-color:royalblue;
+				-webkit-transform:rotateY(200deg) translateZ(288px);
+				transform:rotateY(200deg) translateZ(288px);
+			}
+			.cube figure:nth-child(7){
+				background-color:deepskyblue;
+				-webkit-transform:rotateY(240deg) translateZ(288px);
+				transform:rotateY(240deg) translateZ(288px);
+			}
+			.cube figure:nth-child(8){
+				background-color:orange;
+				-webkit-transform:rotateY(280deg) translateZ(288px);
+				transform:rotateY(280deg) translateZ(288px);
+			}
+		    .cube figure:nth-child(9){
+		    	background-color:pink;
+				-webkit-transform:rotateY(320deg) translateZ(288px);
+				transform:rotateY(320deg) translateZ(288px); 
+			}
+			
+		</style>
+	</head>
+	<body>
+		 <section class="container">
+		 	<div class="cube">
+		 		<figure>1</figure>
+		 		<figure>2</figure>
+		 		<figure>3</figure>
+		 		<figure>4</figure>
+		 		<figure>5</figure>
+		 		<figure>6</figure>
+		 		<figure>7</figure>
+		 		<figure>8</figure>
+                <figure>9</figure>	 				
+		 	</div>
+		 </section>
+	</body>
+	<script src="//cdn.bootcss.com/jquery/3.0.0-rc1/jquery.js"></script>
+	<script>
+		$(function(){
+			var angle=40;
+			//每点击一次旋转40deg
+			$(".cube>figure").on("click",function(){
+				var $this=$(this);
+				var $parent=$this.parent(".cube");
+			    	$parent.css({
+					"-webkit-transform":"rotateY(-"+angle+"deg)",
+					"transform":"rotateY(-"+angle+"deg)"
+			
+			    });
+
+			    angle+=40;
+			});
+
+		});
+	</script>
+</html>

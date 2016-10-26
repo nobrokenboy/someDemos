@@ -1,0 +1,59 @@
+<html>
+
+	<body>
+		<div id="demo" style="position:absolute; left:0px; top:100px;width:100px; height:100px; background:#cc0;"></div>
+		<div id="time"></div>
+		<script>
+			/*
+			 优势：
+
+			对于一个侦中对DOM的所有操作，只进行一次Layout和Paint。
+			如果发生动画的元素被隐藏了，那么就不再去Paint。
+			使用方法：
+
+			调用requestAnimationFrame函数，传递一个callback参数，则在下一个动画帧时，会调用callback。
+			不传递参数地直接调用该函数，启动动画帧，下一个帧触发时，会同时触发window.onmozbeforepaint事件，可以通过注册该事件来进行动画。
+			第2种方法由于依赖于Firefox自己的事件，且beforepaint事件还没进入到标准中，所以不推荐使用，还是使用第1种方式比较好。此时，我们的动画逻辑可以变成这样：
+
+			记录当前时间startTime，作为动画开始的时间。
+			请求下一帧，带上回调函数。
+			下一帧触发时，回调函数的第一个参数为当前的时间，再与startTime进行比较，确定时间间隔ellapseTime。
+			判断ellapseTime是否已经超过事先设定的动画时间time，如果超过，则结束动画。
+			计算动画属性变化的差值differ = to – from，再确定在ellapseTime的时候应该变化多少step = differ / time * ellapseTime。
+			计算出现在应该变化到的位置Math.round(from + step)，并重新对样式赋值。
+			继续请求下一帧。
+			 * 
+			 * */
+			var timeDiv = document.getElementById('time'),
+				count = 0;
+			requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame || function(callback) {
+				setTimeout(callback, 1000 / 60);
+			};
+
+			function animate(element, name, from, to, time) {
+				time = time || 800; // 默认0.8秒
+				var style = element.style,
+					startTime = (new Date()).getTime();
+
+				function go(timestamp) {
+					timestamp = timestamp || (new Date()).getTime();
+					var progress = timestamp - startTime; //指時間間隔ellapaseTime
+					timeDiv.innerHTML += progress + '\t\t';
+					count++;
+					if (progress >= time) {
+						style[name] = to + 'px';
+						timeDiv.innerHTML += '<br>have do  ' + count + ' setting';
+						return;
+					}
+					var now = (to - from) * (progress / time);//表示实际移动的位移
+					style[name] = now.toFixed() + 'px'; //toFixed表示四捨五入
+					requestAnimationFrame(go);
+				}
+				style[name] = from + 'px';
+				requestAnimationFrame(go);
+			}
+			animate(document.getElementById('demo'), 'left', 0, 400, 1000);
+		</script>
+	</body>
+
+</html>

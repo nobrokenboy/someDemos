@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实现风琴效果</title>
+		<style>
+		    *{
+		    	margin:0;
+		    	padding:0;
+		    }
+			.m-accordion-ul{
+				width:420px;
+				height:220px;
+				margin:200px auto;
+				overflow:hidden;
+				box-shadow:5px 5px 5px rgba(1,1,1,0.8);
+			}
+			.m-accordion-ul li{
+				width:60px;
+				float:left;
+				list-style:none;
+				cursor:pointer;
+				-webkit-transition:width .5s ease-out;
+				-moz-transition:width .5s ease-out;
+				transition:width .5s ease-out;
+			}
+			.m-accordion-ul:hover li:not(:hover){
+				width:50px;
+			}
+			.m-accordion-ul li:hover{
+				width:200px;
+				
+			}
+			
+		</style>
+	</head>
+	<body>
+		<ul class="m-accordion-ul">
+			<li>
+				<a><img src="images/1.jpg"></a>
+			</li>
+			<li>
+				<a><img src="images/2.jpg"></a>
+			</li>
+		     <li>
+				<a><img src="images/3.jpg"></a>
+			</li>
+			<li>
+				<a><img src="images/4.jpg"></a>
+			</li>
+			<li>
+				<a><img src="images/5.jpg"></a>
+			</li>
+			<li>
+				<a><img src="images/6.jpg"></a>
+			</li>
+			<li>
+				<a><img src="images/7.jpg"></a>
+			</li>
+			
+		</ul>
+	</body>
+</html>
