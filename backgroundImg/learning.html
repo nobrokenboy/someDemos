@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+				box-sizing: border-box;
+			}
+			body,html{
+				width:100%;
+				height:100%;
+			}
+			.block{
+				position:relative;
+				float:left;
+				width:50%;
+				height:420px;
+			}
+			.block div{
+				width:320px;
+				height:150px;
+				margin-left:-160px;
+				margin-top:-75px;
+				position: absolute;
+			    left: 50%;
+			    top: 50%;
+				background-repeat:no-repeat;
+			}
+			#number1{
+				background-color:#00BFFF;
+			}
+			#number1 div{
+				/* Safari 4-5, Chrome 1-9 */
+				background:-webkit-gradient(linear,left top,right top,from(#000),color-stop(0.05,#fff),color-stop(0.5,#000),color-stop(0.95,#fff),to(#000));
+				 /* Safari 5.1+, Chrome 10+ */
+				background:-webkit-linear-gradient(left,#000,#fff 5%,#000,#fff 95%,#000);
+			}
+			#number2{
+				background-color:#259ADC;
+			}
+			#number2 div{
+				/*没有指定位置会均匀*/
+				background:-webkit-gradient(linear,left top,right top,from(red),to(yellow));
+				background:-webkit-linear-gradient(left,red,yellow);
+			}
+			#number3{
+				background-color:#FFC0CB;
+			}
+			#number3 div{
+				background:-webkit-gradient(linear,0 100%,100% 0%,from(red),to(yellow));
+				background:-webkit-linear-gradient(45deg,red,yellow);
+			}
+			#number4{
+				background-color:#FFEBCD;
+			}
+			#number4 div{
+				background-image: radial-gradient(circle at top left, transparent 17px, #ecdf6a 17px), radial-gradient(circle at top right, transparent 17px, #ecdf6a 17px), radial-gradient(circle at center left, transparent 17px, #ecdf6a 17px), radial-gradient(circle at center right, transparent 17px, #ecdf6a 17px), radial-gradient(circle at bottom left, transparent 17px, #ecdf6a 17px), radial-gradient(circle at bottom right, transparent 17px, #ecdf6a 17px);
+				background-size: 50% 33.7%;
+   				background-position: top left, top right, center left, center right, bottom left, bottom right;
+    			box-shadow: 0 38px 14px -35px rgba(0,0,0,0.2);
+			}
+			#number5{
+				background-color:#000;
+			}
+			#number5 div{
+				background: -webkit-linear-gradient(right, rgba(255,255,255,0), rgba(255,255,255,1)),url(http://pic002.cnblogs.com/images/2012/36987/2012080815381348.png);
+				
+			}
+			#number6{
+				background-color:#6495ED;
+			}
+			#number6 div{
+				background:-webkit-radial-gradient(red,yellow);
+			}
+			#number7{
+				background-color:#FFC0CB;
+			}
+			#number7 div{
+				background:-webkit-radial-gradient(red,yellow 45%,green 75%);
+			}
+			#number8{
+				background-color:yellowgreen;
+			}
+			#number8 div{
+				background:-webkit-radial-gradient(left bottom,circle,yellow,red,green);
+			}
+			#number9{
+				background-color:bisque;
+			}
+			#number9 div{
+				background:-webkit-radial-gradient(top right,ellipse,yellow,red,green);
+			}
+			#number10{
+				background-color:wheat;
+			}
+			#number10 div{
+				background:-webkit-radial-gradient(ellipse closest-side, #ace, #f96 10%, #1E90FF 50%, #f96);
+			}
+			#number11{
+				background-color:cyan;
+			}
+			#number11 div{
+				background:-webkit-radial-gradient(ellipse farthest-corner, #ace, #f96 10%, #1E90FF 50%, #f96);
+			}
+			#number12{
+				background-color:palegoldenrod;
+			}
+			#number12 div{
+				background: -webkit-radial-gradient(contain, #ace, #f96, #1E90FF);
+			}
+			#number13{
+				background-color:peru;
+			}
+			#number13 div{
+				background: -webkit-gradient(radial, 80% 20%, 0, 80% 40%, 100, from(#ace), to(#f96));
+				background:-webkit-radial-gradient(80% 20%, closest-corner, #ace, #f96);
+			}
+			#number14{
+				background-color:deepskyblue;
+			}
+			#number14 div{
+				background-color:#fff;
+				box-shadow: 20px 10px 0 rgba(0,0,0,0.1);
+			}
+			#number15{
+				background-color:peachpuff;
+			}
+			#number15 div{
+				position: relative;
+			    width: 130px;
+			    height: 120px;
+			    margin-top: -65px;
+			    margin-left: -60px;
+			    background-color: #97000C;
+			    border-radius: 119px 119px 130px 130px;
+			    box-shadow: 20px 23px 25px rgba(0,0,0,0.2),10px 0 21px 2px #F2868E inset;				 
+				 
+			}
+			#number15 div:before,
+			#number15 div:after{
+				position:absolute;
+				content:"";
+			}
+			#number15 div:before{
+				top: 20%;
+			    left: 50%;
+			    -webkit-transform: translateX(-50%);
+			    transform: translateX(-50%);
+			    width: 40px;
+			    height: 5px;
+			    border-bottom: 5px solid #5F0D12;
+			    border-radius: 100%;
+			}
+			#number15 div:after{
+				top: -17%;
+			    left: 50%;
+			    -webkit-transform: translateX(-50%);
+			    transform: translateX(-50%);
+			    width: 5px;
+			    height:50px;
+			    background:-webkit-linear-gradient(left bottom,saddlebrown,#CD853F);
+			    
+			}
+		</style>
+	</head>
+	<body>
+		<div id="number1" class="block">
+			<div></div>
+		</div>
+		<div id="number2" class="block">
+			<div></div>
+		</div>
+		<div id="number3" class="block">
+			<div></div>
+		</div>
+		<div id="number4" class="block">
+			<div></div>
+		</div>
+		<div id="number5" class="block">
+			<div></div>
+		</div>
+		<div id="number6" class="block">
+			<div></div>
+		</div>
+		<div id="number7" class="block">
+			<div></div>
+		</div>
+		<div id="number8" class="block">
+			<div></div>
+		</div>
+		<div id="number9" class="block">
+			<div></div>
+		</div>
+		<div id="number10" class="block">
+			<div></div>
+		</div>
+		<div id="number11" class="block">
+			<div></div>
+		</div>
+		<div id="number12" class="block">
+			<div></div>
+		</div>
+		<div id="number13" class="block">
+			<div></div>
+		</div>
+		<div id="number14" class="block">
+			<div></div>
+		</div>
+		<div id="number15" class="block">
+			<div>
+				<span></span>
+			</div>
+		</div>
+		<div id="number16" class="block">
+			<div></div>
+		</div>
+	</body>
+</html>
