@@ -6,6 +6,5 @@ function Hello(){
 	this.sayHello=function(){
 		console.log("hello "+name);
 	}
-};
-
+}
 module.exports=Hello;

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+				box-sizing: border-box;
+			}
+			body,html{
+				width:100%;
+				height:100%;
+			}
+			.block{
+				position:relative;
+				float:left;
+				width:50%;
+				height:420px;
+			}
+			#number15{
+				background-color:#5872A3;
+			}
+			#number15 div{
+				/*box-shadow arg1,arg2,arg3可以设置为0可以画出实体边框*/
+				position: absolute;
+			    left: 50%;
+			    top: 50%;
+			    width:220px;
+			    height: 198px;
+			    margin-left: -110px;
+			    margin-top: -99px;
+			    background-color: #536C99;
+			    border-radius: 0 0 60px 60px;
+			    border:2px dashed #8fa1c2;
+			    box-shadow: 0 0 0 8px #5872A3,0 0 0 10px rgba(0,0,0,0.1), 5px 5px 0 8px rgba(0,0,0,0.2);		    				 
+				 
+			}
+			#number15 div:before,
+			#number15 div:after{
+				position:absolute;
+				left: 50%;
+				content:"";
+			}
+			#number15 div:before{
+			    top:-10px;
+			    width: 240px;
+			    height:108px;
+			    margin-left: -120px;
+			    margin-top: -59px;
+			    background-color: #536C99;
+			    border-radius:5px 5px 50px 50px;
+			    border:2px dashed #8fa1c2;
+			    box-shadow: 0 0 0 8px #5872A3,0 0 0 10px rgba(0,0,0,0.1), 5px 5px 0 8px rgba(0,0,0,0.2);
+				
+			}
+			#number15 div:after{
+				top:-20px;
+				width:34px;
+				height:34px;
+			    margin-left:-17px;
+				border-radius:50%;
+				background-color:#b68c70;
+				background-image: radial-gradient(circle, #a88b51 2px, rgba(0,0,0,0.3) 2px, rgba(0,0,0,0.3) 5px, #b79c59 5px, #b79c59 8px, rgba(0,0,0,0.4) 8px);
+				border: 3px solid #948042;
+				border-top-color:#dbc178;
+				box-shadow:0 0 0 2px rgba(0,0,0,0.1);
+			    
+			}
+			#number16{
+				background-color:#00BFFF;
+				
+			}
+			#number16 div{
+				position:absolute;
+				left:50%;
+				top:50%;
+				width:240px;
+				height:240px;
+				margin-left:-120px;
+				margin-top:-120px;
+				background-color:#b68c70;
+				background-img:radial-gradient(circle,#a88b51 2px, rgba(0,0,0,0.3) 2px, rgba(0,0,0,0.3) 5px, #b79c59 5px, #b79c59 8px, rgba(0,0,0,0.4) 8px);
+				border:30px solid #948042;
+				border-top-color:#dbc178;
+				border-radius:50%;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="number15" class="block">
+			<div>
+			</div>
+		</div>
+		<!--分解background-img-->
+		<div id="number16" class="block">
+			<div></div>
+		</div>
+	</body>
+</html>
