@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h2 id="timer"></h2>
+		<script>
+			var current=document.getElementById("timer");
+			var endbackTimers="62333";
+			var t=parseInt(endbackTimers);
+			var t1=setInterval(function(){
+				t--;
+				var date=new Date(t*1000);
+				var	hours=date.getHours(),
+					minutes=date.getMinutes(),
+					seconds=date.getSeconds();
+				current.innerText=hours+"："+	minutes+":"+seconds;
+				/*if(minutes==0 && seconds==0){
+				    	clearInterval(t1);
+				    }*/
+				console.log(date);
+				console.log(hours);
+				console.log(minutes);
+				console.log(seconds);
+			},1000);
+		</script>
+	</body>
+</html>

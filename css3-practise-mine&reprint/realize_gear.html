@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>左右锯齿</title>
+  <style>
+    *{margin:0;padding:0;}
+    body{background:#fff;}
+    .demo{list-style:none;width:100%;height:180px;text-align:center;}
+    .demo li{position:relative;width:30%;height:100%;margin-right:3%;background:#f60;display:inline-block;border-radius:50%;}
+    .demo li:last-child{margin-right:0;}
+    .demo li:before{content:"";position:absolute;left:0px;top:0;width:10px;height:100%;}
+    .demo li:before,
+    .demo li:after{content: "";position: absolute;top: -20px;display: block;width:10px;height: 100%;margin-top: 20px;background-size: 20px 10px;}
+    .demo li:before{left: -10px;background-color: #fff;background-position: 100% 35%;
+      background-image: linear-gradient(-45deg, #f60 25%, transparent 25%, transparent),
+      linear-gradient(-135deg, #f60 25%, transparent 25%, transparent),
+      linear-gradient(-45deg, transparent 75%, #f60 75%),
+      linear-gradient(-135deg, transparent 75%, #f60 75%);}
+    .demo li:after{right: -10px;background-color: #f60;background-position: 100% 15%;
+      background-image: linear-gradient(-45deg, #fff 25%, transparent 25%, transparent),
+      linear-gradient(-135deg, #fff 25%, transparent 25%, transparent),
+      linear-gradient(-45deg, transparent 75%, #fff 75%),
+      linear-gradient(-135deg, transparent 75%, #fff 75%);}
+      .one{width:100px;height:100px;margin:120px auto;border-radius:50%;border:2px solid red;position:relative}
+      .one:after{position:absolute;left:50%;top:50%;content:"";width:110%;height:110%;border-radius:50%;border:2px solid palegoldenrod;
+      -webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);
+          background-size: 7px 7px;
+    background-repeat: repeat-y;
+    background-position: 0 0, 0 0, 100% 0, 100% 0;
+    background-image: radial-gradient(45deg, transparent 75%, #dc143c 75%), radial-gradient(135deg, transparent 75%, #dc143c 75%), radial-gradient(-45deg, transparent 75%, #dc143c 75%), radial-gradient(-135deg, transparent 75%, #dc143c 75%);
+      }
+  </style>
+</head>
+<body>
+<ul class="demo">
+  <li></li>
+</ul>
+<div class="one">
+	
+</div>
+</body>
+</html>

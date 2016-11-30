@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+/*默认初始化*/
+body,div,ol,ul,li,dl,dt,dd,th,td,h1,h2,h3,h4,h5,h6,blockquote,p,pre,code,form,fieldset,legend,button,input,select,textarea,img{margin:0; padding:0;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary{margin:0; padding:0;}  /*HTML5*/
+body{font-family:"Microsoft YaHei"; font-size:14px; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+
+img{border:none;}
+menu,ol,ul,li,dl{list-style:none;}
+button,input,select,textarea{outline:none;}
+h1,h2,h3,h4,h5,h6{font-weight:normal; font-size:100%;}
+a,a:hover,a:active{text-decoration:none;}
+
+.fl{float:left;}
+.fr{float:right;}
+
+.clear{clear:both; overflow:hidden; height:0; font-size:0;}
+.clearfix{*zoom:1;}
+.clearfix:after{display:block; visibility:hidden; clear:both; height:0; font-size:0; content:"";}
+
+.relative{position:relative;}
+.absolute{position:absolute;}
+.fixed{position:fixed;}
+
+.center{margin:0 auto;}
+
+.tl{text-align:left;}
+.tc{text-align:center;}
+.tr{text-align:right;}
+.tj{text-align:justify;}
+
+.font-orange{color:#ff8000;}
+.font-grey{color:#686868;}
+.font-12{font-size:12px;}
+
+.ml-20{margin-left:20px;}
+
+textarea{line-height:1.5;}

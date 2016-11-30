@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>转载，一个会回弹的弹框</title>
+		<style>
+			.grid{  
+			    background-image:-webkit-linear-gradient(top,  
+                    transparent 49px,  
+                    #bfbebe 50px),  
+                    -webkit-linear-gradient(left,  
+                    transparent 49px,  
+                    #bfbebe 50px);  
+			  
+			    background-size:50px 50px;  
+			    background-repeat:repeat;                     /*先画个网格，便于布局*/  
+			}  
+			  
+			/*主容器*/  
+			.main-container{  
+			    position:absolute;  
+			    left:0;  
+			    top:0;  
+			    width:100%;  
+			    height:1000px;  
+			}  
+			  
+			/*BOX*/  
+			.box{  
+			    width:100px;  
+			    height:50px;  
+			    background-color:grey;  
+			    margin:100px;  
+			    position:relative;  
+			    color:white;  
+			    text-align:center;  
+			    line-height:50px;  
+			}  
+			  
+			.box-style{  
+			/*  margin-top:10px; 
+			    transition-property:margin-top; 
+			    transition-duration:2s; 
+			    transition-timing-function: ease-out; 
+			    transition-delay:0;*/  
+			    width:200px;  
+			    height:100px;  
+			    transition:width 1s ease-in-out,height 4s 1s ease-out;  
+			}  
+			  
+			/**/  
+			.good-noon{  
+			    position:relative;  
+			    width:100px;  
+			    height:50px;  
+			    border:1px solid black;  
+			    /*-webkit-animation:demo 10s;*/  
+			    -webkit-animation-name:demo;  
+			    -webkit-animation-duration:2s;  
+			    -webkit-animation-timing-function:ease-in;  
+			    -webkit-animation-delay:0s;  
+			    -webkit-animation-iteration-count:1;  
+			    -webkit-animation-direction:alternate;  
+			    -webkit-animation-fill-mode:backwards;  
+			}  
+			  
+			@-webkit-keyframes demo{  
+			    0% {left:0;background-color:white;}  
+			    50% {left:200px;background-color:yellow;}  
+			    100% {left:0px;background-color:red;}  
+			}  
+			  
+			/**/  
+			div{  
+			    box-sizing:border-box;  
+			}  
+			  
+			.dialogue-mask{  
+			    position:absolute;                        /*弹出层*/  
+			    left:0;  
+			    top:0;  
+			    width:100%;  
+			    height:100%;  
+			    background-color:rgba(128,128,128,0.5);  
+			    display:none;  
+			    overflow:auto;  
+			}  
+			  
+			  
+			  
+			.dialogue-container{  
+			    position:absolute;  
+			    width:80%;  
+			    left:50%;  
+			    top:40%;  
+			    box-sizing:border-box;  
+			    -webkit-transform:translate(-50%,-50%);  
+			    background-color:white;  
+			    box-shadow: 1px 1px 1px 1px #cdcfda;  
+			    border-radius: 10px;  
+			    padding:15px;  
+			    display:block;  
+			    z-index:2;  
+			}  
+			  
+			.dialogue-title{  
+			    font-size:16px;  
+			    font-weight:bold;  
+			    line-height:30px;  
+			    position:relative;  
+			}  
+			  
+			.border-bottom::after{  
+			    content:"";  
+			    width:100%;  
+			    height:1px;  
+			    position:absolute;  
+			    bottom:0;  
+			    left:0;  
+			    background-color:#b9b9b9;  
+			    -webkit-transform:scaleY(0.5);  
+			  
+			}  
+			  
+			.dialogue-content{  
+			    font-size:14px;  
+			    line-height:25px;  
+			    position:relative;  
+			}  
+			  
+			.dialogue-btn{  
+			    margin-top:10px;  
+			}  
+			  
+			.clear-float::after{  
+			    content:"";  
+			    display:block;  
+			    clear:both;  
+			}  
+			  
+			.dialogue-cancel{  
+			    float:right;  
+			    margin-right:20px;  
+			    padding: 8px 25px;  
+			    color:grey;  
+			    background-color:white;  
+			    border-radius:3px;  
+			    border:1px solid #e2e1e1;  
+			}  
+			  
+			.dialogue-sure{  
+			    float:right;  
+			    padding: 8px 25px;  
+			    color:white;  
+			    background-color:#229ffd;  
+			    border-radius:3px;  
+			}  
+			  
+			  
+			@-webkit-keyframes dialogue-in{  
+			    0% {top:0;}  
+			    50% {top:40%;}  
+			    90% {top:37%;}  
+			    100% {top:40%;}  
+			}  
+			  
+			.animation-dialogue-in{  
+			    display:block;  
+			  
+			    -webkit-animation:dialogue-in 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000);  
+			}  
+			  
+			  
+			/*隐藏滚动条*/  
+			.forbid-scroll{  
+			    height:100%;  
+			    overflow:hidden;  
+			}  
+
+		</style>
+	</head>
+	<body>
+		<div class="main-container grid">  
+            <div class="box">  
+                	弹出对话框  
+            </div>  
+        </div>  
+  
+        <div class="dialogue-mask">  
+            <div class="dialogue-container">  
+                <div class="dialogue-title border-bottom">  
+                    	对话框标题  
+                </div>  
+  
+                <div class="dialogue-content border-bottom">  
+                    	这里是对话框内容，比如:你确定要提交调查信息吗？  
+                </div>  
+  
+                <div class="dialogue-btn clear-float">  
+                    <div class="dialogue-sure">  
+                       	 确认  
+                    </div>  
+  
+                    <div class="dialogue-cancel">  
+                        	取消  
+                    </div>  
+                </div>  
+            </div>  
+        </div>  
+	</body>
+	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+		var name=prompt("What is your name?");
+		console.log(name);
+		$(".box").click(function(){  
+		    $(".dialogue-mask").show();  
+		    $(".dialogue-container").addClass("animation-dialogue-in");  
+		    $("body,html").addClass("forbid-scroll");//弹出层后，禁用body和html滚动  
+		  
+		});  
+		  
+		  
+		$(".dialogue-cancel").click(function(){  
+		    $(".dialogue-mask").hide();  
+		    $(".dialogue-container").removeClass("animation-dialogue-in");  
+		    $("body,html").removeClass("forbid-scroll");  
+		})  
+		  
+		$(".dialogue-sure").click(function(){  
+		    console.log("You have clicked the sure button");  
+		});  
+
+	</script>
+</html>

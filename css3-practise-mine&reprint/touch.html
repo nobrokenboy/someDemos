@@ -1,0 +1,567 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>每日汇总报表</title>
+    <link rel="stylesheet" href="./static/css/reset.css">
+    <link rel="stylesheet" href="./static/css/page.css">
+   </head>
+<body>
+<section class="report-forms">
+    <nav class="clearfix">
+        <div class="fl time-wrapper">
+            <ul class="time-select clearfix">
+                <li class="active">今天</li>
+                <li>昨天</li>
+                <li>最新7天</li>
+                <li class="defined-date-wrapper">
+                    自定义
+                    <div class="defined-date-modal defined-date-modal-js">
+                        <h4 class="color-inherit">时间段</h4>
+                        <div class="form-lists date-lists clearfix">
+                            <input type="text" class="date" id="startDate" readonly="readonly"/>
+                            <span class="fl color-inherit">至</span>
+                            <input type="text" class="date has-left" id="endDate" readonly="readonly"/>
+                        </div>
+                        <h4 class="color-inherit">地区</h4>
+                        <div class="form-lists select-lists">
+                            <select name="area">
+                                <option>1</option>
+                                <option>2</option>
+                            </select>
+                            <i></i>
+                        </div>
+                        <h4 class="color-inherit">来源渠道</h4>
+                        <div class="form-lists select-lists">
+                            <select name="sources">
+                                <option>1</option>
+                                <option>2</option>
+                            </select>
+                            <i></i>
+                        </div>
+                        <button class="btn-sure">确定</button>
+                    </div>
+                </li>
+            </ul>
+            <div class="slider-active slider-active-js"></div>
+        </div>
+        <div class="fr">
+            <a class="font-orange">下载</a>
+        </div>
+    </nav>
+    <!--地区时间-->
+    <section class="msg-head clearfix">
+        <div class="fr">
+            <span>所有地区</span>
+            <span>统计时间：</span>
+            <span>2016-11-11</span>
+        </div>
+    </section>
+    <!--基本信息-->
+    <section class="basic-area">
+        <!--第1行-->
+        <div class="basic-list clearfix">
+            <div>
+                <span>新增客户数</span>
+                <span>5</span>
+            </div>
+            <div>
+                <span>新增有效客户数</span>
+                <span>3</span>
+            </div>
+        </div >
+        <!--第2行-->
+        <div class="basic-list clearfix">
+            <div>
+                <span>电话数</span>
+                <span>7</span>
+            </div>
+            <div>
+                <span>客户面谈数</span>
+                <span>7</span>
+            </div>
+        </div>
+        <!--第3行-->
+        <div class="basic-list clearfix">
+            <div>
+                <span>收订金金额</span>
+                <span>¥1000.00</span>
+            </div>
+            <div>
+                <span>收合同款金额</span>
+                <span>¥70000.00</span>
+            </div>
+        </div>
+    </section>
+    <!--汇报-->
+    <section class="forms">
+        <div class="table-wrap">
+            <div class="table-wrapper table-1-wrapper table-fixed-wrapper">
+                <table cellspacing="0" width="100" class="table-1">
+                    <thead class="forms-thead">
+                        <tr>
+                            <th width="100">&nbsp;&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <td rowspan="4"><a>员工A</a></td>
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td rowspan="4"><a>员工B</a></td>
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td rowspan="4"><a>员工C</a></td>
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr >
+                            <td rowspan="11"><a>员工D</a></td>
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-wrapper table-2-wrapper table-scroll-wrapper">
+                <table width="1000" class="table-2">
+                    <thead class="forms-thead">
+                        <tr>
+                            <th width="100">来源渠道</th>
+                            <th width="100">新增客户数</th>
+                            <th width="100">新增有效客户数</th>
+                            <th width="100">电话数</th>
+                            <th width="100">客户面谈数</th>
+                            <th width="100">收订金金额</th>
+                            <th width="100">收合同款金额</th>
+                            <th width="100">签合同数</th>
+                            <th width="100">警告次数</th>
+                            <th width="100">回落次数</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>D</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>A</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>D</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>A</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>D</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>A</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>D</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>E</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>F</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>G</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>H</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>H</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>H</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>H</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</section>
+</body>
+<script src="./static/lib/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    $(function(){
+        //获取时间滑块
+        var $slideBlock=$(".slider-active-js");
+        var LeftDistance=0;
+        var itemWidth=0.25;
+
+        //切换时间
+        $(".time-select>li").on("click", function (event) {
+            var $this=$(this),
+                    index=$this.index();
+            //时间项样式
+            $this.addClass("active")
+                    .siblings().removeClass("active");
+            //判断index决定index的left
+            LeftDistance=index*itemWidth*100+"%";
+            /*console.log(LeftDistance);*/
+            //滑块动画以及样式
+            /* debugger;*/
+            $slideBlock.css("left",LeftDistance);
+
+            //如果是点击“自定义”，弹框
+            if(index==3){
+                $(event.target).find(".defined-date-modal-js").slideToggle();
+            }else{
+                $(".defined-date-modal-js").slideUp();
+            }
+        });
+        
+        //监听滚动条事件，固定表头
+        var tableFormsTop=$(".forms").offset().top;
+        $(window).scroll(function () {
+            var $this=$(this),
+                scrollMove=$this.scrollTop();
+            if(scrollMove>tableFormsTop){
+                $(".forms-thead").addClass("thead-fixed");
+                $(".table-2 .forms-thead").css("left",leftMove+"px");
+
+            }else{
+                $(".forms-thead").removeClass("thead-fixed");
+            }
+        });
+        //获取div水平滑动的距离
+        var leftMove=100;
+        //获取table-2的左移位置
+        var tableLeft=100;
+        //监听tabled-scroll左右滚动事件
+        $(".table-scroll-wrapper").scroll(function () {
+            console.log("进入滚动");
+            var $this=$(this),
+                scrollHorizontal=$this.scrollLeft();
+            console.log($this);
+            console.log(scrollHorizontal);
+            if(scrollHorizontal<tableLeft){
+                leftMove=tableLeft-scrollHorizontal;
+            }else{
+                leftMove="-"+(scrollHorizontal-tableLeft);
+            }
+            console.log(leftMove);
+            //获取固定的table-2的head
+            $(".table-2 .thead-fixed").animate({
+                'left':leftMove+"px"
+            },0);
+
+
+        });
+    });
+</script>
+</html>
+
+
+
