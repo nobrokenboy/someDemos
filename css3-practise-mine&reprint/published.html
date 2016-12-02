@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>水平、垂直居中研究</title>
+		<style>
+			.v-m-1{width:100px;background-color:#eee;margin:0 auto;text-align: center;}
+			.v-m-2{text-align:center;}
+			.v-m-3{display:table;margin:0 auto;}
+			.v-m-4{position:relative;}
+			.v-m-4>div{position:absolute;left:50%;width:120px;margin-left:-60px;}
+			.v-m-5{display:flex;justify-content:center;}
+			.v-m-6{display:flex;}
+			.v-m-6>div{margin:0 auto;}
+			.h-m-1{width:240px;height:100px;background-color:#eee;display:table-cell;vertical-align:middle;}
+			.h-m-1>span{background-color:#fff;}
+			.h-m-2{display:inline-block;vertical-align:middle;background-color:#eee;line-height:100px;}
+			.h-m-3{position:relative;width:150px;height:150px;background-color:#000;}
+			.h-m-3>div{position:absolute;top:50%;width:120px;height:120px;background-color:#eee;margin-top:-60px;}
+			.h-m-4{width:150px;height:150px;margin-top:20px;background-color:beige;display:flex;align-items:center;}
+			.h-m-4>div{width:120px;height:120px;background-color:#eee;}
+		</style>
+	</head>
+	<body>
+		<div class="v-m-1">hahaha</div>
+		<div class="v-m-2">
+			<div>vvvv</span>
+		</div>
+		<div class="v-m-3">
+			窝窝网
+		</div>
+		<div class="v-m-4">
+			<div>
+				hahaha
+			</div>
+		</div>
+		<div class="v-m-5">
+			哈哈哈
+		</div>
+		<div class="v-m-6">
+			<div></div>
+		</div>
+		<div class="h-m-1">
+			<span>vim</span>
+		</div>
+		<div class="h-m-2">
+			<span>vim111</span>
+		</div>
+		<div class="h-m-3">
+			<div>哈姆太郎</div>
+		</div>
+		<div class="h-m-4">
+			<div>
+				
+			</div>
+		</div>
+	</body>
+</html>

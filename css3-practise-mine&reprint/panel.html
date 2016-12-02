@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.fl{
+				float:left;
+			}
+			.fr{
+				float:right;
+			}
+			.clearfix:after{
+				display:block;
+				content:".";
+				height:0;
+				visibility:hidden;
+				clear:both;
+			}
+			.clearfix{
+				*zoom:1;
+			}
+			.em-1{
+				width:1200px;
+				height:120px;
+				margin-bottom:10px;
+				border:1px solid #000;
+			}
+			.em-1>div:nth-child(1){
+				width:120px;
+			}
+			.em-1>div:nth-child(2){
+				background-color:#00BFFF;
+				overflow: hidden;
+				/*overflow: auto;*/
+			}
+			.em-2{width:1200px;height:120px;border:1px solid #000;}
+			.em-2>div:nth-child(1){float:left;width:120px;}
+			.em-2>div:nth-child(2){margin-left:-120px;background-color:#00BFFF;}
+			.em-3 .left{float:left;width:120px;height:30px;background-color:#008000;}
+			.em-3 .right-fixed{float:right;width:100%;height:30px;background-color:#B68C70;margin-left:-120px;}
+			.em-3 .right{margin-left:120px;}
+			.parent{display:table;table-layout:fixed;width:1200px;}
+			.row{display:table-row;}
+			.item{display:table-cell;width:33.3%;height:300px;} 
+			.row:nth-child(1) .item:nth-child(1){background-color:#000000}
+			.row:nth-child(1) .item:nth-child(2){background-color:red;}
+			.row:nth-child(1) .item:nth-child(3){background-color:rosybrown;}
+			.row:nth-child(2) .item:nth-child(1){background-color:blue;}
+			.row:nth-child(2) .item:nth-child(2){background-color:plum;}
+			.row:nth-child(2) .item:nth-child(3){background-color:peachpuff;}
+			.row:nth-child(3) .item:nth-child(1){background-color:palevioletred;}
+			.row:nth-child(3) .item:nth-child(2){background-color:palegreen;}
+			.row:nth-child(3) .item:nth-child(3){background-color:palegoldenrod;}
+		</style>
+	</head>
+	<body>
+		<h1>左侧宽度固定，右侧宽度不固定方法1</h1>
+		<div class="em-1">
+			<div class="fl">哈哈哈</div>
+			<div>wwww</div>
+		</div>
+		<h1>左侧宽度固定，右侧宽度不固定方法2</h1>
+		<div class="em-2">
+			<div>我哈哈哈</div>
+			<div>hello</div>
+		</div>
+		<h1>左侧宽度固定，右侧宽度不固定方法3</h1>
+		<div class="em-3">
+			<div class="left"></div>
+			<div class="right-fixed">
+				<div class="right"></div>
+			</div>
+		</div>
+		<h1>九宫格布局</h1>
+		<div class="parent">
+            <div class="row"><div class="item"></div><div class="item"></div><div class="item"></div></div>
+            <div class="row"><div class="item"></div><div class="item"></div><div class="item"></div></div>
+            <div class="row"><div class="item"></div><div class="item"></div><div class="item"></div></div>
+        </div> 
+        <div>
+        	
+        </div>
+	</body>
+</html>
