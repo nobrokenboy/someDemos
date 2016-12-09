@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+	        img {
+	            display: block;
+	            margin-bottom: 50px;
+	            width: 400px;
+	            height: 400px;
+	        }
+	    </style>
+	</head>
+	<body>
+	 	<img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+	    <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+	    <img src="default.jpg" data-src="http://ww1.sinaimg.cn/large/006y8mN6gw1fa7kaed2hpj30sg0l9q54.jpg" alt="">
+	    <img src="default.jpg" data-src="http://ww1.sinaimg.cn/large/006y8mN6gw1fa7kaed2hpj30sg0l9q54.jpg" alt="">
+	    <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+	    <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+	    <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+	    <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+	    <img src="default.jpg" data-src="http://ww1.sinaimg.cn/large/006y8mN6gw1fa7kaed2hpj30sg0l9q54.jpg" alt="">
+	    <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+	    <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+		<p>
+			作者：小不了
+			链接：https://zhuanlan.zhihu.com/p/24057749
+			来源：知乎
+			著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+		</p>
+	</body>
+	<script>
+	    var num = document.getElementsByTagName('img').length;
+	    var img = document.getElementsByTagName("img");
+	    var n = 0; //存储图片加载到的位置，避免每次都从第一张图片开始遍历
+	    lazyload(); //页面载入完毕加载可是区域内的图片
+	    window.onscroll = lazyload;
+	    function lazyload() { //监听页面滚动事件
+	    	var seeHeight = document.documentElement.clientHeight; //可见区域高度
+	        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop; //滚动条距离顶部高度
+	        for (var i = n; i < num; i++) {
+	            if (img[i].offsetTop < seeHeight + scrollTop) {
+	                if (img[i].getAttribute("src") == "default.jpg") {
+	                    img[i].src = img[i].getAttribute("data-src");
+	                }
+	                n = i + 1;
+	            }
+	        }
+	    }
+	    
+	    //
+	    var a={length:2,0:'first',1:'second'};
+	    console.log(toArray(img));
+	   /* console.log(Array.prototype.slice.call(a));*/
+	   /* console.log(Array.prototype.concat.call(a));*/
+	  
+	    //将含有length属性的元素转化为数组
+	    function toArray(items) {
+		    try {
+		        return Array.prototype.slice.call(items);
+		    } catch (ex) {
+		 
+		        var i       = 0,
+		            len     = items.length,
+		            result  = Array(len);
+		 
+		        while (i < len) {
+		            result[i] = items[i];
+		            i++;
+		        }
+		 
+		        return result;
+		    }
+		}
+	    
+	    //去掉重复的数组
+	    var removeDuplicate=function(arr){
+	        var obj={},
+	            result=[];
+	        for(var i= 0,j=arr.length;i<j;i++){
+	            obj[arr[i]]=i;
+	        }
+	        //获取对象的key
+	        for(var i in obj){
+	            result.push(parseInt(i));
+	        }
+	        return result;
+	    }
+	</script>
+</html>

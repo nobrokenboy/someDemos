@@ -22,7 +22,6 @@
 			}
 			.em-1{
 				width:1200px;
-				height:120px;
 				margin-bottom:10px;
 				border:1px solid #000;
 			}
@@ -35,11 +34,35 @@
 				/*overflow: auto;*/
 			}
 			.em-2{width:1200px;height:120px;border:1px solid #000;}
-			.em-2>div:nth-child(1){float:left;width:120px;}
-			.em-2>div:nth-child(2){margin-left:-120px;background-color:#00BFFF;}
+			.em-2>div:nth-child(1){float:left;width:120px;background-color:#FF0080;}
+			.em-2>div:nth-child(2){background-color:#00BFFF;}
+			.em-3{width:1200px;}
 			.em-3 .left{float:left;width:120px;height:30px;background-color:#008000;}
-			.em-3 .right-fixed{float:right;width:100%;height:30px;background-color:#B68C70;margin-left:-120px;}
-			.em-3 .right{margin-left:120px;}
+			.em-3 .right-fixed{float:right;width:100%;height:30px;margin-left:-120px;}
+			.em-3 .right{margin-left:120px;height:100%;background-color:#B68C70;}
+			.em-4{width:1200px;background:red;height:100px;overflow:hidden;}
+			.em-4 .left{background:green;width:100px;height:40px;float:left;}
+			.em-4 .right{float:right;width:100%;margin-right:-100px;background:blue;height:60px;}
+			.em-5{width:1200px;overflow:hidden;}
+			.em-5 .left,.em-5 .right{padding-bottom:9999px;margin-bottom:-9999px;}
+			.em-5 .left{width:100px;float:left;background-color:#008000;}
+			.em-5 .right{overflow:hidden;background-color:#FF0080;}
+			.em-6{display:table;width:1200px;table-layout:fixed;}
+			.em-6 .left{width:100px;border:1px solid #00008B;}
+			.em-6 .right{border:1px solid blueviolet;}
+			.em-6 .left,.em-6 .right{display:table-cell;}
+			.em-7{width:1200px;display:flex;}
+			.em-7 .left{width:100px;background-color:#0000FF;}
+			.em-7 .right{flex:1;background-color:#008000;}
+			.em-8{display:flex;width:1200px;height:30px;background-color:#F2868E;}
+			.em-8 div{flex:1;border-right:2px solid #000;}
+			.three-1{width:1200px;}
+			.three-1 .left{background-color:#CD853F;height:30px;}
+			.three-1 .center{background-color:palegreen;height:40px;}
+			.three-1 .left,.three-1 .center{float:left;width:200px;}
+			.three-1 .right{margin-left:400px;background-color:#000;height:50px;}
+			.eq-1{width:1200px;height:30px;margin-left:-15px;}
+			.eq-1>li{list-style:none;float:left;width:25%;height:100%;padding-left:15px;box-sizing:border-box;border:1px solid #000;}
 			.parent{display:table;table-layout:fixed;width:1200px;}
 			.row{display:table-row;}
 			.item{display:table-cell;width:33.3%;height:300px;} 
@@ -57,13 +80,13 @@
 	<body>
 		<h1>左侧宽度固定，右侧宽度不固定方法1</h1>
 		<div class="em-1">
-			<div class="fl">哈哈哈</div>
+			<div class="fl">哈哈哈hahahhahhahha</div>
 			<div>wwww</div>
 		</div>
 		<h1>左侧宽度固定，右侧宽度不固定方法2</h1>
 		<div class="em-2">
 			<div>我哈哈哈</div>
-			<div>hello</div>
+			<div>hellohellohellolohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello</div>
 		</div>
 		<h1>左侧宽度固定，右侧宽度不固定方法3</h1>
 		<div class="em-3">
@@ -72,6 +95,47 @@
 				<div class="right"></div>
 			</div>
 		</div>
+		<h1>左侧宽度固定，右侧宽度不固定方法4</h1>
+		<div class="em-4">
+			<div class="left">左</div>
+			<div class="right">右</div>
+		</div>
+		<h1>左侧宽度固定，右侧宽度不固定方法5,同时两列的背景高度一样高,overflow的魅力</h1>
+		<div class="em-5">
+			<div class="left">左左左左左左左左左左左左左左左左左左左</div>
+			<div class="right">右左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左</div>
+		</div>
+		<h1>左侧宽度固定，右侧宽度不固定方法6,使用table</h1>
+		<div class="em-6">
+			<div class="left">左</div>
+			<div class="right">右</div>
+		</div>
+		<h1>左侧宽度固定，右侧宽度不固定方法7,使用flex</h1>
+		<h2>注意，设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。</h2>
+		<div class="em-7">
+			<div class="left">左</div>
+			<div class="right">右</div>
+		</div>
+		<h1>使用flex</h1>
+		<div class="em-8">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<h1>左、中固定 右不固定</h1>
+		<div class="three-1">
+			<div class="left">左</div>
+			<div class="center">中</div>
+			<div class="right">右</div>
+		</div>
+		<h1>多列等分布局</h1>
+		<ul class="eq-1">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
 		<h1>九宫格布局</h1>
 		<div class="parent">
             <div class="row"><div class="item"></div><div class="item"></div><div class="item"></div></div>
