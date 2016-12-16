@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+        @font-face
+        {
+            font-family: 'Chunkfive';
+            src: url("font/Chunkfive.otf") format("opentype");
+        }
+        body{margin: 0;padding: 0;}
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+</body>
+<script src="lib/ocanvas-2.8.5.js"></script>
+<script src="catchOrange.bundle.js"></script>
+<script>
+    gameStart({
+        root:"img/",
+        fontFamily:"Chunkfive",
+        fps:70,
+        gameTime:30,
+        onClose:function(score){
+            alert(score)
+        }
+    })
+</script>
+</html>

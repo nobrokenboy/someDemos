@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body {
+  				padding: 50px;
+			}
+			.wrapper {
+			  display: grid;
+			  grid-template-columns: 100px 10px 100px 10px 100px 10px 100px;
+			  grid-template-rows: auto 10px auto 10px auto 10px auto 10px auto;
+			}
+			.box {
+			  background-color: #444;
+			  color: #fff;
+			  font-size: 150%;
+			  padding: 20px;
+			  text-align: center;
+			}
+			.a{
+			  grid-column: 1 / 6; 
+			  grid-row: 1 / 2;
+			}
+			.b {
+			  grid-column: 7 / 8; 
+			  grid-row: 1 / 10; 
+			  background: orange;
+			}
+			.c { 
+			  grid-column: 1 / 2; 
+			  grid-row: 3 / 4;
+			}
+			.d { 
+			  grid-column: 3 / 4; 
+			  grid-row: 3 / 4;
+			}
+			.e { 
+			  grid-column: 5 / 6; 
+			  grid-row: 3 / 4;
+			}
+			.f { 
+			  grid-column: 1 / 4; 
+			  grid-row: 5 / 6;
+			}
+			.g {
+			  grid-column: 5 / 6; 
+			  grid-row: 5 / 6;
+			}
+			.h {
+			  grid-column: 1 / 2; 
+			  grid-row: 7 / 8;
+			}
+			.i {
+			  grid-column: 3 / 6; 
+			  grid-row: 7 / 8;
+			}
+			.j {
+			  grid-column: 1 / 6; 
+			  grid-row: 9 / 10;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+		  <div class="box a">A</div>
+		  <div class="box b">B</div>
+		  <div class="box c">C</div>
+		  <div class="box d">D</div>
+		  <div class="box e">E</div>
+		  <div class="box f">F</div>
+		  <div class="box g">G</div>
+		  <div class="box h">H</div>
+		  <div class="box i">I</div>
+		  <div class="box j">J</div>
+		</div>
+	</body>
+</html>
