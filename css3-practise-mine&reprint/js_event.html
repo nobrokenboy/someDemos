@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div style="width:200px;height:200px;background:lightblue" id="content">
+        <div style="width:100px;height:100px;background: lightyellow;" id="btn1">
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    var content=document.getElementById("content");
+    var btn1=document.getElementById('btn1');
+    btn1.onclick=function(){
+        alert("btn1");
+    };
+    content.onclick=function(){
+        alert("content");
+    }
+</script>
+</html>
