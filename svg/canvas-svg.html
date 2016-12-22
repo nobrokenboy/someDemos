@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas实现贝塞尔曲线</title>
+		<style>
+			*{margin:0;padding:0;}
+			html,body{width:100%;height:100%;text-align:center;}
+			#canvas1{margin-top:30px;background-color:paleturquoise;}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas1" width="500px" height="400px"></canvas>
+		<script>
+			var canvas=document.getElementById("canvas1");
+			var ctx=null;
+			if(canvas.getContext){
+				ctx=canvas.getContext("2d");
+			}else{
+				document.body.appendChild("<p>您的浏览器不支持canvas</p>")
+			}
+			//
+			ctx.beginPath();
+			ctx.moveTo(100,100);
+			ctx.bezierCurveTo(200,300,300,300,400,100);
+			ctx.stroke();
+			ctx.closePath();
+			
+		</script>
+	</body>
+</html>
