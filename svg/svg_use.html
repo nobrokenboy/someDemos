@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--use采用深度克隆,defs实现预定义，需要用use才会显示-->
+		<svg width="640" height="640" >
+			<style>
+			</style>
+			<defs>
+				<g id="circle">
+					<circle r="10"/>
+				</g>
+			</defs>
+			<!--use不能改变大小-->
+			<text x="10" y="50">红色小圆</text>
+			<use x="100" y="50"  xlink:href="#circle" fill="red" r="20"/>
+			<text x="10" y="100">蓝色小圆</text>
+			<use  x="100" y="100" xlink:href="#circle" style="fill:blue" r="50"/>
+			<text x="10" y="200">绿色小圆</text>
+			<use  x="100" y="200" xlink:href="#circle" style="fill:green" r="100"/>
+		</svg>
+	</body>
+</html>

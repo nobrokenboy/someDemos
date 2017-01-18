@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<svg width="320" height="320">
+			<defs>
+			    <filter id="f1" x="0" y="0">
+			      <feGaussianBlur in="SourceGraphic" stdDeviation="15" 
+			/>
+			    </filter>
+			    
+			</defs>
+			<rect x="10" y="10" width="240" height="180" stroke="red" stroke-width="3px" fill="yellow" filter="url(#f1)"/>
+		</svg>
+		<svg width="320" height="320">
+			<defs>
+				<filter id="f2" x="0" y="0">
+			    	<feOffset result="offOut" in="SourceGraphic" dx="20" 
+					dy="20" />
+					      <feBlend in="SourceGraphic" in2="offOut" 
+					mode="normal" />
+			    </filter>
+			</defs>
+			<rect x="10" y="10" width="240" height="180" stroke="red" stroke-width="3px" fill="yellow" filter="url(#f2)"/>
+		</svg>
+	</body>
+</html>

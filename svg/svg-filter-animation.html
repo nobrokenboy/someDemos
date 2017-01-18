@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		.st0{fill:#0085F6;}
+		.st1{fill:#FFFFFF;}
+		.two .st0{fill:orange;}
+		.three .st0{fill:green;}
+		.four .st0{fill:pink;}
+	</style>
+	</head>
+	<body>
+		<svg width="160" height="160" version="1.1" id="图层_1"  x="0px" y="0px"
+	 viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+			<defs>
+				<filter id="f1">
+					<feGaussianBlur in="SourceGraphic" stdDeviation="1"></feGaussianBlur>
+				</filter>
+			</defs>
+			<g>
+				<ellipse transform="matrix(0.6955 -0.7186 0.7186 0.6955 -3.0077 8.9033)" class="st0" cx="9" cy="8" rx="3" ry="3" filter="url(#f1)"/>
+				<ellipse class="st1" cx="9.5" cy="10" rx="1.5" ry="1"/>
+				<ellipse class="st1" cx="7" cy="7.5" rx="1" ry="1.5"/>
+				<circle cx="7.5" cy="7.5" r="0.5"/>
+				<circle cx="9.5" cy="9.5" r="0.5"/>
+				<circle class="st1" cx="7.5" cy="9.5" r="0.5"/>
+			</g>
+		</svg>
+		<svg width="160" height="160" class="two" version="1.1" id="图层_1"  x="0px" y="0px"
+	 viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+	 		<defs>
+				<filter id="f2">
+					<feGaussianBlur in="SourceGraphic" stdDeviation="1 2"></feGaussianBlur>
+				</filter>
+			</defs>
+			<ellipse transform="matrix(0.6955 -0.7186 0.7186 0.6955 -3.0077 8.9033)" class="st0" cx="9" cy="8" rx="3" ry="3" filter="url(#f2)"/>
+			<ellipse class="st1" cx="9.5" cy="10" rx="1.5" ry="1" />
+			<ellipse class="st1" cx="7" cy="7.5" rx="1" ry="1.5"/>
+			<circle cx="7.5" cy="7.5" r="0.5"/>
+			<circle cx="9.5" cy="9.5" r="0.5"/>
+			<circle class="st1" cx="7.5" cy="9.5" r="0.5"/>
+		
+		</svg>
+		<svg width="160" height="160" class="three" version="1.1" id="图层_1"  x="0px" y="0px"
+	 viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+	 		<defs>
+				<filter id="f3">
+					<feGaussianBlur in="SourceAlpha" stdDeviation="1 2" result="blur"></feGaussianBlur>
+					<feoffset in="blur" dx="4" dy="4" result="offset"></feoffset>
+					<feMerge>
+						<feMergeMode in="offset"></feMergeMode>
+						<feMergeMode in="SourceGraphic"></feMergeMode>
+					</feMerge>
+				</filter>
+				<filter id="f4">
+					<!--type="matrix"时 四行五列：列R,G,B,A,1  行：R,G,B,A-->
+					<feColorMatrix type="matrix" result="color" values="
+						0 0 0 0 0
+						0 0 0 0.9 0
+						0 0 0 0.9 0
+						0 0 0 1 0
+					"></feColorMatrix> 
+					<feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"></feGaussianBlur>
+					<feoffset in="blur" dx="0" dy="0" result="offset"></feoffset>
+					<feMerge>
+						<feMergeMode in="offset"></feMergeMode>
+						<feMergeMode in="SourceGraphic"></feMergeMode>
+					</feMerge>
+				</filter>
+			</defs>
+		</svg>
+		<svg width="160" height="160" class="four" version="1.1" id="图层_1"  x="0px" y="0px"
+	 viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+		<ellipse transform="matrix(0.6955 -0.7186 0.7186 0.6955 -3.0077 8.9033)" class="st0" cx="9" cy="8" rx="3" ry="3"/>
+		<ellipse class="st1" cx="9.5" cy="10" rx="1.5" ry="1"/>
+		<ellipse class="st1" cx="7" cy="7.5" rx="1" ry="1.5"/>
+		<circle cx="7.5" cy="7.5" r="0.5"/>
+		<circle cx="9.5" cy="9.5" r="0.5"/>
+		<circle class="st1" cx="7.5" cy="9.5" r="0.5"/>
+		
+		</svg>
+	</body>
+</html>
