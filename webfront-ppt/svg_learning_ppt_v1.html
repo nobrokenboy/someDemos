@@ -7,34 +7,73 @@
 	<title>svg技术分享</title>
 	<link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/moon.css">
+    <style>
+    	.reveal{
+    		background:#fff;
+    	}
+    	.reveal section h2,
+    	.reveal section h3{
+    		color:#000;
+    	}
+    </style>
 </head>
 <body>
 	<div class="reveal">
         <div class="slides">
+        	<!--目录-->
+        	<section>
+        		<h2>目录</h2>
+        		<p>
+        			<a>svg是什么？？？</a>
+        		</p>
+        		<p>
+        			<a>为什么要使用svg?</a>
+        		</p>
+        		<p>
+        			<a>怎么样使用svg?</a>
+        		</p>
+        		<p>
+        			<a>svg在实际应用的场景</a>
+        		</p>
+        		<p>
+        			<a>svg需要优化的问题</a>
+        		</p>
+        	</section>
+        	<!--svg是什么？-->
             <section>
-            	<h2>Reveal.js</h2>
-            	<p>一个能够帮助我们很轻易地使用 HTML 创建一个漂亮的演示文稿的框架。</p>
-                
+            	<h2>svg是什么？？？</h2>
+            	<p class="fragment">一种基于可扩展标记的可缩放的矢量图形，属于万维网联盟的标准。通俗来讲就是放大或者改变尺寸的情况下其质量不会有所损失。</p> 
+            </section>
+            <!--为什么要使用svg之优势-->
+            <section>
+                <h2>为什么要使用svg,优势在哪里？</h2>
+            	<p class="fragment" align="left">1.兼容现有图片能力前提还支持矢量</p>
+            	<p class="fragment" align="left">2.可读性好，有利于SEO与无障碍</p>
+                <p class="fragment" align="left">3.文件小</p>
+                <p class="fragment" align="left">4.实现炫酷的动画效果</p>
+            </section>
+            <!--为什么要使用svg之劣势-->
+            <section>
+                <h2>svg劣势</h2>
+            	<p class="fragment" align="left">1.IE8-以及Android2.3默认浏览器是不支持SVG。</p>
+            	<p class="fragment"align="left">2.实时渲染耗时</p>
             </section>
             <section>
-                <h2>幻灯片切换方式</h2>
-            	<p class="fragment">右下角控制条控制切换</p>
-            	<p class="fragment">可以使用键盘方向键操作</p>
-                <p class="fragment">可以设置使用鼠标滚轮切换</p>
-                <p class="fragment">移动端滑动切换</p>
-            </section>
-            <section>
-	            <h2>自动滑动</h2>
-                <pre><code>
+	            <h2>怎么样使用svg?</h2>
+	            <p class="fragment"></p>
+	            <p class="fragment"></p>
+	            <p class="fragment"></p>
+	            <p class="fragment"></p>
+                <!--<pre><code>
 				// 每 5 秒滑动一次，如果设置成0，则不自动滑动
 				Reveal.configure({
 				  autoSlide: 5000
 				});
-                </code></pre>
+                </code></pre>-->
         	</section>
-        	<section data-background="#ff0000" id="s4">
-	            <h2>幻灯片背景</h2>
-                <p>幻灯片包含在幕的一个有限区域中，默认情况下，允许它们适应任何视口和缩放一致性。你可以通过给你的 &lt;section&gt; 元素添加一个 data-background 属性来在幻灯片之外添加整个页面的背景。支持四种类型的背景： color, image, video 和 iframe。</p>
+        	<section>
+        		<h3>svg应用场景——线条动画效果1</h3>
+                <iframe frameborder=0 width=500 height=500 marginheight=0 marginwidth=0 scrolling=no src=http://nobrokenboy.me/someDemos/svg/svg-loading-3.html></iframe>
         	</section>
             <section data-transition="zoom">
                 <h2>幻灯片切换效果</h2>
