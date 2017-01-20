@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>clip-path制作炫酷的效果</title>
+		<style>
+			.polygon {
+		      	position: absolute;
+		      	width: 200px;
+		      	height: 200px;
+		      	top: 50%;
+		      	left: 50%;
+		      	transform: translate(-50%, -50%);
+		      	background-color: darksalmon;
+		      	transition:.3s;
+		      	/*clip-path不支持ie*/
+				-webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 100% 74%, 50% 70%, 35% 100%, 32% 57%, 2% 35%, 39% 35%);
+				clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 100% 74%, 50% 70%, 35% 100%, 32% 57%, 2% 35%, 39% 35%);
+		      	 /*clip-path: inset(30px 200px 200px 20px);*/
+		      	/*-webkit-clip-path: polygon(5% 5%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+		      	clip-path: polygon(5% 5%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);*/
+				-webkit-clip-path:url("#clip-svg-demo");/*支持火狐*/
+				clip-path:url("#clip-svg-demo");
+		      }
+		      .polygon:hover{
+		      	background-color: aquamarine;
+		      	-webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 100% 81%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+				clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 100% 81%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+		      }
+		      /*.polygon:active{
+		      	background-color: darkmagenta;
+		      	-webkit-clip-path: polygon(50% 0%,50% 0%,50% 0%,50% 0%,50% 0%,50% 0%,50% 0%, 0% 100%, 100% 100%);
+		      	clip-path: polygon(50% 0%,50% 0%,50% 0%,50% 0%,50% 0%,50% 0%,50% 0%, 0% 100%, 100% 100%);
+		      }*/
+		      .polygon-svg {
+		      	width: 0;
+		      	height: 0;
+		      }
+		      .clip{
+		      	-webkit-clip-path:url(#clipPath);
+		      	clip-path:url(#clipPath);/*firefox支持的语法*/
+		      }
+		</style>
+	</head>
+	<body>
+		<hgroup class="polygon">
+			<svg class="polygon-svg">
+				<defs>
+					<clipPath id="clip-svg-demo" clipPathUnits="objectBoundingBox">
+						<!--内联方式按照上述百分比除以100-->
+						<!--<polygon points="0.25 0, 0.75 0, 1 0.5, 0.75 1, 0.25 1, 0 0.5"></polygon>-->
+						<polygon points="0.5 0, 0.61 0.35, 0.98 0.35, 0.68 0.57, 0.55 1, 0.5 0.7,0 0.85,0.32 0.57,0.02 0.35,0.39 0.35"></polygon>
+					</clipPath>
+				</defs>
+			</svg>
+		</hgroup>
+		<hgroup>
+			<svg>
+			    <defs>
+			      <clipPath id="clipPath">
+			          <rect x="0" y="0" width="80" height="80" />
+			      </clipPath>
+			    </defs>
+			    <!--<circle cx="60" cy="60" r="50" fill="#34538b" clip-path="url(#clipPath)"/>-->
+			    <!--<circle cx="60" cy="60" r="50" fill="#34538b" style="clip-pathurl(#clipPath)"/>-->
+			   <!-- <circle cx="60" cy="60" r="50" fill="#34538b" class="clip" />-->
+			</svg>
+		</hgroup>
+	</body>
+</html>
