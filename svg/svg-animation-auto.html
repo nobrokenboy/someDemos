@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>clip-path制作炫酷动画效果</title>
+		<style>
+			.polygon {
+		      	position: absolute;
+		      	width: 200px;
+		      	height: 200px;
+		      	top: 50%;
+		      	left: 50%;
+		      	transform: translate(-50%, -50%);
+		      	background-color: darksalmon;
+		      	transition:.3s;
+		      	/*clip-path不支持ie*/
+		      	-webkit-clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+				clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+				-webkit-clip-path:url("#clip-svg-demo");/*支持火狐*/
+				clip-path:url("#clip-svg-demo");
+				-webkit-animation:autoAnimation 2s infinite;
+				animation:autoAnimation 2s infinite;
+		      }
+		      
+			  .polygon-svg {
+		      	width: 0;
+		      	height: 0;
+		      }
+			  @-webkit-keyframes autoAnimation{
+			  	 0%,10%{
+			  	 	background-color: aquamarine;
+			      	-webkit-clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+					clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+			  	 	-webkit-clip-path:url("#clip-svg-demo");/*支持火狐*/
+					clip-path:url("#clip-svg-demo");
+			  	 }
+			  	 20%,35%{
+			  	 	background-color:deeppink;
+				  	-webkit-clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+					clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+			  	 	-webkit-clip-path:url("#clip-svg-demo-1");/*支持火狐*/
+					clip-path:url("#clip-svg-demo-1");
+			  	 }
+			  	 75%,80%{
+			  	 	background-color:mediumspringgreen;
+			  	 	-webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+					clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+			  	 	-webkit-clip-path:url("#clip-svg-demo-2");/*支持火狐*/
+			        clip-path:url("#clip-svg-demo-2");
+			  	 }
+			  	 90%,100%{
+			  	 	background-color:#0085F6;
+			  	 	-webkit-clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);
+					clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);
+			  	 	-webkit-clip-path:url("#clip-svg-demo-3");/*支持火狐*/
+					clip-path:url("#clip-svg-demo-3");
+			  	 }
+			  }
+		</style>
+	</head>
+	<body>
+		<hgroup class="polygon">
+			<svg class="polygon-svg">
+				<defs>
+					<clipPath id="clip-svg-demo" clipPathUnits="objectBoundingBox">
+						<!--内联方式按照上述百分比除以100-->
+						<!--<polygon points="0.25 0, 0.75 0, 1 0.5, 0.75 1, 0.25 1, 0 0.5"></polygon>-->
+						<polygon points="0.5 0, 0.8 0.1, 1 0.35, 1 0.7, 0.8 0.9, 0.5 1,0.2 0.9,0 0.7,0 0.35,0.2 0.1"></polygon>
+					</clipPath>
+					<!--动画2-->
+					<clipPath id="clip-svg-demo-1" clipPathUnits="objectBoundingBox">
+						<polygon points="0.3 0,0.7 0,1 0.3,1 0.7,0.7 1,0.3 1,0 0.7,0 0.3"></polygon>
+					</clipPath>
+					<!--动画3-->
+					<clipPath id="clip-svg-demo-2" clipPathUnits="objectBoundingBox">
+						<polygon points="0.5 0,0.61 0.35,0.98 0.35,0.68 0.57,0.79 0.91,0.5 0.7,0.21 0.91,0.32 0.57,0.02 0.35,0.39 0.35"></polygon>
+					</clipPath>
+					<!--动画4-->
+					<clipPath id="clip-svg-demo-3" clipPathUnits="objectBoundingBox">
+						<polygon points="0.5 0,0.83 0.12,1 0.43,0.94 0.78,0.68 1,0.32 1,0.06 0.78,0 0.43,0.17 0.12"></polygon>
+					</clipPath>
+				</defs>
+			</svg>
+		</hgroup>
+	</body>
+</html>
