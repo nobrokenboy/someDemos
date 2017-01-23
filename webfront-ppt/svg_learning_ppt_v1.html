@@ -75,18 +75,33 @@
         		<h3>svg应用场景——线条动画效果1</h3>
                 <iframe frameborder=0 width=500 height=500 marginheight=0 marginwidth=0 scrolling=no src=http://nobrokenboy.me/someDemos/svg/svg-loading-3.html></iframe>
         	</section>
+        	<section>
+        		<h3>利用clip-path属性结合svg制作一些炫酷的动画效果</h3>
+        		<pre>
+        		<code>
+    			clip-path属性：（IE11不兼容）
+    			样式上：
+    			.polygon{
+    				-webkit-clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+					clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+					-webkit-clip-path:url("#clip-svg-demo");/*支持火狐*/
+					clip-path:url("#clip-svg-demo");
+    			}
+        		</code>
+            	</pre>
+            	<p align="center"><a href="http://bennettfeely.com/clippy/" target="_blank">戳我送福利</a></p>
+        	</section>
             <section data-transition="zoom">
                 <h2>svg应用场景———鼠标悬浮效果切换</h2>
                 <iframe frameborder="0" width=500 height=500 marginheight="0" marginwidth="0" src="http://nobrokenboy.me/someDemos/svg/svg-animation-170120.html"></iframe>
             </section>
             <section>
                 <h2>svg应用场景———图形动画切换效果</h2>
-                <iframe frameborder="0" width=500 height=500 marginheight="0" marginwidth="0" src=></iframe>
+                <iframe frameborder="0" width=400 height=400 marginheight="0" marginwidth="0" src="http://nobrokenboy.me/someDemos/svg/svg-animation-auto.html"></iframe>
             </section>
             <section>
-                <h2>内部链接</h2>
-                <p>在幻灯片之间链接是很容易的。下面的例子中，第一个链接指向了另外一个幻灯片的索引，第二个链接指向了另外一个幻灯片的ID属性 (&lt;section id="some-slide"&gt;)：</p>
-                <a href="#/s4">链接到第4张幻灯片</a>
+                <h2>svg应用场景———五角星组合图形切换效果</h2>
+                <iframe frameborder="0" width=400 height=400 marginheight="0" marginwidth="0" src="http://nobrokenboy.me/someDemos/svg/svg-20170123-2.html"></iframe>
             </section>
             <section>
                 <h2>概览与全屏模式</h2>

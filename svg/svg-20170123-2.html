@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>svg实现组合图形进行切换</title>
+		<style>
+			.triangle2rect {
+		      	position: absolute;
+		      	width: 300px;
+		      	height: 300px;
+		      	top: 50%;
+		      	left: 50%;
+		      	transform: translate(-50%, -50%);
+		      	-webkit-animation:aniContainer 2s infinite alternate;
+		      }
+		      .triangle2rect div{
+		        position:absolute;
+		        top:0;
+		        left:0;
+		        width:100%;
+		        height:100%;
+		      }
+		      .a{
+		        background-color:#FF8800;
+		        -webkit-clip-path: polygon(32% 57%, 1% 35%, 39% 35%,50% 50%);
+		        animation:a 2s infinite alternate;
+		        -webkit-animation:a 2s infinite alternate;
+		      }
+		      .b{
+		        background-color:#FF8800;
+		        -webkit-clip-path: polygon(39% 35%,50% 0, 61% 35%,50% 50%);
+		        animation:b 2s infinite alternate;
+		        -webkit-animation:b 2s infinite alternate;
+		      }
+		      .c{
+		        background-color:#FF8800;
+		        -webkit-clip-path: polygon(61% 35%, 98% 35%,68% 57%,50% 50%);
+		        animation:c 2s infinite alternate;
+		        -webkit-animation:c 2s infinite alternate;
+		      }
+		      .d{
+		        background-color:#FF8800;
+		        -webkit-clip-path: polygon(68% 57%, 79% 91%, 50% 70%, 50% 50%);
+		        animation:d 2s infinite alternate;
+		        -webkit-animation:d 2s infinite alternate;
+		      }
+		      .e{
+		      	background-color:#FF8800;
+		      	-webkit-clip-path: polygon(50% 70%, 21% 91%, 32% 57%, 50% 50%);
+		        animation:e 2s infinite alternate;
+		        -webkit-animation:e 2s infinite alternate;
+		      }
+		      @-webkit-keyframes a{
+		        0%,10%{
+		          background:#FF8800;
+		          -webkit-clip-path: polygon(32% 57%, 1% 35%, 39% 35%,50% 50%);
+		        }
+		        90%,100%{
+		          background:#CCFFFF;
+		          -webkit-clip-path: polygon(39% 80%,50% 50%,61% 80%,50% 100%);
+		        }
+		      }
+		      @-webkit-keyframes b{
+		        0%,10%{
+		          background:#FF8800;
+		          -webkit-clip-path: polygon(39% 35%,50% 0, 61% 35%,50% 50%);
+		        }
+		        90%,100%{
+		          background:#CCFFCC;
+		          -webkit-clip-path: polygon(39% 80%,50% 50%,61% 80%,50% 100%);
+		        }
+		      }
+		      @-webkit-keyframes c{
+		        0%,10%{
+		          background:#FF8800;
+		          -webkit-clip-path: polygon(61% 35%, 98% 35%,68% 57%,50% 50%);
+		        }
+		        90%,100%{
+		          background:#CCFF99;
+		          -webkit-clip-path: polygon(39% 80%,50% 50%,61% 80%,50% 100%);
+		        }
+		      }
+		      @-webkit-keyframes d{
+		        0%,10%{
+		          background:#FF8800;
+		          -webkit-clip-path: polygon(68% 57%, 79% 91%, 50% 70%, 50% 50%);
+		        }
+		        90%,100%{
+		          background:#CCFF66;
+		          -webkit-clip-path: polygon(39% 80%,50% 50%,61% 80%,50% 100%);
+		        }
+		      }
+		      @-webkit-keyframes e{
+		      	0%,10%{
+		          background:#FF8800;
+		          -webkit-clip-path: polygon(50% 70%, 21% 91%, 32% 57%, 50% 50%);
+		        }
+		        90%,100%{
+		          background:#CCFF33;
+		          -webkit-clip-path: polygon(39% 80%,50% 50%,61% 80%,50% 100%);
+		        }
+		      }
+		      @-webkit-keyframes aniContainer{
+		        0%,10%{
+		          width:300px;
+		          height:300px;
+		        }
+		        90%,100%{
+		          width:250px;
+		          height:250px;
+		        }
+		      }
+			
+		</style>
+	</head>
+	<body>
+		<hgroup class="triangle2rect">
+			<div class="a">1</div>
+			<div class="b">2</div>
+			<div class="c">3</div>
+			<div class="d">4</div>
+			<div class="e">5</div>
+		</hgroup>
+	</body>
+</html>
