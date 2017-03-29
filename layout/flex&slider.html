@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>尝试一次用flex实现的滑动效果</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			.common-container{
+				position:relative;
+				width:100%;
+				height:500px;
+				margin:20px auto;
+				background:#fff;
+				border:1px solid #ccc;
+				overflow:hidden;
+			}
+			.common-wrapper{
+				position:relative;
+				display:-webkit-box;/*android 2.1-3.0, ios 3.2-4.3 */
+				display:-ms-flexbox;/*WP IE 10*/
+				display:-webkit-flex;/*Chrome 21+ */
+				display:flex;/*android 4.4*/
+				width:100%;
+				height:100%;
+				-webkit-transform: translate3d(0,0,0);
+			    -moz-transform: translate3d(0,0,0);
+			    -o-transform: translate(0,0);
+			    -ms-transform: translate3d(0,0,0);
+			    transform: translate3d(0,0,0);
+				-webkit-transition-property: -webkit-transform;
+			    -moz-transition-property: -moz-transform;
+			    -o-transition-property: -o-transform;
+			    -ms-transition-property: -ms-transform;
+			    transition-property: transform;
+			    transition:all .5s ease-in;
+				text-align:center;
+			}
+			.common-slider{
+				position:relative;
+				width:100%;
+				/*width:1200px;*/
+				flex-shrink:0;
+				color:#fff;
+			}
+			.common-slider:nth-of-type(1){
+				background:palegoldenrod
+			}
+			.common-slider:nth-of-type(2){
+				background:peachpuff
+			}
+			.common-slider:nth-of-type(3){
+				background:palevioletred
+			}
+			.common-slider:nth-of-type(4){
+				background:peru
+			}
+			.common-slider:nth-of-type(5){
+				background:palevioletred
+			}
+			.common-text{
+				position:absolute;
+				left:50%;
+				top:50%;
+				-webkit-transform:translate(-50%,-50%);
+				transform:translate(-50%,-50%);
+				-webkit-animation-duration:.8s;
+				-webkit-animation-timing-function:ease-in;
+				-webkit-animation-delay:.2s;
+				animation-duration:.8s;
+				animation-timing-function:ease-in;
+				animation-delay:.2s;
+			}
+			@-webkit-keyframes left{
+				from{
+					-webkit-tranfrom:translateX(-100%);
+				}
+				to{
+					-webkit-tranfrom:translateX(-50%);
+				}
+			}
+			@keyframes left{
+				from{
+					tranfrom:translateX(-100%);
+				}
+				to{
+					tranfrom:translateX(-50%);
+				}
+			}
+			
+			@-webkit-keyframes scale{
+				from{
+					opacity:0;
+					-webkit-tranfrom:scale(0);
+				}
+				to{
+					opacity:1;
+					-webkit-tranfrom:scale(1);
+				}
+			}
+			@keyframes scale{
+				from{
+					opacity:0;
+					tranfrom:scale(0);
+				}
+				to{
+					opacity:1;
+					tranfrom:scale(1);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="common-container">
+			<div class="common-wrapper">
+				<div class="common-slider">
+					<h2 class="common-text">num1</h2>
+				</div>
+				<div class="common-slider">
+					<h2 class="common-text">num2</h2>
+				</div>
+				<div class="common-slider">
+					<h2 class="common-text">num3</h2>
+				</div>
+				<div class="common-slider">
+					<h2 class="common-text">num4</h2>
+				</div>
+				<div class="common-slider">
+					<h2 class="common-text">num5</h2>
+				</div>
+			</div>
+		</div>
+		<script>
+			var sliderObj=document.querySelectorAll(".common-slider");
+			var moveObj=document.querySelector(".common-wrapper");
+			var clientWidth=document.documentElement.clientWidth;
+			var activeIndex=0;
+			var move=0
+			Array.from(sliderObj).forEach(function(item,index,array){
+				//初始化默认第一个设置动画效果
+				if(index==0){
+					Array.from(item.childNodes).forEach((value,key,array)=>{
+							if(value.nodeName!=="#text"){
+								console.log(value.style);
+								value.style.animationName="scale";
+
+							}
+					});
+				}
+				var startX,startY,endX,endY,sliderDirection,value;
+				item.addEventListener("touchstart",function(e){
+					e.preventDefault();
+					startX=e.touches[0].pageX;
+					startY=e.touches[0].pageY;
+				});
+				item.addEventListener("touchmove",function(e){
+					e.preventDefault();
+					endX=e.changedTouches[0].pageX;
+					endY=e.changedTouches[0].pageY;
+					
+				});
+				item.addEventListener("touchend",function(e){
+					e.preventDefault();
+					sliderDirection=getDirection(startX,startY,endX,endY);
+					if(sliderDirection==2){
+						if(move<array.length-1){
+							move++;
+						}
+						
+						console.log(move);
+						console.log("左");
+					}else if(sliderDirection==4){
+						if(move>0){
+							move--;
+						}
+						console.log(move);
+						console.log("右");
+					}
+						moveObj.style.webkitTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
+						moveObj.style.MozTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
+						moveObj.style.msTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
+						moveObj.style.OTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
+						moveObj.style.transform="translate3d(-"+move*clientWidth+"px,0,0)";
+						
+						//为子元素去掉text,修改动画设置效果
+						var childNodes=this.childNodes;
+						Array.from(childNodes).forEach((value,key,array)=>{
+							if(value.nodeName!=="#text"){
+								console.log(value.style);
+								value.style.animationName="scale";
+
+							}
+						});
+										
+				});
+			});
+			
+			//获取滑动的方向
+			var getDirection=((x1,y1,x2,y2)=>{
+				var differX=x2-x1;
+				var differY=y1-y2;//y轴向下为正方形
+				var result=0,angle;
+				var getAngle=((dx,dy)=>Math.atan2(dy, dx) * 180 / Math.PI);
+				/*距离太短考虑*/
+				if(Math.abs(differX)<2&&Math.abs(differY)<2){
+					return result;
+				}
+				/*获取角度并传回result*/
+				angle=getAngle(differX,differY);
+				if(angle >= 45 && angle < 135){//向上
+					result=1;
+				}else if((angle >= 135 && angle <= 180) || (angle >= -180 && angle < -135)){//向左
+					result=2;
+				}else if(angle>=-135&& angle < -45){//向下
+					result=3;
+				}else if(angle >= -45 && angle < 45){//向右
+					result=4;
+				}
+				
+				return result;
+			});
+		</script>
+	</body>
+</html>
