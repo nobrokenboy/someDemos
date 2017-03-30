@@ -72,46 +72,50 @@
 				transform:translate(-50%,-50%);
 				-webkit-animation-duration:.8s;
 				-webkit-animation-timing-function:ease-in;
-				-webkit-animation-delay:.2s;
+/*				-webkit-animation-delay:.2s;*/
 				animation-duration:.8s;
 				animation-timing-function:ease-in;
-				animation-delay:.2s;
+		/*		animation-delay:.2s;*/
 			}
 			@-webkit-keyframes left{
 				from{
-					-webkit-tranfrom:translateX(-100%);
+					opacity:0;
+					-webkit-transform:translate(100%,-50%);
 				}
 				to{
-					-webkit-tranfrom:translateX(-50%);
+					opacity:1;
+					-webkit-transform:translate(-50%,-50%);
 				}
 			}
 			@keyframes left{
 				from{
-					tranfrom:translateX(-100%);
+					opacity:0;
+					transform:translate(100%,-50%);
 				}
 				to{
-					tranfrom:translateX(-50%);
+					opacity:1;
+					transform:translate(-50%,-50%);
 				}
 			}
 			
 			@-webkit-keyframes scale{
 				from{
 					opacity:0;
-					-webkit-tranfrom:scale(0);
+					-webkit-transform:scale(0);
 				}
 				to{
 					opacity:1;
-					-webkit-tranfrom:scale(1);
+					-webkit-transform:scale(1);
 				}
 			}
 			@keyframes scale{
 				from{
 					opacity:0;
-					tranfrom:scale(0);
+					transform:scale(0);
 				}
 				to{
 					opacity:1;
-					tranfrom:scale(1);
+					transform:scale(1);
 				}
 			}
 		</style>
@@ -148,7 +152,7 @@
 					Array.from(item.childNodes).forEach((value,key,array)=>{
 							if(value.nodeName!=="#text"){
 								console.log(value.style);
-								value.style.animationName="scale";
+								value.style.animationName="left";
 
 							}
 					});
@@ -159,12 +163,24 @@
 					startX=e.touches[0].pageX;
 					startY=e.touches[0].pageY;
 				});
+				item.addEventListener("mousedown",function(e){
+					e.preventDefault();
+					startX=e.pageX;
+					startY=e.pageY;
+				});
+				
 				item.addEventListener("touchmove",function(e){
 					e.preventDefault();
 					endX=e.changedTouches[0].pageX;
 					endY=e.changedTouches[0].pageY;
 					
 				});
+				item.addEventListener("mousemove",function(e){
+					e.preventDefault();
+					endX=e.pageX;
+					endY=e.pageY;
+				});
+				
 				item.addEventListener("touchend",function(e){
 					e.preventDefault();
 					sliderDirection=getDirection(startX,startY,endX,endY);
@@ -172,31 +188,59 @@
 						if(move<array.length-1){
 							move++;
 						}
-						
-						console.log(move);
-						console.log("左");
+
 					}else if(sliderDirection==4){
 						if(move>0){
 							move--;
 						}
-						console.log(move);
-						console.log("右");
 					}
+					console.log(move);
 						moveObj.style.webkitTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
 						moveObj.style.MozTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
 						moveObj.style.msTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
 						moveObj.style.OTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
 						moveObj.style.transform="translate3d(-"+move*clientWidth+"px,0,0)";
-						
 						//为子元素去掉text,修改动画设置效果
-						var childNodes=this.childNodes;
-						Array.from(childNodes).forEach((value,key,array)=>{
+						var siblingsChildNodes=array[move].childNodes;
+						Array.from(siblingsChildNodes).forEach((value,key,array)=>{
 							if(value.nodeName!=="#text"){
-								console.log(value.style);
-								value.style.animationName="scale";
-
+								value.style.animationName="left";
+	
 							}
 						});
+						
+										
+				});
+				
+				
+				item.addEventListener("mouseup",function(e){
+					e.preventDefault();
+					sliderDirection=getDirection(startX,startY,endX,endY);
+					if(sliderDirection==2){
+						if(move<array.length-1){
+							move++;
+						}
+
+					}else if(sliderDirection==4){
+						if(move>0){
+							move--;
+						}
+					}
+					console.log(move);
+						moveObj.style.webkitTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
+						moveObj.style.MozTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
+						moveObj.style.msTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
+						moveObj.style.OTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
+						moveObj.style.transform="translate3d(-"+move*clientWidth+"px,0,0)";
+						//为子元素去掉text,修改动画设置效果
+						var siblingsChildNodes=array[move].childNodes;
+						Array.from(siblingsChildNodes).forEach((value,key,array)=>{
+							if(value.nodeName!=="#text"){
+								value.style.animationName="left";
+	
+							}
+						});
+						
 										
 				});
 			});
@@ -224,6 +268,19 @@
 				}
 				
 				return result;
+			});
+			//处理start
+			var startDeal=(e=>{
+				e.preventDefault();
+				if(e.type=="ontouchstart"){
+					startX=e.touches[0].pageX;
+					startY=e.touches[0].pageY;
+				}else if(e.type=="onmousedown"){
+					startX=e.pageX;
+					startY=e.pageY
+				}
+				console.log(startX);
+				console.log(startY);
 			});
 		</script>
 	</body>
