@@ -139,110 +139,60 @@
 					<h2 class="common-text">num5</h2>
 				</div>
 			</div>
+			<!--pagination-->
+			<div class="common-pagination"></div>
+			<!--arrow-->
+			<div class="common-arrow common-arrow-left"></div>
+			<div class="common-arrow common-arrow-right"></div>
 		</div>
 		<script>
+		    var _hasTouch = ('ontouchstart' in window);
+		     console.log(_hasTouch);
 			var sliderObj=document.querySelectorAll(".common-slider");
 			var moveObj=document.querySelector(".common-wrapper");
+			//获取滑动块的个数
+			var sliderNums=sliderObj.length;
+			//获取屏幕宽度
 			var clientWidth=document.documentElement.clientWidth;
 			var activeIndex=0;
-			var move=0
+			var move=0;
+			var startX,startY,endX,endY,sliderDirection,value;
 			Array.from(sliderObj).forEach(function(item,index,array){
 				//初始化默认第一个设置动画效果
 				if(index==0){
 					Array.from(item.childNodes).forEach((value,key,array)=>{
-							if(value.nodeName!=="#text"){
-								console.log(value.style);
-								value.style.animationName="left";
+						if(value.nodeName!=="#text"){
+							console.log(value.style);
+							value.style.animationName="left";
 
-							}
+						}
 					});
 				}
-				var startX,startY,endX,endY,sliderDirection,value;
-				item.addEventListener("touchstart",function(e){
-					e.preventDefault();
-					startX=e.touches[0].pageX;
-					startY=e.touches[0].pageY;
-				});
-				item.addEventListener("mousedown",function(e){
-					e.preventDefault();
-					startX=e.pageX;
-					startY=e.pageY;
-				});
 				
-				item.addEventListener("touchmove",function(e){
-					e.preventDefault();
-					endX=e.changedTouches[0].pageX;
-					endY=e.changedTouches[0].pageY;
+				//判断是否是在移动端
+				if(_hasTouch){
+					item.addEventListener("touchstart",function(e){
+						eventDeal(e);
+					});
+					item.addEventListener("touchmove",function(e){
+						eventDeal(e);
+					});
+					item.addEventListener("touchend",function(e){
+						eventDeal(e);
+										
+				   });
 					
-				});
-				item.addEventListener("mousemove",function(e){
-					e.preventDefault();
-					endX=e.pageX;
-					endY=e.pageY;
-				});
-				
-				item.addEventListener("touchend",function(e){
-					e.preventDefault();
-					sliderDirection=getDirection(startX,startY,endX,endY);
-					if(sliderDirection==2){
-						if(move<array.length-1){
-							move++;
-						}
-
-					}else if(sliderDirection==4){
-						if(move>0){
-							move--;
-						}
-					}
-					console.log(move);
-						moveObj.style.webkitTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
-						moveObj.style.MozTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
-						moveObj.style.msTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
-						moveObj.style.OTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
-						moveObj.style.transform="translate3d(-"+move*clientWidth+"px,0,0)";
-						//为子元素去掉text,修改动画设置效果
-						var siblingsChildNodes=array[move].childNodes;
-						Array.from(siblingsChildNodes).forEach((value,key,array)=>{
-							if(value.nodeName!=="#text"){
-								value.style.animationName="left";
-	
-							}
-						});
-						
-										
-				});
-				
-				
-				item.addEventListener("mouseup",function(e){
-					e.preventDefault();
-					sliderDirection=getDirection(startX,startY,endX,endY);
-					if(sliderDirection==2){
-						if(move<array.length-1){
-							move++;
-						}
-
-					}else if(sliderDirection==4){
-						if(move>0){
-							move--;
-						}
-					}
-					console.log(move);
-						moveObj.style.webkitTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
-						moveObj.style.MozTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
-						moveObj.style.msTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
-						moveObj.style.OTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
-						moveObj.style.transform="translate3d(-"+move*clientWidth+"px,0,0)";
-						//为子元素去掉text,修改动画设置效果
-						var siblingsChildNodes=array[move].childNodes;
-						Array.from(siblingsChildNodes).forEach((value,key,array)=>{
-							if(value.nodeName!=="#text"){
-								value.style.animationName="left";
-	
-							}
-						});
-						
-										
-				});
+				}else{
+					item.addEventListener("mousedown",function(e){
+						eventDeal(e);
+					});
+					item.addEventListener("mousemove",function(e){
+						eventDeal(e);
+					});
+					item.addEventListener("mouseup",function(e){	
+						eventDeal(e);					
+					});
+				}
 			});
 			
 			//获取滑动的方向
@@ -270,18 +220,70 @@
 				return result;
 			});
 			//处理start
-			var startDeal=(e=>{
+			var eventDeal=(e=>{
 				e.preventDefault();
-				if(e.type=="ontouchstart"){
-					startX=e.touches[0].pageX;
-					startY=e.touches[0].pageY;
-				}else if(e.type=="onmousedown"){
-					startX=e.pageX;
-					startY=e.pageY
+				if(e.type=="touchstart"){
+					startX=getPosition(e).x;
+					startY=getPosition(e).y;
+				}else if(e.type=="mousedown"){
+					startX=getPosition(e).x;
+					startY=getPosition(e).y;
+				}else if(e.type=="touchmove"){
+					endX=getPosition(e).x;
+					endY=getPosition(e).y;
+				}else if(e.type=="mousemove"){
+					endX=getPosition(e).x;
+					endY=getPosition(e).y;
+				}else if(e.type=="touchend"||e.type=="mouseup"){
+					sliderDirection=getDirection(startX,startY,endX,endY);
+					if(sliderDirection==2){
+						if(move<sliderNums-1){
+							move++;
+						}
+
+					}else if(sliderDirection==4){
+						if(move>0){
+							move--;
+						}
+					}
+					console.log(move);
+						moveObj.style.webkitTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
+						moveObj.style.MozTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
+						moveObj.style.msTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
+						moveObj.style.OTransform ="translate3d(-"+move*clientWidth+"px,0,0)";
+						moveObj.style.transform="translate3d(-"+move*clientWidth+"px,0,0)";
+						//为子元素去掉text,修改动画设置效果
+						var siblingsChildNodes=Array.from(sliderObj)[move].childNodes;
+						Array.from(siblingsChildNodes).forEach((value,key,array)=>{
+							if(value.nodeName!=="#text"){
+								value.style.animationName="left";
+	
+							}
+						});
 				}
-				console.log(startX);
-				console.log(startY);
 			});
+			
+			
+			//获取位置
+			var getPosition=(e=>{
+				if(_hasTouch&&e.type=="touchstart"){
+					return {
+						x:e.touches[0].pageX,
+						y:e.touches[0].pageY
+					}
+				}else if(_hasTouch&&e.type=="touchmove"){
+					return {
+						x:e.changedTouches[0].pageX,
+						y:e.changedTouches[0].pageY
+					}
+				}else{
+					return {
+						x:e.pageX,
+						y:e.pageY
+					};
+				}
+			});
+			
 		</script>
 	</body>
 </html>
