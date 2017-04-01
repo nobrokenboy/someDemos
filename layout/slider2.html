@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				overflow:hidden;
+			}
+			.common-container{
+				position:relative;
+				width:100%;
+				height:500px;
+				margin:20px auto;
+				background:#fff;
+				border:1px solid #ccc;
+				overflow:hidden;
+			}
+			.common-wrapper{
+				position:relative;
+				display:-webkit-box;/*android 2.1-3.0, ios 3.2-4.3 */
+				display:-ms-flexbox;/*WP IE 10*/
+				display:-webkit-flex;/*Chrome 21+ */
+				display:flex;/*android 4.4*/
+				width:100%;
+				height:100%;
+				-webkit-transform: translate3d(0,0,0);
+			    -moz-transform: translate3d(0,0,0);
+			    -o-transform: translate(0,0);
+			    -ms-transform: translate3d(0,0,0);
+			    transform: translate3d(0,0,0);
+				-webkit-transition-property: -webkit-transform;
+			    -moz-transition-property: -moz-transform;
+			    -o-transition-property: -o-transform;
+			    -ms-transition-property: -ms-transform;
+			    transition-property: transform;
+			    transition:all .5s ease-in;
+				text-align:center;
+			}
+			.common-slider{
+				position:relative;
+				width:100%;
+				/*width:1200px;*/
+				flex-shrink:0;
+				color:#fff;
+			}
+			.common-slider:nth-of-type(1){
+				background:palegoldenrod
+			}
+			.common-slider:nth-of-type(2){
+				background:peachpuff
+			}
+			.common-slider:nth-of-type(3){
+				background:palevioletred
+			}
+			.common-slider:nth-of-type(4){
+				background:peru
+			}
+			.common-slider:nth-of-type(5){
+				background:palevioletred
+			}
+			.common-text{
+				position:absolute;
+				left:50%;
+				top:50%;
+				-webkit-transform:translate(-50%,-50%);
+				transform:translate(-50%,-50%);
+				-webkit-animation-duration:.8s;
+				-webkit-animation-timing-function:ease-in;
+/*				-webkit-animation-delay:.2s;*/
+				animation-duration:.8s;
+				animation-timing-function:ease-in;
+		/*		animation-delay:.2s;*/
+			}
+			@-webkit-keyframes left{
+				from{
+					opacity:0;
+					-webkit-transform:translate(100%,-50%);
+				}
+				to{
+					opacity:1;
+					-webkit-transform:translate(-50%,-50%);
+				}
+			}
+			@keyframes left{
+				from{
+					opacity:0;
+					transform:translate(100%,-50%);
+				}
+				to{
+					opacity:1;
+					transform:translate(-50%,-50%);
+				}
+			}
+			
+			@-webkit-keyframes scale{
+				from{
+					opacity:0;
+					-webkit-transform:scale(0);
+				}
+				to{
+					opacity:1;
+					-webkit-transform:scale(1);
+				}
+			}
+			@keyframes scale{
+				from{
+					opacity:0;
+					transform:scale(0);
+				}
+				to{
+					opacity:1;
+					transform:scale(1);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="common-container">
+			<div class="common-wrapper">
+				<div class="common-slider">
+					<h2 class="common-text">num1</h2>
+				</div>
+				<div class="common-slider">
+					<h2 class="common-text">num2</h2>
+				</div>
+				<div class="common-slider">
+					<h2 class="common-text">num3</h2>
+				</div>
+				<div class="common-slider">
+					<h2 class="common-text">num4</h2>
+				</div>
+				<div class="common-slider">
+					<h2 class="common-text">num5</h2>
+				</div>
+			</div>
+			<!--pagination-->
+			<div class="common-pagination"></div>
+			<!--arrow-->
+			<div class="common-arrow common-arrow-left"></div>
+			<div class="common-arrow common-arrow-right"></div>
+		</div>
+		<script type="text/ecmascript-6">
+			import Touch from "./touch.js";
+			var sliderContainer=document.querySelector(".common-container");
+			var $touch=new Touch(sliderContainer);
+			console.log($touch);
+		</script>
+	</body>
+</html>
