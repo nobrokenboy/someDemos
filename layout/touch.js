@@ -83,11 +83,12 @@ class syTouch{
 	}
 	//开始滑动的操作
 	startMove(e){
-		this.touchPosition.startPosition=this.getPosition(e);
+		this.touchPosition.startPosition=this.sliderNums(e);
+		
 	}
 	//滑动过程的操作
 	dealMove(e){
-		this.touchPosition.endPosition=this.getPosition(e);
+		this.touchPosition.endPosition=this.sliderNums(e);
 	}
 	//结束滑动的操作
 	endMove(e){
@@ -127,7 +128,7 @@ class syTouch{
 		
 	}
 	//获取位置，x坐标，y坐标
-	getPosition(e=>{
+	sliderNums(e=>{
 		if(_hasTouch&&e.type=="touchstart"){
 			return {
 				x:e.touches[0].pageX,

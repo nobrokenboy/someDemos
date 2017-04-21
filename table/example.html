@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">	
+    <link data-require="bootstrap@*" data-semver="3.3.7" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <style>
+    		*{
+				padding:0;
+				margin:0;
+				font-size:16px;
+			}
+			 figure img{
+			 	box-sizing:border-box;
+			 	width:100%;
+			 	padding:10px;
+			 	border:1px solid #eee;
+			 }
+
+			.table-cont{
+			  max-height: 200px;
+			  overflow: auto;
+			  background: #ddd;
+			  margin: 20px 10px;
+/*			  box-shadow: 0 0 1px 3px #ddd;*/
+			}
+			thead{
+			  background-color: #ddd;
+			}
+    </style>
+  </head>
+  <body>
+	        <figure>
+				<img src="http://pic1.16pic.com/00/23/02/16pic_2302179_b.jpg"/>
+			</figure>
+		  <div class='table-cont' id='table-cont'>
+		   <table class="table table-striped">
+		      <thead>
+		        <tr>
+		          <th>#</th>
+		          <th>First Name</th>
+		          <th>Last Name</th>
+		          <th>Username</th>
+		          <th>Username</th>
+		        </tr>
+		      </thead>
+		      <tbody>
+		        <tr>
+		          <th>1</th>
+		          <td>Mark</td>
+		          <td>Otto</td>
+		          <td>@mdo</td>
+		          <td>@mdo</td>
+		        </tr>
+		        <tr>
+		          <th>2</th>
+		          <td>Jacob</td>
+		          <td>Thornton</td>
+		          <td>@fat</td>
+		          <td>@mdo</td>
+		        </tr>
+		        <tr>
+		          <th>3</th>
+		          <td>Larry</td>
+		          <td>the Bird</td>
+		          <td>@twitter</td>
+		          <td>@mdo</td>
+		        </tr>
+		        <tr>
+		          <th>4</th>
+		          <td>Larry</td>
+		          <td>the Bird</td>
+		          <td>@twitter</td>
+		          <td>@mdo</td>
+		        </tr>
+		        <tr>
+		          <th>5</th>
+		          <td>Larry</td>
+		          <td>the Bird</td>
+		          <td>@twitter</td>
+		          <td>@mdo</td>
+		        </tr>
+		        <tr>
+		          <th>6</th>
+		          <td>Larry</td>
+		          <td>the Bird</td>
+		          <td>@twitter</td>
+		          <td>@mdo</td>
+		        </tr>
+		        <tr>
+		          <th>7</th>
+		          <td>Larry</td>
+		          <td>the Bird</td>
+		          <td>@twitter</td>
+		          <td>@mdo</td>
+		        </tr>
+		        <tr>
+		          <th scope="row">8</th>
+		          <td>Larry</td>
+		          <td>the Bird</td>
+		          <td>@twitter</td>
+		          <td>@mdo</td>
+		        </tr>
+		        <tr>
+		          <th scope="row">9</th>
+		          <td>Larry</td>
+		          <td>the Bird</td>
+		          <td>@twitter</td>
+		          <td>@mdo</td>
+		        </tr>
+		        <tr>
+		          <th scope="row">10</th>
+		          <td>Larry</td>
+		          <td>the Bird</td>
+		          <td>@twitter</td>
+		          <td>@mdo</td>
+		        </tr>
+		        <tr>
+		          <th scope="row">11</th>
+		          <td>Larry</td>
+		          <td>the Bird</td>
+		          <td>@twitter</td>
+		          <td>@mdo</td>
+		        </tr>
+		        <tr>
+		          <th scope="row">12</th>
+		          <td>Larry</td>
+		          <td>the Bird</td>
+		          <td>@twitter</td>
+		          <td>@mdo</td>
+		        </tr>
+		        <tr>
+		          <th scope="row">13</th>
+		          <td>Larry</td>
+		          <td>the Bird</td>
+		          <td>@twitter</td>
+		          <td>@mdo</td>
+		        </tr>
+		      </tbody>
+		    </table>
+		  </div>
+    </body>
+   <script>
+   	 	// Code goes here
+		'use strict'
+		window.onload = function(){
+		  var tableCont = document.querySelector('#table-cont')
+		  /**
+		   * scroll handle
+		   * @param {event} e -- scroll event
+		   */
+		  function scrollHandle (e){
+		    var scrollTop = this.scrollTop;
+		    this.querySelector('thead').style.transform = 'translateY(' + scrollTop + 'px)';
+		  }
+		  
+		  tableCont.addEventListener('scroll',scrollHandle)
+		}
+   </script>
+</html>

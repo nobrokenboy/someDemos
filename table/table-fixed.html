@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">	
+		<title>类似实现excel表头以及左边第一列固定</title>
+		<style>
+			*{
+				padding:0;
+				margin:0;
+				font-size:14px;
+			}
+			 figure img{
+			 	box-sizing:border-box;
+			 	width:100%;
+			 	padding:10px;
+			 	border:1px solid #eee;
+			 }
+		
+			.report-forms .table-wrap{
+				width:100%;
+			}
+			.report-forms .table-1-wrapper{
+				float:left;
+				width:100px;
+			}
+			.report-forms .table-2-wrapper{
+				overflow:auto;
+			}
+			.report-forms table{
+				position:relative;
+				margin-top:20px;
+				border:none;
+				border-spacing:0px;
+				border-collapse: collapse;
+				border-top:1px solid #e2e2e2;
+			
+			}
+			.report-forms table th,.report-forms table td{
+				width:99px;
+				border-right:1px solid #e2e2e2;/*******/
+				text-align:center;
+				overflow:hidden;
+			}
+			.report-forms table thead{
+				border-top:1px solid #939393;
+				border-bottom:1px solid #939393;
+			}
+			.report-forms table thead tr{
+				height:60px;/*根据表头字段显示的行数的情况*/
+			}
+			.report-forms table tbody tr:first-child{
+				border-top:1px solid #939393;
+			}
+			.report-forms table tbody tr:last-child{
+				border-bottom:1px solid #939393;
+			}
+			.report-forms .table-1{
+				background-color:#fff;
+				border-right:1px solid #e2e2e2;  /*******/
+				border-bottom:1px solid #939393;
+			}
+/*			.report-forms .table-1 tbody{
+				border-right:1px solid #e2e2e2;
+			}*/
+			.report-forms .table-1 tbody tr{
+				border-top:1px solid #fff;
+			}
+			.report-forms .table-1 tbody tr a{
+				color:#ff8000;
+			}
+			.report-forms .table-2{
+				/*border-left:1px solid #e2e2e2;*/  /*******/
+			}
+			.report-forms .table-2 th:nth-child(2n+1),
+			.report-forms .table-2 td:nth-child(2n+1){
+				background-color:#FAFAFA;
+			}
+			.report-forms .table-2 th:nth-child(2n),
+			.report-forms .table-2 td:nth-child(2n){
+				background-color:#fff;
+			}
+			.report-forms .table-2 tbody tr:nth-child(1){
+				border-top:0;
+			}
+			.report-forms .table-2 tbody tr td{
+				padding:8px 0;
+			
+			}
+			.report-forms .table-2 tbody tr:not(:last-child){
+				border-bottom:1px solid #ccc;
+			}
+			.report-forms .thead-fixed{
+				position:fixed;
+				top:0;
+			}
+			/*.report-forms .thead-fixed th{
+				border-right:1px solid #e2e2e2;
+			}*/
+			.report-forms .table-1 .thead-fixed{
+				z-index:9;
+				background-color:#fff;
+				/*border-top:1px solid #939393;
+				border-bottom:1px solid #939393;*/
+			}
+			.report-forms .table-2 .thead-fixed{
+				z-index:1;
+				width:1400px;/*这里要跟table 2的宽度一样*/
+				overflow:auto;
+			}
+			/*.report-forms .table-1 .thead-fixed th,
+			.report-forms .table-2 .thead-fixed th{
+				width:100px;
+			}*/
+			
+		</style>
+	</head>
+	<body>
+		<div class="report-forms" id="oneForm" v-if="isShow" v-cloak>
+			<figure>
+				<img src="http://pic1.16pic.com/00/23/02/16pic_2302179_b.jpg"/>
+			</figure>
+			<section class="forms">
+		        <div class="table-wrap">
+		            <div class="table-wrapper table-1-wrapper table-fixed-wrapper">
+		                <table cellspacing="0" width="100" class="table-1" >
+		                    <thead class="forms-thead" width="100">
+			                    <tr>
+			                        <th></th>
+			                    </tr>
+		                    </thead>
+		                    <tbody v-for="(item,index) in daySalesData" >
+			                    <tr v-for="(value,key) in item.saleWays" >
+			                        <td width="100" v-if="key==0" :rowspan="item.itemLength"  v-set-height:indexOfTbody="index">
+			                        	<a>{{value.customer}}</a>
+			                        </td>
+			                    </tr>
+		                    </tbody>
+		                </table>
+		            </div>
+		            <div class="table-wrapper table-2-wrapper table-scroll-wrapper">
+		                <table width="1400" class="table-2">
+		                    <thead class="forms-thead">
+			                    <tr>
+			                        <th width="100" v-for="item in tableHeadName">{{item}}</th>
+			                    </tr>
+		                    </thead>
+		                    <tbody v-for="(item,key) in daySalesData" v-get-height:index="key" ref="scrollTbody">
+		                    <tr  v-for="value in item.saleWays">
+		                        <td>{{value.comefrom}}</td>
+		                        <td>{{value.newCustomerValid}}</td>
+		                        <td>{{value.validButCustomer}}</td>
+		                        <td>{{value.phone_num}}</td>
+		                        <td>{{value.meet_num}}</td>
+		                        <td>{{value.meetCustomerRate}}</td>
+		                        <td>{{value.frontMoney}}</td>
+		                        <td>{{value.frontMoneyRate}}</td>
+		                        <td>{{value.advancePay}}</td>
+		                        <td>{{value.advancePayRate}}</td>
+		                        <td>{{value.balance}}</td>
+		                        <td>{{value.contractNum}}</td>
+		                        <td>{{value.notice_num}}</td>
+		                        <td>{{value.is_invail}}</td>
+		                    </tr>
+		                    </tbody>
+		                </table>
+		            </div>
+		        </div>
+		    </section>
+   		</div>
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+   	<script src="http://cdn.bootcss.com/vue/2.1.10/vue.min.js"></script>
+    <script>
+    	$(function(){
+    		Vue.directive("set-height",{
+    			bind:function(el,binding,vnode){
+    					var self=this;
+						  //获取当前的实例对象
+            			 var vm=vnode.context;
+            			 var index=binding.value;
+						console.log(binding.value);
+						console.log(binding.arg);
+					
+    					vm.$nextTick(function(){
+    						console.log("獲取body高度："+vm.bodyRealHeight);
+							console.log(index+":"+vm.bodyRealHeight[index]);
+    						console.log("tbody高度："+vm.bodyRealHeight);
+    						el.style.height=vm.bodyRealHeight[index];
+    					});
+	            }
+    		});
+    		
+    		Vue.directive("get-height",{
+    			bind:function(el,binding,vnode){
+    				console.log("獲取高度");
+    				var vm=vnode.context;
+    				/*console.log(binding.value);
+    				console.log(binding.arg);*/
+    				vm.$nextTick(function(){
+    					var bodyHeight=el.getBoundingClientRect().height;
+    					vm.bodyRealHeight.push(bodyHeight);
+    					console.log(vm.bodyRealHeight);
+    				});
+    				
+    				
+    				
+    				
+    			}
+    		});
+	   	   var vm=new Vue({
+	   	   	  el:"#oneForm",
+	   	   	  data:{
+	   	   	  	isShow:false,
+	   	   	  	tableHeadName:[
+	   	   	  		"来源渠道",
+	   	   	  		"新增有效客户数",
+	   	   	  		"累计已见面未签有效客户数",
+	   	   	  		"电话数",
+	   	   	  		"客户面谈数",
+	   	   	  		"见面率",
+	   	   	  		"收订金金额",
+	   	   	  		"订金转化率",
+	   	   	  		"收合同款金额",
+	   	   	  		"合同转化率",
+	   	   	  		"收尾款金额",
+	   	   	  		"签合同数",
+	   	   	  		"警告次数",
+	   	   	  		"回落次数"
+	   	   	  	],
+	   	   	  	bodyRealHeight:[],
+	   	   	  	daySalesData:[],
+	   	   	  	formSelector:document.querySelector(".forms"),
+	   	   	  	formTop:document.querySelector(".forms").offsetTop,
+	   	   	  	table1:document.querySelector(".table-fixed-wrapper"),
+	   	   	  	table2:document.querySelector(".table-scroll-wrapper"),
+	   	   	  	leftMove:100,/*获取div水平滑动的距离*/
+	   	   	  	tableLeft:100/*获取table-2的左移位置*/
+	   	   	  },
+	   	   	  computed:{
+	   	   	  	
+	   	   	  },
+	   	   	  mounted:function(){
+	   	   	  	var self=this;
+	   	   	  	self.getFormData();
+	   	   	  },
+	   	   	  methods:{
+	   	   	  	getFormData:function(){
+		   	  		var self=this;
+		   	  		console.log("hello");
+		   	  		 $.ajax({
+		                url:"./json/day.json",
+		                type:"get",
+		                dataType:"json",
+		                success:function(data){
+		                	console.log(data);
+		                	self.daySalesData=data;
+		                	self.isShow=true;
+		                	/*self.$nextTick(self.setHeight);*/
+		                	self.$nextTick(self.setFixed);
+		                	self.$nextTick(self.tableMoveLeft);
+		                },
+		                error:function(data){
+		                	debugger
+		                	console.log(data);
+		                }
+		   	   	 	});
+		   	   	 	
+		   	   	},
+		   	   	setHeight: function () {
+	                //设置固定表格的高度跟滚动表格的高度一致
+	                $(".table-1 tbody").each(function () {
+	                    var $this=$(this),
+	                        index=$this.index();
+	                    console.log(index);
+	                    //获取th
+	                    var $td=$this.find("tr:eq(0) td");
+	                    //获取table-2对应的tbody
+	                    var tbodyHeight=$(".table-2 tbody").eq(index-1).height()-1;
+	                    $td.height(tbodyHeight);
+	                });
+		   	   	  },
+		   	   	  tableMoveLeft:function(){
+		   	   	  	   var self=this;
+				        //监听tabled-scroll左右滚动事件
+				        $(".table-scroll-wrapper").scroll(function () {
+				            var $this=$(this),
+				            scrollHorizontal=$this.scrollLeft();
+				            if(scrollHorizontal<self.tableLeft){
+				                self.leftMove=self.tableLeft-scrollHorizontal;
+				            }else{
+				                self.leftMove="-"+(scrollHorizontal-self.tableLeft);
+				            }
+		
+				            //获取固定的table-2的head
+				            $(".table-2 .thead-fixed").animate({
+				                'left':self.leftMove+"px"
+				            },0);
+				
+				        });
+				 },
+			     setFixed:function(){
+			     	var self=this;
+			     	console.log(self.formTop);
+			     	//监听window滚动条
+			        $(window).scroll(function () {
+			            var $this=$(this),
+			                scrollMove=$this.scrollTop();
+			            if(scrollMove>self.formTop){
+			                $(".forms-thead").addClass("thead-fixed");
+			                $(".table-2 .forms-thead").css("left",self.leftMove+"px");
+			            }else{
+			                $(".forms-thead").removeClass("thead-fixed");
+			            }
+			        });
+			     	
+			     }
+	   	   	  }
+	   	   });
+	   	   
+	   	   
+    	 });
+   </script>
+ </body>
+</html>
