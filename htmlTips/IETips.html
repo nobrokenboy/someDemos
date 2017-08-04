@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#errorContainer{
+				width:1200px;
+				margin:0 auto;
+				text-align:center;
+			}
+			#errorContainer img{
+				width:30%;
+				margin-top:100px;	
+			}
+			#errorContainer .message{
+				display:inline-block;
+				width:50%;
+				margin-left:3%;
+				margin-top:100px;
+				vertical-align:top;
+				text-align:left;
+			
+			}
+			#errorContainer .title-tips{
+				font-size:40px;
+				color:#434a54;
+			}
+			#errorContainer .title-tips-2{
+				text-indent:85px;
+			}
+		</style>
+		<script>
+		 <!--[if lte IE 9]>
+                      window.onload = function () {
+                            var msg1="亲爱的用户：";
+                            var msg2="请使用ie10以上浏览器，或者谷歌/火狐浏览器等内核浏览器，蟹蟹";
+                            document.body.innerHTML = "<div id='errorContainer'>"+
+                            "<img src='imgs/tips.png'/>"+
+                            "<div class='message'>"+
+                            "<h2 id='1' class='title-tips title-tips-1'></h2>"+
+                            "<h2 id='2' class='title-tips title-tips-2'></h2>"+
+                            "</div>"+
+                            "</div>";
+                            var timer=setInterval(dealText,60);
+                            var text1=document.getElementById("1");
+                            var text2=document.getElementById("2");
+                            var isText1Gone=false;
+                            var subTextLastIndex=1;
+                            var subText2LastIndex=1;
+                            function dealText(){
+                                if(!isText1Gone){
+                                    text1.innerText=msg1.substring(0,subTextLastIndex);
+                                    if(subTextLastIndex<msg1.length){
+                                        subTextLastIndex++;
+                                    }else{
+                                     isText1Gone=true;
+                                    }
+                                }else{
+                                    text2.innerText=msg2.substring(0,subText2LastIndex);
+                                    if(subText2LastIndex<msg2.length){
+                                        subText2LastIndex++;
+                                    }
+                                 }
+                                 }
+                            }
+                <![endif]-->
+		</script>
+	</head>
+	<body>
+		<!--<canvas id="mycanvas">
+			
+		</canvas>-->
+		<div style="width:200px;height:100px;overflow-y:scroll;border:1px solid #eee;">
+			<h1>hello world</h1>
+			<h1>hello world</h1>
+			<h1>hello world</h1>
+			<h1>hello world</h1>
+			<h1>hello world</h1>
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		    
+		window.onload = function () {
+                            var msg1="亲爱的用户：";
+                            var msg2="请使用ie10以上浏览器，或者谷歌/火狐浏览器等内核浏览器，蟹蟹";
+                            document.body.innerHTML = "<div id='errorContainer'>"+
+                            "<img src='imgs/tips.png'/>"+
+                            "<div class='message'>"+
+                            "<h2 id='1' class='title-tips title-tips-1'></h2>"+
+                            "<h2 id='2' class='title-tips title-tips-2'></h2>"+
+                            "</div>"+
+                            "</div>";
+                            var timer=setInterval(dealText,60);
+                            var text1=document.getElementById("1");
+                            var text2=document.getElementById("2");
+                            var isText1Gone=false;
+                            var subTextLastIndex=1;
+                            var subText2LastIndex=1;
+                            function dealText(){
+                                if(!isText1Gone){
+                                    text1.innerText=msg1.substring(0,subTextLastIndex);
+                                    if(subTextLastIndex<msg1.length){
+                                        subTextLastIndex++;
+                                    }else{
+                                     isText1Gone=true;
+                                    }
+                                }else{
+                                    text2.innerText=msg2.substring(0,subText2LastIndex);
+                                    if(subText2LastIndex<msg2.length){
+                                        subText2LastIndex++;
+                                    }
+                                 }
+                                 }
+                            }
+		 
+	</script>
+	
+</html>

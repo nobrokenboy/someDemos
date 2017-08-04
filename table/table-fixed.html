@@ -232,10 +232,10 @@
 	   	   	  	],
 	   	   	  	bodyRealHeight:[],
 	   	   	  	daySalesData:[],
-	   	   	  	formSelector:document.querySelector(".forms"),
 	   	   	  	formTop:document.querySelector(".forms").offsetTop,
 	   	   	  	table1:document.querySelector(".table-fixed-wrapper"),
 	   	   	  	table2:document.querySelector(".table-scroll-wrapper"),
+	   	   	  	formSelector:document.querySelector(".forms"),
 	   	   	  	leftMove:100,/*获取div水平滑动的距离*/
 	   	   	  	tableLeft:100/*获取table-2的左移位置*/
 	   	   	  },
@@ -278,7 +278,7 @@
 	                    //获取th
 	                    var $td=$this.find("tr:eq(0) td");
 	                    //获取table-2对应的tbody
-	                    var tbodyHeight=$(".table-2 tbody").eq(index-1).height()-1;
+	                    var tbodyHeight=$(".table-2 tbody").eq(index-1).outerHeight;
 	                    $td.height(tbodyHeight);
 	                });
 		   	   	  },
