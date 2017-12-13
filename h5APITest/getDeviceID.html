@@ -1,0 +1,27 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8">  
+<title>Device Example</title>  
+<script type="text/javascript">  
+	// H5 plus事件处理  
+	  
+	if(window.plus){  
+		alert("进入1");
+		plusReady();  
+	}else{  
+		alert("进入2");
+		document.addEventListener("plusready",plusReady,false);  
+	}  
+	function plusReady(plus){  
+		alert("哈哈哈");
+		alert( "uuid: "+plus.device.uuid );  
+	}
+	
+	alert(navigator.userAgent);
+</script>  
+</head>  
+<body>  
+	<h1>获取设备的唯一标识号</h1>  
+</body>  
+</html>  
