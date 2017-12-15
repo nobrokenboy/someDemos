@@ -9,7 +9,7 @@
 			var b=13;
 			var a=[];
 			var result="";
-			a.push(function(){
+			/*a.push(function(){
 				if(b%2==0){
 					result="我是偶数";
 				}else{
@@ -17,7 +17,19 @@
 				}
 				
 				return result;
-			}());
+			}());*/
+			a.push(function(){
+				return deal.apply(window,[b]);
+			});
+			
+			var deal=function(input){
+				if(input%2==0){
+					return "我是偶数";
+				}else{
+					return "我是奇数";
+				}
+			};
+			
 			console.log(a);
 		</script>
 	</body>
