@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var b=13;
+			var a=[];
+			var result="";
+			a.push(function(){
+				if(b%2==0){
+					result="我是偶数";
+				}else{
+					result="我是奇数";
+				}
+				
+				return result;
+			}());
+			console.log(a);
+		</script>
+	</body>
+</html>

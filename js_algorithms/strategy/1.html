@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/*
+		 *	1.背景：A绩效：4倍工资
+		 * 		  B绩效：3倍工资
+		 * 		  C绩效：2倍工资	
+		 * 
+		 * 
+		 * 
+		 * 
+		 * */
+		/*实现的规则*/
+			var obj={
+				"A":function(salary){
+					return salary*4;
+				},
+				"B":function(salary){
+					return salary*3;
+				},
+				"C":function(salary){
+					return salary*2;
+				}
+			};
+			
+			//使用方式不变
+			var calculateBouns=function(level,salary){
+				return obj[level](salary);
+			}
+			
+			console.log(calculateBouns('A',50000));
+		</script>
+	</body>
+</html>
