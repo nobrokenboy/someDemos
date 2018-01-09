@@ -22,11 +22,12 @@
 				position:absolute;
 				top:50%;
 				left:50%;
+				transform:translate(-50%,-50%);
 				display:inline-block;
 				width:120px;
 				height:50px;
-				margin-left:-60px;
-				margin-top:-25px;
+				/*margin-left:-60px;
+				margin-top:-25px;*/
 				line-height:50px;
 				text-align:center;
 				border-radius:5px;
@@ -39,10 +40,18 @@
 			#wave1{
 				background-color:#00BFFF;
 			}
+			#wave2{
+				background-color:#009955;
+			}
 			#wave1 a{
 				background-color:burlywood;
 			}
-			#wave1 a:after{
+			#wave2 a{/*宽度不确定长度*/
+				width:50%;
+				height:50px;
+				background-color:cadetblue;
+			}
+			.wave a:after{
 				/*画图 ，假设left:0;top:0然后画出两个中心点的水平和垂直距离*/
 			    content: "";
 			    display: block;
@@ -56,7 +65,7 @@
 			    opacity:0;
 			    transition: all 1s;
 			}
-			#wave1 a:active:after{
+			.wave a:active:after{
 				/*位于中间即是a的中点*/
 				width: 0; 
 				height: 0; 
@@ -65,12 +74,27 @@
 				opacity: 1; 
 				transition-duration: 0s;
 			}
+			
+			#wave2 a:after{
+				left:50%;
+				top:50%;
+				transform:translate(-50%,-50%);
+			}
+			#wave2 a:active:after{
+				left:50%;
+				top:50%;
+				transform:translate(-50%,-50%);
+			}
 		</style>
 	</head>
 	<body>
-		<!--实现冲击波-->
+		<!--实现冲击波按钮确定长度-->
 		<div class="wave" id="wave1">
 			<a>点我</a>
+		</div>
+		<!--实现冲击波按钮不确定长度时-->
+		<div class="wave" id="wave2">
+			<a>点我哈哈</a>
 		</div>
 	</body>
 </html>
