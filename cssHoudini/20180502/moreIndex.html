@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html> 
+	<head> 
+		<style> 
+		body { 
+			width: 100vw; 
+			height: 100vh; 
+			--checkerboard-spacing: 10; 
+			--checkerboard-size: 32; 
+			background-image: paint(checkerboarder); 
+			} 
+		</style> 
+		<script> 
+			CSS.paintWorklet.addModule('checkerboarder.js') 
+		</script> 
+	</head> 
+	<body> 
+	</body> 
+</html>
