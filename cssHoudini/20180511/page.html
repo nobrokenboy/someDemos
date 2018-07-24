@@ -41,5 +41,26 @@
 		<div class="button">
 			<span>HELLO IS A GOOD WORD!</span>
 		</div>
+		
+		<script>
+			Date.prototype.getDateStr = function(day,type){
+			    this.setDate(this.getDate()+day);
+			    let y = this.getFullYear();
+			    let m = this.getMonth()>8?this.getMonth()+1:'0'+(this.getMonth()+1);
+			    let d = this.getDate()>9?this.getDate():'0'+this.getDate()
+			    let res;
+			    type=type||0;
+			    if(type===0){
+			        res=`${y}-${m}-${d}`;
+			    }else{
+			        res=`${y}年${m}月${d}日`
+			    }
+			
+			    return res;
+			}
+			
+			var date=new Date().getDateStr(-6,1);
+			console.log(date);
+		</script>
 	</body>
 </html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--<link rel="stylesheet" href="./index.css" media="print"/>-->
+		<style type="text/css" media="print">
+			@page{
+				size:A4 portrait;
+				/*margin:0mm;*/
+			     @top-left{
+			     	display:none;
+			     }
+				 @top-center{
+			     	display:none;
+			     }
+			      @bottom-left{
+			     	display:none;
+			     }
+			     @bottom-right{
+			     	display:none;
+			     }
+			     
+			     @bottom-center {
+				    content: counter(page); /* 显示page计数器的值 */
+				 }
+				 
+			}
+			
+			header{
+				display:none;
+			}
+			nav, aside {
+		    	display: none;
+		  	}
+		  	html{
+			    background:red;
+			    margin:0;
+			}
+		  	body {
+			   -webkit-print-color-adjust: exact;
+			   margin:5mm 5mm;
+			   /*background:blue;*/
+			}
+			#container{
+				height:2020px;
+				
+			}
+			.A4 {          
+			    page-break-before: auto;          
+			    page-break-after: always;  
+			} 
+			</style>
+	</head>
+	<body>
+		<button type="button" id='print'>打印</button>		
+		<div id='container'>
+			<header>打印内容</header>
+			<div class="A4">
+				第二页
+			</div>  
+    		<div class="A4">第二页</div>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+		<script src="./jqprint.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var $container=$('#container');
+				var container=document.getElementById('container');
+				var _$container=$(container);
+			
+				$('#print').on('click',function(){
+					$container.jqprint({
+//						printContainer:false,
+						importCss:false
+					});
+				});
+				
+				//ES5 数组reduce函数累加器,a是上一次的值，b当前值
+				var test=[1,2,3,4,5].reduce(function(a,b){
+					return a+b;
+				},[]);
+				console.log(test);
+				//
+				var flattened=[[0,1],[2,3],[4,5]].reduce(function(a,b){
+					return a.concat(b);
+				});
+				console.log(flattened);
+				
+				//数组解构
+				const csvFileLine = '1997,John Doe,US,john@doe.com,New York';
+				const {0:year,1:name,2:country,3:email, 4: state } = csvFileLine.split(',');
+				console.log({0:year,1:name,2:country,3:email, 4: state });
+				
+			});
+		</script>
+	</body>
+</html>

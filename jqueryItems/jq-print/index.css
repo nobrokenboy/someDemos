@@ -1,0 +1,31 @@
+	@page{
+		size:A4 portrait;
+		/*margin:0mm;*/
+		 @bottom-center {
+		    content: counter(page); /* 显示page计数器的值 */
+		  }
+	}
+	
+	header{
+		display:none;
+	}
+	nav, aside {
+    	display: none;
+  	}
+  	html{
+	    background:red;
+	    margin:0;
+	}
+  	body {
+	   -webkit-print-color-adjust: exact;
+	   margin:5mm 5mm;
+	   /*background:blue;*/
+	}
+	#container{
+		height:2020px;
+		
+	}
+	.A4 {          
+	    page-break-before: auto;          
+	    page-break-after: always;  
+	} 
