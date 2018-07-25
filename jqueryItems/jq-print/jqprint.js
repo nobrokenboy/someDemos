@@ -6,6 +6,13 @@
 ;(function($){
 	var opt;
 	$.fn.jqprint=function(options){
+		/*
+		 
+		 * @param {Boolean} debug:是否已经在debug
+		 * @param {Boolean} operaSupport:是否支持operaSupport
+		 * @param {Boolean}	printContainer:要打印的容器
+		 * @param {Boolean}	importCss:指是否有外部引入css
+		 * */
 		var defaults={
 			debug:false,
 			operaSupport:true,
