@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	    <meta name="renderer" content="webkit">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="icon" href="http://static.o-home.com/v2/image/layouts/ohome.ico">
+		<title>移动端表格预览显示</title>
+		<style>
+			*{
+				padding:0;
+				margin:0;
+			}
+			html,body{
+				width:100%;
+				overflow-x:hidden;
+			}
+			/*清除浮动*/
+			.clear{
+			  clear:both;
+			  overflow:hidden;
+			  height:0;
+			  font-size:0;
+			}
+			.clearfix{
+			  *zoom:1;
+			}
+			.clearfix:after{
+			  display:block;
+			  visibility:hidden;
+			  clear:both;
+			  height:0;
+			  font-size:0;
+			  content:"";
+			}
+			section{
+				padding:10px;
+			}
+			header{
+				width:100%;
+				height:45px;
+				line-height:45px;
+				margin-bottom:10px;
+				background:#eee;
+				text-align:center;
+				color:#333;
+				font-weight:bold;
+			}
+			.btn{
+				-webkit-appearance:none;
+				appearance:none;
+				float:right;
+				width:80px;
+				height:30px;
+				line-height:30px;
+				border:none;
+				background:#007AFF;
+				text-align:center;
+				color:#fff;
+				border-radius:30px;
+			}
+			@page{
+				size:A4;
+			}
+			.preview-wrapper{
+				width: 100%;
+			    overflow-X: auto;
+			    margin: 0 0 1em;
+			}
+			table
+			{
+			  table-layout: fixed;
+			  width:1100px;
+			  /*width: 100%;*/
+			  margin-top:10px;
+			  border-collapse:collapse;
+			  font-size:12px;
+			 
+			}
+			
+			.table-section{
+			   margin-bottom:20px;	
+			}
+			
+			table, td, th
+			{
+			   border:1px solid black;
+			}
+			td, th{
+			 /*  padding:2px 0;*/
+			   text-align:center;
+			   /*-webkit-transform:scale(.8);
+			   transform:scale(.8);*/
+			   word-break: break-all;
+			}
+		</style>
+	</head>
+	<body>
+		<header>预览</header>
+		<section >
+			<div class="clearfix">
+				<button type="button" class="btn">签署</button>
+			</div>
+			<div class="preview-wrapper">
+				<div class="table-section">
+					<h4>基本信息：</h2>
+					<table>
+						<tbody>
+							<tr>
+								<td>客户姓名</td>
+								<td>程永贵</td>
+								<td>联系电话</td>
+								<td>13539467758</td>
+								<td>家居顾问</td>
+								<td>县哈哈</td>
+								<td>联系电话</td>
+								<td>13539487758</td>
+							</tr>
+							<tr>
+								<td>装修地址</td>
+								<td colspan="3">广东省佛山市南海区嘉州花园7栋301</td>
+								<td>户型</td>
+								<td>三房两厅</td>
+								<td>计价面积</td>
+								<td>120</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>6</td>
+								<td>7</td>
+								<td>8</td>
+								<td>1</td>
+								<td>2</td>
+								<td>3</td>
+								<td>4</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="table-section">
+					<h4>报价单信息：</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>项目名称</th>
+								<th>单价</th>
+								<th>数量</th>
+								<th>单位</th>
+								<th>空间</th>
+								<th>备注</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>落地窗</td>
+								<td>12000</td>
+								<td>2</td>
+								<td>元/平方</td>
+								<td>阳台</td>
+								<td>没错的，是的，客户很急需这个，所以呢尽量在便宜的范围内不要再降价啦要不然讷讷 讷讷</td>
+							</tr>
+							<tr>
+								<td>落地窗</td>
+								<td>12000</td>
+								<td>2</td>
+								<td>元/平方</td>
+								<td>阳台</td>
+								<td>没错的，是的，客户很急需这个，所以呢尽量在便宜的范围内不要再降价啦要不然讷讷 讷讷</td>
+							</tr>
+							<tr>
+								<td>落地窗</td>
+								<td>12000</td>
+								<td>2</td>
+								<td>元/平方</td>
+								<td>阳台</td>
+								<td>没错的，是的，客户很急需这个，所以呢尽量在便宜的范围内不要再降价啦要不然讷讷 讷讷</td>
+							</tr>
+							<tr>
+								<td>落地窗</td>
+								<td>12000</td>
+								<td>2</td>
+								<td>元/平方</td>
+								<td>阳台</td>
+								<td>没错的，是的，客户很急需这个，所以呢尽量在便宜的范围内不要再降价啦要不然讷讷 讷讷</td>
+							</tr>
+							<tr>
+								<td>落地窗</td>
+								<td>12000</td>
+								<td>2</td>
+								<td>元/平方</td>
+								<td>阳台</td>
+								<td>没错的，是的，客户很急需这个，所以呢尽量在便宜的范围内不要再降价啦要不然讷讷 讷讷</td>
+							</tr>
+							<tr>
+								<td>落地窗</td>
+								<td>12000</td>
+								<td>2</td>
+								<td>元/平方</td>
+								<td>阳台</td>
+								<td>没错的，是的，客户很急需这个，所以呢尽量在便宜的范围内不要再降价啦要不然讷讷 讷讷</td>
+							</tr>
+							<tr>
+								<td>落地窗</td>
+								<td>12000</td>
+								<td>2</td>
+								<td>元/平方</td>
+								<td>阳台</td>
+								<td>没错的，是的，客户很急需这个，所以呢尽量在便宜的范围内不要再降价啦要不然讷讷 讷讷</td>
+							</tr>
+							<tr>
+								<td>落地窗</td>
+								<td>12000</td>
+								<td>2</td>
+								<td>元/平方</td>
+								<td>阳台</td>
+								<td>没错的，是的，客户很急需这个，所以呢尽量在便宜的范围内不要再降价啦要不然讷讷 讷讷</td>
+							</tr>
+							<tr>
+								<td>落地窗</td>
+								<td>12000</td>
+								<td>2</td>
+								<td>元/平方</td>
+								<td>阳台</td>
+								<td>没错的，是的，客户很急需这个，所以呢尽量在便宜的范围内不要再降价啦要不然讷讷 讷讷</td>
+							</tr>
+							<tr>
+								<td>落地窗</td>
+								<td>12000</td>
+								<td>2</td>
+								<td>元/平方</td>
+								<td>阳台</td>
+								<td>没错的，是的，客户很急需这个，所以呢尽量在便宜的范围内不要再降价啦要不然讷讷 讷讷</td>
+							</tr>
+							<tr>
+								<td>落地窗</td>
+								<td>12000</td>
+								<td>2</td>
+								<td>元/平方</td>
+								<td>阳台</td>
+								<td>没错的，是的，客户很急需这个，所以呢尽量在便宜的范围内不要再降价啦要不然讷讷 讷讷</td>
+							</tr>
+							<tr>
+								<td>落地窗</td>
+								<td>12000</td>
+								<td>2</td>
+								<td>元/平方</td>
+								<td>阳台</td>
+								<td>没错的，是的，客户很急需这个，所以呢尽量在便宜的范围内不要再降价啦要不然讷讷 讷讷</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="table-section">
+					<h4>报价单信息2：</h2>
+					<table>
+						<tbody>
+							<tr>
+								<td>客户姓名</td>
+								<td>程永贵</td>
+								<td>联系电话</td>
+								<td>13539467758</td>
+								<td>家居顾问</td>
+								<td>县哈哈</td>
+								<td>联系电话</td>
+								<td>13539487758</td>
+							</tr>
+							<tr>
+								<td>装修地址</td>
+								<td colspan="3">广东省佛山市南海区嘉州花园7栋301</td>
+								<td>户型</td>
+								<td>三房两厅</td>
+								<td>计价面积</td>
+								<td>120</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>6</td>
+								<td>7</td>
+								<td>8</td>
+								<td>1</td>
+								<td>2</td>
+								<td>3</td>
+								<td>4</td>
+							</tr>
+							<tr>
+								<td>客户姓名</td>
+								<td>程永贵</td>
+								<td>联系电话</td>
+								<td>13539467758</td>
+								<td>家居顾问</td>
+								<td>县哈哈</td>
+								<td>联系电话</td>
+								<td>13539487758</td>
+							</tr>
+							<tr>
+								<td>装修地址</td>
+								<td colspan="3">广东省佛山市南海区嘉州花园7栋301</td>
+								<td>户型</td>
+								<td>三房两厅</td>
+								<td>计价面积</td>
+								<td>120</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>6</td>
+								<td>7</td>
+								<td>8</td>
+								<td>1</td>
+								<td>2</td>
+								<td>3</td>
+								<td>4</td>
+							</tr>
+							<tr>
+								<td>客户姓名</td>
+								<td>程永贵</td>
+								<td>联系电话</td>
+								<td>13539467758</td>
+								<td>家居顾问</td>
+								<td>县哈哈</td>
+								<td>联系电话</td>
+								<td>13539487758</td>
+							</tr>
+							<tr>
+								<td>装修地址</td>
+								<td colspan="3">广东省佛山市南海区嘉州花园7栋301</td>
+								<td>户型</td>
+								<td>三房两厅</td>
+								<td>计价面积</td>
+								<td>120</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>6</td>
+								<td>7</td>
+								<td>8</td>
+								<td>1</td>
+								<td>2</td>
+								<td>3</td>
+								<td>4</td>
+							</tr>
+							<tr>
+								<td>客户姓名</td>
+								<td>程永贵</td>
+								<td>联系电话</td>
+								<td>13539467758</td>
+								<td>家居顾问</td>
+								<td>县哈哈</td>
+								<td>联系电话</td>
+								<td>13539487758</td>
+							</tr>
+							<tr>
+								<td>装修地址</td>
+								<td colspan="3">广东省佛山市南海区嘉州花园7栋301</td>
+								<td>户型</td>
+								<td>三房两厅</td>
+								<td>计价面积</td>
+								<td>120</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>6</td>
+								<td>7</td>
+								<td>8</td>
+								<td>1</td>
+								<td>2</td>
+								<td>3</td>
+								<td>4</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
