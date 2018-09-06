@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!--<meta name="viewport" content="initial-scale=1.0, target-densitydpi=device-dpi" />
+<meta name="viewport" content="initial-scale=1.0, width=device-height">-->
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../libs/flashcanvas.js"></script>
+<![endif]-->
+<style type="text/css">
+	#signature {
+		border: 2px dotted black;
+		background-color:lightgrey;
+	}
+
+</style>
+</head>
+<body>
+	<div>
+		<div id="signature"></div>
+	</div>
+<script src="../libs/jquery.js"></script>
+<script src="../libs/jSignature.js"></script>
+<script>
+$(function(){
+	var $sigdiv = $("#signature").jSignature()
+});
+</script>
+</body>
+</html>

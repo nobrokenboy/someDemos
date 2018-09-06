@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#ercode{
+				width:210px;
+				height:210px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='ercode'></div>
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+		<script src='./jqQrcode/jquery.qrcode.min.js'></script>
+		<script>
+			var obj=$('#ercode').qrcode('http://a.app.qq.com/o/simple.jsp?pkgname=com.ohome.app.android');
+			console.log(obj);
+		</script>
+	</body>
+</html>

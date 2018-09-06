@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>修复v-model不更新到input 的问题</title>
+	</head>
+	<body>
+		<div id='test'>
+			<input type="text" name='otherName' v-model='name' />
+			<button @click='getName'>提交</button>
+		</div>
+		<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+		<script>
+			var vm=new Vue({
+				el:"#test",
+				data:{
+					name:"flowers"
+				},
+				methods:{
+					getName(){
+						//不能触发到@input事件
+						this.name='doter';
+//						document.getElementsByName('otherName')[0].value=this.name;
+						console.log(document.getElementsByName('otherName')[0].value);
+					}
+				}
+				
+			});
+		</script>
+	</body>
+</html>

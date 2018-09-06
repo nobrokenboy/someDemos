@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css3实现</title>
+		<style>
+			.container{
+				perspective:1px;
+				padding:0;
+				width:100%;
+				height:calc(100vh - 300px);
+				overflow:auto;
+			}
+			.box{
+				height:1280px;
+				transform-style:preserve-3d;
+				position:relative;
+			}
+			.background{
+				position:absolute;
+				left:50%;
+				-webkit-transform: translate3D(-50%,-120x,-1px) scale(2);
+				 transform: translate3D(-50%,-120x,-1px) scale(2);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="box">
+				<img class="background" src='http://7s1r1c.com1.z0.glb.clouddn.com/t_nw19.jpg'/>
+			</div>
+		</div>
+	</body>
+</html>
