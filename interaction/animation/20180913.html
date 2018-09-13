@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding:0;
+				margin:0;
+			}
+			.clearfix{
+			  clear:both;
+			  overflow:hidden;
+			  height:0;
+			  font-size:0;
+			}
+			.clearfix{
+			  *zoom:1;
+			}
+			.clearfix:after{
+			  display:block;
+			  visibility:hidden;
+			  clear:both;
+			  height:0;
+			  font-size:0;
+			  content:"";
+			}
+			.fl{
+			  float:left;		
+			}
+			.fr{
+			  float:right;	
+			}
+			.display-no{
+				display:none;
+			}
+			header{
+				position:fixed;
+				top:0;
+				z-index:9;
+				width:100%;
+				background:#fff;
+				box-shadow:0px 0px 11px rgba(1,1,1,0.1);
+				transition:all .3s ease-in-out;
+				transform:translate3d(0,0,0);
+			}
+			
+			header.to-top{
+				transform:translate3d(0,-100%,0);
+				/*transform:translate3d(0,-80px,0);*/
+			}
+			header section{
+				height:80px;
+				line-height:80px;
+				font-family: "microsoft yahei";
+				font-size:18px;
+				color:#000;
+			}
+			.content{
+				width:1080px;
+				margin:0 auto;
+			}
+			.content-section{
+				margin-top:100px;
+			}
+			.content-section ul{
+				font-size:0;
+			}
+			.content-section ul li{
+				list-style:none;
+				display:inline-block;
+				width:-webkit-calc((100% - 20px)/3);
+				width:calc((100% - 20px)/3);
+				margin-bottom:20px;
+				transition:all .5s ease-in-out;
+				transform:scale3d(0.9,1,1);
+				transform-origin:left;
+				opacity:0;
+				overflow:hidden;
+			}
+			
+			.content-section ul li.is-show{
+				transform:scale3d(1,1,1);
+				opacity:1;
+			}
+			.content-section ul li:hover img{
+				transform:scale(1.02);
+			}
+			.content-section ul li:not(:nth-child(3n)){
+				margin-right:10px;
+			}
+			.nav li{
+				list-style:none;
+				display:inline-block;
+				margin-right:60px;
+			}
+			.nav li a{
+				position:relative;
+				display:inline-block;
+			}
+			.nav li a:after{
+				position:absolute;
+				content:"";
+				left:0;
+				top:70%;
+				display:inline-block;
+				width:100%;
+				height:3px;
+				background:#000;
+				transition:all .5s ease-in;
+				transform:scale(0);
+				opacity:0;
+			}
+			.nav li:hover a:after{
+				transform:scale(1);
+				opacity:1;
+			}
+			.text{
+				margin-top:10px;
+				margin-bottom:10px;
+				opacity:0;
+				transform:translate3d(0,100%,0);
+				transition:all .5s ease-in;
+			}
+			.text.is-show{
+				opacity:1;
+				transform:translate3d(0,0,0)
+			}
+			
+			.wrapper{
+				position:relative;
+				display:none;
+			}
+			.line{
+				display:block;
+				width:50px;
+				height:4px;
+				background:#000;
+				border-radius:30px;
+				transition: all 0.3s ease-out;
+			}
+			.second-line{
+				margin:7px 0;
+			}
+			.checkbox{
+				display:none;
+			}
+			.checkbox:checked~span:nth-of-type(1){
+				transform: rotate(45deg) translate3d(7px,7px,0);
+    			transform-origin: center;
+			}
+			
+			.checkbox:checked~span:nth-of-type(2){
+				transform: scale3d(0,1,1);
+			}
+			
+			.checkbox:checked~span:nth-of-type(3){
+			    transform: rotate(-45deg) translate3d(7px,-7px,0);
+				transform-origin: center;
+			}
+			.btn-more{
+				position:absolute;
+				left:0;
+				top:0;
+				width:50px;
+				height:100%;
+				background:transparent;
+				
+			}
+			
+			/*@media screen and (max-width: 640px) {
+				.nav{
+					display:none;
+				}
+				.wrapper{
+					display:block;
+				}
+			}*/
+		</style>
+	</head>
+	<body>
+		<header>
+			<section class="content">
+				<div class="logo fl">
+					UDE 体验中心
+				</div>
+				<ul class="nav fr">
+					<li><a>index</a></li>
+					<li><a>brand</a></li>
+					<li><a>story</a></li>
+					<li><a>shop</a></li>
+				</ul>
+				<div class="wrapper fr">
+					<input type="checkbox" id='more'  class="checkbox"/>
+					<span class="line first-line"></span>
+					<span class="line second-line"></span>
+					<span class="line three-line"></span>
+					<label for="more" class="btn-more"> </label>
+				</div>
+			</section>
+		</header>
+		<article class="content content-section">
+			<p class="text" align="center">
+				Let us make it try!!!
+			</p>
+			<ul>
+				<li>
+					<img src="https://cdn-isux.qq.com/upload/covers/219_a_src.jpg" alt="测试的图片" width='100%'/>
+					<a href=""></a>
+				</li>
+				<li>
+					<img src="https://cdn-isux.qq.com/upload/covers/219_a_src.jpg" alt="测试的图片" width='100%'/>
+				</li>
+				<li>
+					<img src="https://cdn-isux.qq.com/upload/covers/219_a_src.jpg" alt="测试的图片" width='100%'/>
+				</li>
+				<li>
+					<img src="https://cdn-isux.qq.com/upload/covers/219_a_src.jpg" alt="测试的图片" width='100%'/>
+				</li>
+				<li>
+					<img src="https://cdn-isux.qq.com/upload/covers/219_a_src.jpg" alt="测试的图片" width='100%'/>
+				</li>
+				<li>
+					<img src="https://cdn-isux.qq.com/upload/covers/219_a_src.jpg" alt="测试的图片" width='100%'/>
+				</li>
+				<li>
+					<img src="https://cdn-isux.qq.com/upload/covers/219_a_src.jpg" alt="测试的图片" width='100%'/>
+				</li>
+				<li>
+					<img src="https://cdn-isux.qq.com/upload/covers/219_a_src.jpg" alt="测试的图片" width='100%'/>
+				</li>
+				<li>
+					<img src="https://cdn-isux.qq.com/upload/covers/219_a_src.jpg" alt="测试的图片" width='100%'/>
+				</li>
+				<li>
+					<img src="https://cdn-isux.qq.com/upload/covers/219_a_src.jpg" alt="测试的图片" width='100%'/>
+				</li>
+				<li>
+					<img src="https://cdn-isux.qq.com/upload/covers/219_a_src.jpg" alt="测试的图片" width='100%'/>
+				</li>
+				<li>
+					<img src="https://cdn-isux.qq.com/upload/covers/219_a_src.jpg" alt="测试的图片" width='100%'/>
+				</li>
+			</ul>
+			<p align='center'>
+				<a class="btn-more"></a>
+			</p>
+		
+		</article>
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+		<script>
+			$(function(){
+					$('.text').addClass('is-show');
+					
+					$('.content-section ul li').each(function(){
+							var $self=$(this);
+							$self.addClass('is-show');
+						});
+						
+					$(window).scroll(function(){
+					var $this=$(this);
+					var scrollTop=$this.scrollTop();
+					if(scrollTop>0){
+						$('header').addClass('to-top');
+					}else{
+						$('header').removeClass('to-top');
+					}
+					
+				
+				});
+			});
+		</script>
+	</body>
+</html>

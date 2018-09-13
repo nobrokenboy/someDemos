@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>参照腾讯的</title>
+		<style>
+			.wrapper{
+				position:relative;
+			}
+			.line{
+				display:block;
+				width:50px;
+				height:4px;
+				background:#000;
+				border-radius:30px;
+				transition: all 0.3s ease-out;
+			}
+			.second-line{
+				margin:7px 0;
+			}
+			.checkbox{
+				display:none;
+			}
+			.checkbox:checked~span:nth-of-type(1){
+				transform: rotate(45deg) translate3d(7px,7px,0);
+    			transform-origin: center;
+			}
+			
+			.checkbox:checked~span:nth-of-type(2){
+				transform: scale3d(0,1,1);
+			}
+			
+			.checkbox:checked~span:nth-of-type(3){
+			    transform: rotate(-45deg) translate3d(7px,-7px,0);
+				transform-origin: center;
+			}
+			.btn-more{
+				position:absolute;
+				left:0;
+				top:0;
+				width:50px;
+				height:100%;
+				background:transparent;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<input type="checkbox" id='more'  class="checkbox"/>
+			<span class="line first-line"></span>
+			<span class="line second-line"></span>
+			<span class="line three-line"></span>
+			<label for="more" class="btn-more"> </label>
+		</div>
+	</body>
+</html>
