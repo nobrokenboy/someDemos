@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				font-size:14px;
+				background:#eee;
+			}
+			#section{
+				padding:20px 10px;
+			}
+			nav{
+				position:fixed;
+				right:10px;
+				
+			}
+			input[type='checkbox']{
+				display:none;
+			}
+			.label{
+			    width: 60px;
+			    height: 60px;
+			    background: #4791FF;
+			    border-radius: 50%;
+			    line-height:60px;
+			    text-align: center;
+			    display: block;
+			    color: white;
+			    cursor: pointer;
+			    user-select: none;
+			    transition:all .5s ease-in;
+			}
+			nav ul{
+				position:relative;
+			}
+			nav ul li{
+				position:absolute;
+				top:0;
+				right:0;
+				list-style:none;
+				width:80px;
+				height:80px;
+				line-height:80px;
+				text-align:center;
+				opacity:0;
+				transition:all .5s ease-in;
+				-webkit-transform:translateY(0);
+				transform:translateY(0);
+			}
+			nav ul li~li{
+				border-top:1px solid #fff;
+			}
+			nav ul li:nth-child(1){
+				background:olivedrab;
+			}
+			nav ul li:nth-child(2){
+				background:orange;
+			}
+			nav ul li:nth-child(3){
+				background:orangered;
+			}
+			nav ul li:nth-child(4){
+				background:orchid;
+			}
+			nav ul li:nth-child(5){
+				background:#4791FF;
+			}
+			nav ul li a{
+				color:#fff;
+				text-decoration:none;
+				cursor:pointer;
+			}
+			input[type='checkbox']:checked ~label{
+				opacity:0;
+			}
+			input[type='checkbox']:checked ~ul li:nth-child(1){
+				opacity:1;
+				transition-delay: 0.1s;
+				-webkit-transform:translateY(0);
+				transform:translateY(0);
+			}
+			input[type='checkbox']:checked ~ul li:nth-child(2){
+				opacity:1;
+				transition-delay: 0.3s;
+				-webkit-transform:translateY(80px);
+				transform:translateY(80px);
+			}
+			input[type='checkbox']:checked ~ul li:nth-child(3){
+				opacity:1;
+				transition-delay: 0.6s;
+				-webkit-transform:translateY(160px);
+				transform:translateY(160px);
+			}
+			input[type='checkbox']:checked ~ul li:nth-child(4){
+				opacity:1;
+				transition-delay: 0.9s;
+				-webkit-transform:translateY(240px);
+				transform:translateY(240px);
+			}
+			input[type='checkbox']:checked ~ul li:nth-child(5){
+				opacity:1;
+				transition-delay: 1.2s;
+				-webkit-transform:translateY(320px);
+				transform:translateY(320px);
+			}
+			.swiper-wrapper{
+				/*display:flex;*/
+				/*width:100%;*/
+				
+			}
+			.section-child{
+				/*display:flex;*/
+				/*width:100vw;*/
+				height:100vh;
+				padding:10px;
+				background:#fff;
+				border-radius:5px;
+				
+			}
+			.section-child~.section-child{
+				margin-top:20px;
+			}
+			  
+	
+		</style>
+	</head>
+	<body>
+		<div id="section">
+			
+			<nav>
+				<input class="checkbox" id="checkbox" type="checkbox" />
+				<label class="label" for="checkbox">more</label>
+				<ul>
+					<li><a data-id='base'>基本信息</a></li>
+					<li><a data-id='module1'>模块1</a></li>
+					<li><a data-id='module2'>模块2</a></li>
+					<li><a data-id='module3'>模块3</a></li>
+					<li><a >↑收起</a></li>
+				</ul>
+			</nav>
+			<div class="swiper-wrapper">
+				<section id='base' class="section-child">
+					<h4>基本信息</h4>
+					<p>
+						<span>客户姓名：</span>
+						<span>张三</span>
+					</p>
+				</section>
+				<section id='module1'  class="section-child">
+					<h4>模块1</h4>
+					<div>
+						<input type="checkbox" />
+					</div>
+				</section>
+				<section id='module2'  class="section-child">
+					<h4>模块2</h4>
+				</section>
+				<section id='module3'  class="section-child">
+					<h4>模块3</h4>
+				</section>
+			</div>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+			$('nav ul').on('click','li',function(){
+				var $this=$(this);
+				var $children=$(this).find('a');
+				console.log($children)
+				var $childDiv=$children.attr('data-id');
+				
+				var index=$this.index();
+				if(index===4){//收起操作
+					$('input[type=checkbox]').prop('checked',false);
+				}else{
+					$('#'+$childDiv)[0].scrollIntoView({
+						behavior: "smooth",
+						block: "center", 
+						inline: "nearest"
+					});
+				}
+				
+			});
+		</script>
+	</body>
+</html>

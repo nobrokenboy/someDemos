@@ -49,6 +49,8 @@
 				transform:translate3d(0,-100%,0);
 				/*transform:translate3d(0,-80px,0);*/
 			}
+			
+			
 			header section{
 				height:80px;
 				line-height:80px;
@@ -73,9 +75,10 @@
 				width:calc((100% - 20px)/3);
 				margin-bottom:20px;
 				transition:all .5s ease-in-out;
-				transform:scale3d(0.9,1,1);
+				/*transform:scale3d(0.9,1,1);*/
 				transform-origin:left;
-				opacity:0;
+				/*opacity:0;*/
+				animation:slideToRight 1s ease-in-out;
 				overflow:hidden;
 			}
 			
@@ -118,9 +121,17 @@
 			.text{
 				margin-top:10px;
 				margin-bottom:10px;
-				opacity:0;
-				transform:translate3d(0,100%,0);
+				/*opacity:0;
+				transform:translate3d(0,100%,0);*/
 				transition:all .5s ease-in;
+				animation: slideUp .8s ease-in-out;
+			}
+			.text1{
+				margin-top:10px;
+				margin-bottom:10px;
+				/*opacity:0;
+				transform:translate3d(0,100%,0);*/
+				animation: bounceIn 1s ease-in-out;
 			}
 			.text.is-show{
 				opacity:1;
@@ -176,6 +187,94 @@
 					display:block;
 				}
 			}*/
+			
+			@-webkit-keyframes slideUp{
+				from{
+					opacity:0;
+					transform:translate3d(0,100%,0);
+				}
+				to{
+					opacity:1;
+					transform:translate3d(0,0,0);
+				}
+			}
+			@keyframes slideUp{
+				from{
+					opacity:0;
+					transform:translate3d(0,100%,0);
+				}
+				to{
+					opacity:1;
+					transform:translate3d(0,0,0);
+				}
+			}
+			
+			@-webkit-keyframes bounceIn{
+				0%{
+					opacity:0;
+					transform:scale(0);
+				}
+				60%{
+					opacity:1;
+					transform:scale(1.1);
+				}
+				
+				80%{
+					opacity:1;
+					transform:scale(0.9);
+				}
+				
+				100%{
+					opacity:1;
+					transform:scale(1.0);
+				}
+			}
+			@keyframes bounceIn{
+				0%{
+					opacity:0;
+					transform:scale(0);
+				}
+				60%{
+					opacity:1;
+					transform:scale(1.2);
+				}
+				
+				80%{
+					opacity:1;
+					transform:scale(0.9);
+				}
+				
+				100%{
+					opacity:1;
+					transform:scale(1.0);
+				}
+			}
+			
+			
+			@-webkit-keyframes slideToRight{
+				0%{
+					transform:scale3d(0.9,1,1);
+					opacity:0;
+				}
+				
+				100%{
+					transform:scale3d(1,1,1);
+					opacity:1;	
+				}
+			}
+			
+		
+			@keyframes slideToRight{
+				0%{
+					transform:scale3d(0.9,1,1);
+					opacity:0;
+				}
+				
+				100%{
+					transform:scale3d(1,1,1);
+					opacity:1;	
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -200,8 +299,13 @@
 			</section>
 		</header>
 		<article class="content content-section">
+			<p class="percent">0 %</p>
 			<p class="text" align="center">
 				Let us make it try!!!
+			</p>
+			
+			<p class="text1" align="center">
+				Luky Girl
 			</p>
 			<ul>
 				<li>
@@ -250,12 +354,12 @@
 		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 		<script>
 			$(function(){
-					$('.text').addClass('is-show');
-					
-					$('.content-section ul li').each(function(){
-							var $self=$(this);
-							$self.addClass('is-show');
-						});
+//					$('.text').addClass('is-show');
+//					
+//					$('.content-section ul li').each(function(){
+//							var $self=$(this);
+//							$self.addClass('is-show');
+//						});
 						
 					$(window).scroll(function(){
 					var $this=$(this);
