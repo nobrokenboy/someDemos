@@ -11,9 +11,26 @@
 				margin:0;
 				padding:0;
 			}
+			.relative{
+				position:relative;
+			}
+			.hidden{
+				display:none;
+			}
+			.hide{
+				visibility: hidden;
+			}
+			li{
+				list-style:none;
+			}
 			html,body{
 				font-size:14px;
 				background:#eee;
+			}
+			.module-title{
+				font-size:16px;
+				margin-top:20px;
+				margin-bottom:10px;
 			}
 			#section{
 				padding:20px 10px;
@@ -21,9 +38,9 @@
 			nav{
 				position:fixed;
 				right:10px;
-				
+				z-index:99;
 			}
-			input[type='checkbox']{
+			.checkbox-menu{
 				display:none;
 			}
 			.label{
@@ -120,24 +137,69 @@
 			.section-child{
 				/*display:flex;*/
 				/*width:100vw;*/
-				height:100vh;
+				min-height:100vh;
 				padding:10px;
 				background:#fff;
-				border-radius:5px;
+	/*			border-radius:5px;*/
 				
 			}
 			.section-child~.section-child{
-				margin-top:20px;
+				/*margin-top:20px;*/
+				
 			}
-			  
-	
+			.module-list{
+				padding:10px;
+			}
+			.module-list li{
+				display:table;
+			}
+			.module-list li~li{
+				margin-top:10px;	
+			}
+			.module-list input[type='checkbox']{
+				width:12px;
+				height:12px;
+				margin-right:10px;
+				
+			}
+			.module-list .module-body{
+				display:table-cell;
+				width:100%;
+				min-height:20px;
+				border-radius:5px;
+				-webkit-box-shadow:0 2px 5px rgb(0,0,0,.3);
+				box-shadow:0 2px 5px rgb(0,0,0,.3);
+				padding:10px;
+				background: #eee;
+			}
+			.module-list .module-content{
+				margin-top:10px;
+			}
+			 .btn-arrow-down{
+			 	position:absolute;
+			 	right:0;
+			 	top:0;
+			 	display:inline-block;
+			 	width:20px;
+			 	height:100%;
+			 	line-height:39px;
+			 	/*text-align:center;*/
+			 	font-size:18px;
+			 	font-weight:bold;
+			 	transition:all .8s ease-in;
+				
+			 } 
+			.btn-arrow-down.reserve{
+				-webkit-transform:rotate(180deg);
+				transform:rotate(180deg);
+			}
 		</style>
 	</head>
 	<body>
 		<div id="section">
 			
 			<nav>
-				<input class="checkbox" id="checkbox" type="checkbox" />
+				<input class="checkbox checkbox-menu" id="checkbox" type="checkbox" />
 				<label class="label" for="checkbox">more</label>
 				<ul>
 					<li><a data-id='base'>基本信息</a></li>
@@ -148,24 +210,81 @@
 				</ul>
 			</nav>
 			<div class="swiper-wrapper">
+				<h4 align="center" class="module-title">基本信息</h4>
 				<section id='base' class="section-child">
-					<h4>基本信息</h4>
+					<!---->
 					<p>
 						<span>客户姓名：</span>
 						<span>张三</span>
 					</p>
-				</section>
-				<section id='module1'  class="section-child">
-					<h4>模块1</h4>
+					<!--公共字段-->
 					<div>
-						<input type="checkbox" />
+						
 					</div>
 				</section>
-				<section id='module2'  class="section-child">
-					<h4>模块2</h4>
+				<h4 align="center" class="module-title">模块1</h4>
+				<section id='module1'  class="section-child">
+					<ul class="module-list">
+						<li>
+							<input type="checkbox" />
+							<div class="module-body relative">
+								<h4 class="module-head">G-688基础报价<i class='btn-arrow-down'></i></h4>
+								<div class="module-content hidden">
+									<p>
+										<span>单位：</span>
+										<span>厘米</span>
+									</p>
+									<p>
+										<span>单位：</span>
+										<span>厘米</span>
+									</p>
+									<p>
+										<span>小计：</span>
+										<span>2000</span>
+									</p>
+								</div>
+								
+							</div>
+						</li>
+						<li>
+							<input type="checkbox" />
+							<div class="module-body relative">
+								<h4 class="module-head">G-水路包<i class='btn-arrow-down'></i></h4>
+								<div class="module-content hidden">
+									<p>
+										<span>单位：</span>
+										<span>厘米</span>
+									</p>
+									<p>
+										<span>单位：</span>
+										<span>厘米</span>
+									</p>
+									<p>
+										<span>小计：</span>
+										<span>2000</span>
+									</p>
+								</div>
+								
+							</div>
+						</li>
+						<li>
+							<input type="checkbox" class="hide"/>
+							<div class="module-body relative">
+								<h4 class="module-head">G-套餐小计<i class='btn-arrow-down'></i></h4>
+								<span>
+									小计：2000
+								</span>
+							</div>
+						</li>
+					</div>
 				</section>
+				<h4 align="center" class="module-title">模块2</h4>
+				<section id='module2'  class="section-child">
+					
+				</section>
+				<h4 align="center" class="module-title">模块3</h4>
 				<section id='module3'  class="section-child">
-					<h4>模块3</h4>
+					
 				</section>
 			</div>
 		</div>
@@ -188,6 +307,12 @@
 					});
 				}
 				
+			});
+			
+			$('.module-list li').on('click','.module-head',function(){
+				var $this=$(this);
+				var $siblings=$this.siblings();
+				$siblings.toggle();
 			});
 		</script>
 	</body>
