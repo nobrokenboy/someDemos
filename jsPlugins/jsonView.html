@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <title></title>	
+        <style>
+            .key{
+               color:blue;
+            }
+            .string{
+                color:green;
+            }
+            .boolean{
+                color:yellow;
+            }
+            .null{
+                color:red;   
+            }
+        </style>	
+	</head>
+	<body>
+        <div>
+            <form>
+                <textarea name="json" id="json" cols="30" rows="10">
+
+                </textarea>
+                <button type='button' id='btnTranfer' onclick="transfer();">转化成json</button>
+            </form>
+        </div>
+		<script>
+			function output(inp) {
+                document.body.appendChild(document.createElement('pre')).innerHTML = inp;
+            }
+            
+            function syntaxHighlight(json) {
+                json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                    // console.log('输出');
+                    // console.log(match);
+                    var cls = 'number';
+                    if (/^"/.test(match)) {
+                        if (/:$/.test(match)) {
+                            cls = 'key';
+                        } else {
+                            cls = 'string';
+                        }
+                    } else if (/true|false/.test(match)) {
+                        cls = 'boolean';
+                    } else if (/null/.test(match)) {
+                        cls = 'null';
+                    }
+                    return '<span class="' + cls + '">' + match + '</span>';
+                });
+            }
+            
+            var obj = {
+                num: 1234,
+                str: '字符串',
+                arr: [1,2,3,4,5,6],
+                obj: {
+                    name: 'tom',
+                    age: 10,
+                    like: ['a', 'b']
+                }
+            };
+            console.log('obj的类型1：'+typeof obj);
+            var str = JSON.stringify(obj, undefined, 4);
+            
+            // output(syntaxHighlight(str))
+
+            // document.getElementById("btnTranfer").onclick();
+            function transfer(){
+                console.log('11');
+                var textarea=document.getElementsByName("json")[0];
+                var input=textarea.value.replace(/\s/gi,'');
+                console.log(input);
+                console.log("input的类型:"+typeof input);
+                //字符串转化为json
+                var temp=eval('('+input+')');
+                // var temp=JSON.parse(input);
+                console.log(temp);
+                console.log(typeof temp);
+                // temp=JSON.parse(temp);
+                var string=JSON.stringify(temp,undefined,4);
+                var res=output(syntaxHighlight(string));
+                // var res=syntaxHighlight(input);
+                // textarea.innerHTML=res;
+            }
+		</script>
+	</body>
+</html>
