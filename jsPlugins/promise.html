@@ -7,55 +7,55 @@
           <h1>test,哈哈哈</h1>
           <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
           <script>
+            const [a,b,c]=[0,1,2];
+            let arr=['哈哈哈','嘻嘻嘻','呵呵呵'];
+            console.log(a);
+            console.log(b);
+            console.log(c);
+            console.log(arr[a]);
               //请求接口
-              function getData(){
-                return $.ajax({
-                    url:"./data/data.json",
-                    type:"GET",
-                    data:{
+              var getData=function(){
+                  return new Promise((resolve,reject)=>{
+                    $.ajax({
+                        url:"./data/data.json",
+                        type:"GET",
+                        data:{
 
-                    },
-                    success(res){
-                        console.log('成功了');
-                        console.log(res);    
-                        return new Promise((resolve,reject)=>{
-                            resolve(res);   
-                        });
-                    },
-                    error(error){
-                        console.log('失败了');
-                        console.log(error); 
-                        return new Promise((resolve,reject)=>{
+                        },
+                        success(res){
+                            console.log('成功了');
+                            console.log(res);    
+                            resolve(res);  
+                        },
+                        error(error){
+                            console.log('失败了');
+                            console.log(error); 
                             reject(error);   
-                        });   
-                    }   
-                });  
-                
+                        }   
+                    });
+                });
               }
               
-              
               function getChildrenData(moduleCode){
-                return $.ajax({
-                    url:"./data/second.json",
-                    type:"GET",
-                    data:{
-                       code:moduleCode         
-                    },
-                    success(res){
-                        console.log('成功了');
-                        console.log(res);    
-                        return new Promise((resolve,reject)=>{
+                return new Promise((resolve,reject)=>{
+                    $.ajax({
+                        url:"./data/second.json",
+                        type:"GET",
+                        data:{
+                        code:moduleCode         
+                        },
+                        success(res){
+                            console.log('成功了');
+                            console.log(res);    
                             resolve(res);   
-                        });
-                    },
-                    error(error){
-                        console.log('失败了');
-                        console.log(error); 
-                        return new Promise((resolve,reject)=>{
-                            reject(error);   
-                        });   
-                    }   
-                });   
+                        },
+                        error(error){
+                            console.log('失败了');
+                            console.log(error); 
+                            reject(error);    
+                        }   
+                    });  
+                }); 
               }
 
               getData().then((res)=>{
