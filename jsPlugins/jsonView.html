@@ -25,9 +25,25 @@
 
                 </textarea>
                 <button type='button' id='btnTranfer' onclick="transfer();">转化成json</button>
+                <button type='button' id='btnTest' onclick="test();">转变</button>
             </form>
         </div>
 		<script>
+            window.onload=function(){
+                window.addEventListener('message',function(e){
+                    console.log('监听');
+                    console.log(e.data);
+                    document.getElementsByName('json')[0].value=e.data.domain;
+                });
+            }
+            function test(){
+                window.parent.location='http://127.0.0.1:8080/frame.html?name=“wangxiaoming”';
+                console.log(window.parent);
+                var data=JSON.stringify({name:'wangxiaoming'});
+                window.parent.postMessage(data,"*");
+           }
+           
+
 			function output(inp) {
                 document.body.appendChild(document.createElement('pre')).innerHTML = inp;
             }
