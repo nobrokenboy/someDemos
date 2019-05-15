@@ -19,7 +19,7 @@
         </style>	
 	</head>
 	<body>
-        <div>
+        <div id='root'>
             <form>
                 <textarea name="json" id="json" cols="30" rows="10">
 
@@ -28,14 +28,31 @@
                 <button type='button' id='btnTest' onclick="test();">转变</button>
             </form>
         </div>
+        <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
 		<script>
-            window.onload=function(){
-                window.addEventListener('message',function(e){
-                    console.log('监听');
+            var vm=new Vue({
+				el:"#root",
+				mounted(){
+                    console.log('进入到这里了qqq');
+                    window.parent.postMessage({isSend:1},"*");   
+
+                    window.addEventListener('message',function(e){
+                    console.log('监听到了');
                     console.log(e.data);
                     document.getElementsByName('json')[0].value=e.data.domain;
-                });
-            }
+                }); 
+                }
+            });
+           
+            // window.onload=function(){
+            //     console.log('进入这里的111');
+            //     // window.parent.postMessage({isSend:1},"*");
+            //     window.addEventListener('message',function(e){
+            //         console.log('监听到了');
+            //         console.log(e.data);
+            //         document.getElementsByName('json')[0].value=e.data.domain;
+            //     });
+            // }
             function test(){
                 window.parent.location='http://127.0.0.1:8080/frame.html?name=“wangxiaoming”';
                 console.log(window.parent);

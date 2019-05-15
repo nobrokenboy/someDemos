@@ -7,8 +7,9 @@
 	<body>
 		<div id='root'>
 			<p>当前这个页面的</p>
+			<button name='change'>跳转iframe</button>
 			<div>
-				<iframe id='frame1' frameborder="0" src='./jsonView.html'>
+				<iframe id='frame1' frameborder="0" >
 				</iframe>
 			</div>
 		</div>
@@ -30,15 +31,25 @@
 					// });
 				}
 			});
+			//加上一个点击事件
+			document.getElementsByName('change')[0].addEventListener('click',function(){
+				console.log('点击跳转');
+				document.getElementById('frame1').setAttribute('src','./jsonView.html');
+			
+			});
 			window.onload=function(){
 				if(window.location.href.indexOf('name')>-1){
 						alert('哈哈哈');	
 					}
-				var domain=window.location.origin;
-				document.getElementById('frame1').contentWindow.postMessage({domain:domain},"*");
+				// var domain=window.location.origin;
+				// document.getElementById('frame1').contentWindow.postMessage({domain:domain},"*");
 				window.addEventListener('message',function(e){
 						console.log('接收到了');
 						console.log(e);
+						if(e.data.isSend===1){
+							var domain=window.location.origin;
+							document.getElementById('frame1').contentWindow.postMessage({domain:domain},"*");
+						}
 				},false);
 			}
 		</script>
