@@ -1,0 +1,103 @@
+/*------面包屑----*/
+@import "../variable";
+.breadcrumb-wrapper{
+  .el-breadcrumb{
+    width:100%;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+    background:@breakCrumbBg;
+  }
+  .el-breadcrumb__inner a, .el-breadcrumb__inner.is-link,.el-breadcrumb__inner,.el-breadcrumb__item:last-child .el-breadcrumb__inner{
+    font-size:12px;
+    color:@linkFontColor !important;
+    font-weight:normal;
+  }
+}
+
+
+/*------表格-----*/
+.m-table-wrapper{
+  .el-table{
+    max-height:75vh;
+  }
+  .el-table,.el-table thead,.el-table th,.el-table tr,.el-table td{
+    text-align:center;
+    border:none;
+  }
+
+  .el-table thead{
+    background:@tHeadBgColor;
+    font-size:14px;
+    font-weight:bold;
+    color:@tHeadFontColor;
+  }
+  .el-table thead tr,
+  .el-table thead th{
+    background:@tHeadBgColor;
+  }
+  .el-table tbody tr:nth-child(2n+1){
+    background:@tableOddTrBgColor;
+  }
+  .el-table tbody tr:nth-child(2n+2){
+    background:@tableEvenTrBgColor;
+  }
+}
+
+/*-----------分页----------*/
+.m-pagination-wrapper{
+  width:453px;
+  //height:40px;
+  margin:18px auto;
+  line-height:40px;
+  border-radius:30px;
+  border:1px solid @paginationWrapperBorderColor;
+  .el-pagination{
+    padding:0;
+    color:@textBtnFontColor;
+    font-weight:normal;
+    .el-pager li{
+      min-width:25px;
+      vertical-align:middle;
+    }
+    .el-pager li.active,
+    .el-pager li:hover{
+      color:#25ba3e;
+    }
+    button,.el-pagination__jump,.el-pagination__total{
+      color:@textBtnFontColor;
+      vertical-align:middle;
+    }
+    button:hover{
+      color:#25ba3e;
+    }
+    .el-input__inner:focus {
+      border-color: #25ba3e;
+    }
+  }
+}
+
+
+/*--------------表单-----------*/
+//.m-form{
+//  .el-input.is-active .el-input__inner,
+//  .el-input__inner:focus,
+//  .el-textarea__inner:focus{
+//    border-color:@textBtnFontColor;
+//  }
+//
+//}
+
+
+/*---------------按钮---------------*/
+
+.el-button:focus:not(.el-button--primary),.el-button:hover:not(.el-button--primary){
+  color: @themeColor!important;
+  border-color:@textBtnFontColor!important;
+  background-color:#fff!important;
+}
+.el-button--primary{
+  background-color:@themeColor!important;
+  border-color:@themeColor!important;
+  color:#fff!important;
+}

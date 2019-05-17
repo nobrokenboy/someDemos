@@ -1,0 +1,75 @@
+{
+  "name": "webfront",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "test": "vue-cli-service build --no-clean --mode test",
+    "build": "vue-cli-service build --no-clean",
+    "lint": "vue-cli-service lint",
+    "express": "node ./express/www.js"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "element-ui": "^2.7.2",
+    "jquery": "^3.4.0",
+    "loadash": "^1.0.0",
+    "nprogress": "^0.2.0",
+    "vue": "^2.6.10",
+    "vue-lottie": "^0.2.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.6.0",
+    "@vue/cli-plugin-eslint": "^3.6.0",
+    "@vue/cli-service": "^3.6.0",
+    "awe-dnd": "^0.3.4",
+    "axios": "^0.18.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-component": "^1.1.1",
+    "element-theme": "^2.0.1",
+    "element-theme-chalk": "^2.8.2",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "fs": "^0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-sftp": "^0.1.5",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "minimist": "^1.2.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    "vue-dragging": "^1.1.0",
+    "vue-json-viewer": "^2.1.4",
+    "vue-meta": "^1.6.0",
+    "vue-router": "^3.0.5",
+    "vue-template-compiler": "^2.5.21",
+    "vuedraggable": "^2.20.0",
+    "vuex": "^3.1.0",
+    "vuex-persistedstate": "^2.5.4"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}

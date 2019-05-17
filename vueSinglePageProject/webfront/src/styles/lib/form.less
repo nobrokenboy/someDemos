@@ -1,0 +1,27 @@
+@import "../variable";
+.btn{
+  border:none;
+  border-radius:20px;
+  background:none;
+  font-size:12px;
+  color:#fff;
+  cursor:pointer;
+}
+.btn-common{
+  width:100px;
+  height:35px;
+  line-height:35px;
+  background:@themeColor;
+  &:hover{
+    background:rgba(10, 35, 75, 0.85);
+  }
+}
+
+input,
+textarea{
+  font-family:'Microsoft YaHei';
+  &::placeholder{
+    font-family:'Microsoft YaHei';
+    font-size:12px;
+  }
+}
