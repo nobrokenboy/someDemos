@@ -14,6 +14,9 @@ import error from 'views/error/error.vue';
 //测试一些demo的
 import drag from 'views/demo/drag/drag.vue';
 import drag2 from 'views/demo/drag2/drag2.vue';
+import dragDemo from 'views/demo/dragDemo/dragDemo.vue';
+import dragDemo2 from 'views/demo/dragDemo/dragDemo2.vue';
+import dragDemo3 from 'views/demo/dragDemo/dragDemo3.vue';
 const routes=[
     {
         path:"/login",
@@ -32,6 +35,21 @@ const routes=[
         path:"/demo/drag2",
         component:drag2,
         name:"拖拽11",
+    },
+    {
+        path:"/demo/dragDemo",
+        component:dragDemo,
+        name:"拖拽1112",
+    },
+    {
+        path:"/demo/dragDemo2",
+        component:dragDemo2,
+        name:"拖拽1112",
+    },
+    {
+        path:"/demo/dragDemo3",
+        component:dragDemo3,
+        name:"拖拽1112",
     },
     {
         path:"/index",
