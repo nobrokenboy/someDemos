@@ -53,7 +53,7 @@
 </template>
 <script>
 //理解：group实现可以将一类的进行拖拽，设置为不同的就不能拖进去，group的pull属性可以设置是否能拖拽
-//:move="onMove"  是属于什么事件呢，这个事件结合数据的属性实现控制单个是否能够拖拽
+//:move="onMove"  是属于什么事件呢,其实只是属于vuedraggable的一个属性，只是它是函数，这个事件结合数据的属性实现控制单个是否能够拖拽
 import draggable from 'vuedraggable'
     //拖拽
 export default {
