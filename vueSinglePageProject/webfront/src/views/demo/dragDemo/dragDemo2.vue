@@ -4,30 +4,32 @@
         <div class="col-3">
             <h3>Draggable 2(选材,不能拖拽)</h3>
             <h4>1:XXXXX</h4>
-            <draggable class="list-group" :list="list2"  @change="log" :options="{group:'material',sort:false}"
+            <draggable class="list-group" :list="list2"  @change="log" :options="{group:{name:'material',pull:false}}"
                 @start="start22"
-                @end="end22">
+                @end="end22"
+                >
                 <div
                 class="list-group-item"
                 v-for="(element, index) in list2"
                 :key="element.id"
                 >
                 {{ element.name }} {{ index }}
-                    <span @click='removeItem(element,2)' style='position:absolute;right:10px;'>关闭</span>
+                    <span @click='removeItem(element,2)' style='position:absolute;right:10px;cursor:pointer;'>关闭</span>
                 </div>
             </draggable>
             <hr/>
                <h4>2:XXXXX</h4>
             <draggable class="list-group" :list="list3"  @change="log" :options="{group:'material',sort:false}"
-                @start="start22"
-                @end="end22">
+                @start="start22" @end="end22" :move="onMove">
                 <div
                 class="list-group-item"
                 v-for="(element, index) in list3"
                 :key="element.id"
                 >
-                {{ element.name }} {{ index }}
-                    <span @click='removeItem(element,3)' style='position:absolute;right:10px;'>关闭</span>
+                    <span  style='position:absolute;left:10px;cursor:pointer;' v-text='element.fixed?"固定":"可动"'
+                    v-on:click='element.fixed=!element.fixed'></span>
+                    {{ element.name }} {{ index }}
+                    <span @click='removeItem(element,3)' style='position:absolute;right:10px;cursor:pointer;'>关闭</span>
                 </div>
             </draggable>
         </div>
@@ -50,8 +52,9 @@
    </div>
 </template>
 <script>
-//理解：group实现可以将一类的进行拖拽，设置为不同的就不能拖进去
- import draggable from 'vuedraggable'
+//理解：group实现可以将一类的进行拖拽，设置为不同的就不能拖进去，group的pull属性可以设置是否能拖拽
+//:move="onMove"  是属于什么事件呢，这个事件结合数据的属性实现控制单个是否能够拖拽
+import draggable from 'vuedraggable'
     //拖拽
 export default {
   name: "two-lists",
@@ -65,16 +68,16 @@ export default {
       disabled: false,
       variable:"material",
       list1: [
-        { name: "John", id: 1 },
-        { name: "Joao", id: 2 },
-        { name: "Jean", id: 3 },
-        { name: "Gerard", id: 4 },
-        { name: "Juan", id: 5 },
-        { name: "Edgard", id: 6 },
-        { name: "Johnson", id: 7 },
-        { name: "Jessica", id: 11 },
-        { name: "Bell", id: 16 },
-        { name: "zhen", id: 17 }
+        { name: "John", id: 1,fixed:false },
+        { name: "Joao", id: 2,fixed:false },
+        { name: "Jean", id: 3,fixed:false },
+        { name: "Gerard", id: 4 ,fixed:false },
+        { name: "Juan", id: 5,fixed:false  },
+        { name: "Edgard", id: 6,fixed:false },
+        { name: "Johnson", id: 7,fixed:false },
+        { name: "Jessica", id: 11,fixed:false },
+        { name: "Bell", id: 16,fixed:false },
+        { name: "zhen", id: 17,fixed:false }
       ],
       list2: [
         
@@ -113,6 +116,18 @@ export default {
             });    
         }
         this.list1.push(item);
+    },
+    onMove({ relatedContext, draggedContext }){//return false,实现cancel掉移动
+        console.log('移动过程中');
+        console.log(relatedContext);
+        console.log(draggedContext);
+        const relatedElement = relatedContext.element;
+        const draggedElement = draggedContext.element;
+        console.log((!relatedElement || !relatedElement.fixed));
+        console.log(!draggedElement.fixed);
+        return (
+            (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed);
+
     }
   }
 };

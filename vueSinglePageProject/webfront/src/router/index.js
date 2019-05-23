@@ -42,7 +42,7 @@ const routes=[
         name:"拖拽1112",
     },
     {
-        path:"/demo/dragDemo2",
+        path:"/demo/dragDemo2",//基于vuedraggable 插件实现多个group之间的拖拽
         component:dragDemo2,
         name:"拖拽1112",
     },
