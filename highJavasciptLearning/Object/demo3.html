@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta title="组合继承">
+    </head>
+    <body>
+         <script>
+             function People(name,age){
+                 this.name=name;
+                 this.age=age;
+                 this.getAge=function(){//构造函数
+                     return this.age;
+                 }
+             }
+             People.prototype.getName=function(){
+                 return this.name;
+             }
+
+
+            //实例化
+            var jack=new People('Jack',25);
+            var name=jack.getName(); 
+            var age=jack.getAge();
+            console.log(jack);
+            console.log(name);
+            console.log(age);
+
+            //继承人类People
+            function Asian(name,age,skin){
+                console.log('参数');
+                console.log(arguments);
+                // People.call(this,name,age);
+                //与上面的call是等价，参数顺序一致用apply
+                // People.apply(this,arguments);//构造继承
+                this.skin=skin;
+               
+            }
+            
+            console.log('最新的');
+            Asian.prototype=new People();//继承People的方法,原型链继承
+            
+            // for(var i in People.prototype){//继承People的方法
+            //     Asian.prototype[i]=People.prototype[i];
+            // }
+
+            console.log(Asian.prototype);
+
+            Asian.prototype.getSkin=function(){
+                return this.skin;
+            }
+            //继承父类的方法
+            var Jenny=new Asian('Jenny',26,'yellow');
+            var name1=Jenny.getName();
+            var age1=Jenny.getAge();
+            var skin1=Jenny.getSkin();
+            console.log(Jenny);
+            console.log(name1);
+            console.log(age1);
+            console.log(skin1);
+         </script>   
+    </body>
+</html>
