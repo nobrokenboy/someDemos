@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta title="h5游戏学习">
+        <style>
+            canvas{
+                position: absolute;
+                left:50%;
+                top:50%;
+                transform:translate(-50%,-50%);
+                /* background-color:#000; */
+            }
+        </style>
+    </head>
+    <body>
+        <div id='root'>
+            <canvas id='world'></canvas>
+        </div>
+        <script src='./scripts/map.js'></script>
+        <script>
+            window.onload=function(){
+                //定义动画循环,requestAnimationFrame每帧 1000/60ms
+                var raf=window.requestAnimationFrame
+                ||window.webkitRequestAnimationFrame
+                ||window.mozRequestAnimationFrame
+                ||window.oRequestAnimationFrame
+                ||window.msRequestAnimationFrame
+                ||function(callback){
+                    window.setTimeout(callback,1000/60);//每帧1000/60ms
+                };
+
+                console.log('动画渲染');
+                console.log(raf);
+
+                var canvas=document.getElementById('world');
+                var canvasWidth=window.innerWidth>800?800:window.innerWidth;  
+                var canvasHeight=window.innerHeight;  
+                //不明白为什么这里还需要多赋值一次
+                canvas.width=canvasWidth;
+                canvas.height=canvasHeight;
+
+
+                //实例化舞台@todo 高度和宽度不太对
+                var map=new Map();
+                map.init({
+                    canvas:canvas,
+                    width:canvasWidth,
+                    height:canvasHeight
+                });
+                console.log(map);
+                
+                (function animate(){
+                    map.render();
+                    // raf(animate);
+                })();
+            }
+        </script>
+    </body>
+</html>
