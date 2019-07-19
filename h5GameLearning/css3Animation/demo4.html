@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta title="css3 动画demo">
+        <style>
+            .wrapper{
+                width:100%;
+                margin:0 auto;  
+                text-align:center;    
+            }
+            .item-list{
+                position:relative;
+                display:inline-block;
+                width:400px;
+                height:400px;
+                margin:20px;
+                border-radius:5px;
+                box-shadow:1px 3px 6px rgba(1,1,1,.2);
+                cursor: pointer;
+                /* border:1px dashed #fff; */
+                overflow: hidden;
+            }
+
+            .item-list:before{
+                position:absolute;
+                left:50%;
+                top:50%;
+                transform:translate(-50%,-50%);
+                content:"";
+                width:80%;
+                height:80%;
+                border:1px dashed #fff;
+            }
+
+            .item-list:hover:after{
+                top:50%;
+                transform:translate(-50%,-50%);
+                 
+            }
+
+            .item-list:after{
+                /* display: none; */
+                box-sizing:border-box;
+                position:absolute;
+                left:50%;
+                transform:translate(-50%,-100%);   
+                z-index:99;
+                content:attr(data-text);
+                width:100%;
+                height:100%;
+                padding-top:100px;
+                font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                color:#fff;
+                background:rgba(1,1,1,.1);
+                transition:all .5s ease-in;  
+            }
+            .item-list:nth-child(8n+1){
+                background-color:rosybrown;
+            }
+            .item-list:nth-child(8n+2){
+                background-color:salmon;
+            }
+            .item-list:nth-child(8n+3){
+                background-color:steelblue;
+            }
+            .item-list:nth-child(8n+4){
+                background-color:thistle;
+            }
+            .item-list:nth-child(8n+5){
+                background-color:teal;
+                
+            }
+            .item-list:nth-child(8n+6){
+                background-color:sandybrown;
+            }
+            .item-list:nth-child(8n+7){
+                background-color:seagreen;
+            }
+            .item-list:nth-child(8n+8){
+                background-color:skyblue;
+            }
+
+            /* 心脏跳动 */
+            .heart-wrapper{
+                position:relative;
+                width:100%;
+                height:100%;
+                animation:breath  4s cubic-bezier(.2,.73,.71,.44) infinite;
+                /* background-color:thistle; */
+            }
+
+            .heart-wrapper .heart{
+                position:absolute;
+                left:50%;
+                top:50%;
+                width:120px;
+                height:60px;
+                border-top-left-radius:50px; 
+                border-bottom-left-radius:50px; 
+                background-color:tomato;
+                
+            }
+            .heart-wrapper .heart1{
+                transform:translate(-70%,-50%) rotate(45deg) ;
+                /* animation:breath1  6s cubic-bezier(.2,.73,.71,.44) infinite; */
+            }
+            .heart-wrapper .heart2{
+                transform: translate(-35%,-50%) rotate(135deg);
+                /* animation:breath2  6s cubic-bezier(.2,.73,.71,.44) infinite; */
+            }
+
+            @keyframes breath{
+                0%{  
+                   opacity:.8; 
+                   transform:scale(.8);   
+                }
+                50%{
+                   opacity:1; 
+                   transform:scale(1);
+                }
+                100%{
+                   opacity:.8; 
+                   transform:scale(.8); 
+                }
+            }
+
+            /* @keyframes breath2{
+                0%{
+                   z-index:-9;  
+                   transform:scale(.8);   
+                }
+                100%{
+                   z-index:0;
+                   transform:scale(1.2);
+                }
+            } */
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class='item-list' data-text='Merry Christman' draggable="true">
+                <div class="tree">
+                    <div></div>   
+                    <div></div>   
+                    <div></div>   
+                </div>
+                <div class="snow-man"></div>
+                <div></div>
+            </div>
+            <div class='item-list' data-text='Good Night'  draggable="true"></div>
+            <div class='item-list' data-text='breath'  draggable="true">
+                <div class="heart-wrapper">
+                    <div class="heart heart1"></div>    
+                    <div class="heart heart2"></div>    
+                </div>
+            </div>
+            <div class='item-list' data-text='Nothing is error'  draggable="true"></div>
+            <div class='item-list' data-text='Good Good Study'  draggable="true"></div>
+            <div class='item-list' data-text='Nearby in your side'  draggable="true"></div>
+            <div class='item-list' data-text='Flowers flow'  draggable="true"></div>
+            <div class='item-list' data-text='Kristy hello'  draggable="true"></div>
+        </div>
+        <script>
+        
+        </script>
+    </body>
+</html>

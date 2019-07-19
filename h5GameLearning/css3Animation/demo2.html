@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta title="css3 steps实现逐帧动画demo">
+        <style>
+           @font-face {
+                font-family: 'iconfont';  /* project id 316620 */
+                src: url('//at.alicdn.com/t/font_316620_kemc5a5bfp9.eot');
+                src: url('//at.alicdn.com/t/font_316620_kemc5a5bfp9.eot?#iefix') format('embedded-opentype'),
+                url('//at.alicdn.com/t/font_316620_kemc5a5bfp9.woff2') format('woff2'),
+                url('//at.alicdn.com/t/font_316620_kemc5a5bfp9.woff') format('woff'),
+                url('//at.alicdn.com/t/font_316620_kemc5a5bfp9.ttf') format('truetype'),
+                url('//at.alicdn.com/t/font_316620_kemc5a5bfp9.svg#iconfont') format('svg');
+            }
+            .iconfont{
+                font-family: iconfont;
+            }
+            .layer-layout{
+                position:relative;
+                z-index:99;
+                top:50px;
+               
+            }
+            .icon-loading{
+                font-style:normal;
+                position:absolute;
+                left:50%;
+                display: inline-block;
+                font-size: 28px;
+                color:#666;
+                /* -webkit-animation:rotate 1s steps(12,start) infinite ;
+                animation:rotate 1s steps(12,start) infinite ; */
+                -webkit-animation:rotate 1s linear infinite;
+                animation:rotate 1s linear infinite;
+            }
+            @keyframes rotate {
+                0%{
+                    transform:rotate(0deg);
+                    -webkit-transform:rotate(0deg);
+                    /* opacity:.5; */
+                  
+                    
+                }
+                100%{
+                    transform:rotate(360deg);
+                    -webkit-transform:rotate(360deg);
+                    /* opacity:1; */
+                   
+                }
+            }     
+
+           
+ 
+        
+        </style>
+    </head>
+    <body>
+        <p class="relative layer-layout" >
+            <i class="iconfont icon-loading">&#xe623;</i>
+        </p>
+    </body>
+</html>    

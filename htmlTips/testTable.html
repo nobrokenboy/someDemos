@@ -1,0 +1,38 @@
+<div>
+    <table class="prin-table" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>用　　　　　途</td>
+                <td>金额</td>
+            </tr>
+            <tr v-for="line in item.printDetails" :key="'print1'+11">
+                <td class="in-color"><span class="font-num font-number"
+                        style="overflow: hidden !important; text-overflow: ellipsis !important;white-space: normal !important;">{{line.use_way}}</span>
+                </td>
+                <td class="in-color">{{line.amount&&line.amount.toFixed(2)}}</td>
+            </tr>
+
+            <tr>
+                <td width="307">合　　　　　计</td>
+                <td width="190" class="in-color"><span
+                        style="margin-right:5px">{{item.currency}}</span>{{parseFloat(item.totalPaymentAmount&&item.totalPaymentAmount).toFixed(2)}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <table class="prin-table prin-tabler" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td width="31">备注</td>
+                <td class="in-color">{{item.remark}}</td>
+            </tr>
+            <tr>
+                <td width="31">领导审批</td>
+                <td class="in-color"><span
+                        style="margin-right:6px">{{item.finalAuditName}}</span>{{item.finalAuditOpinion}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

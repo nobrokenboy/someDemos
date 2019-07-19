@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta title="css3 用clip-path制作三角形">
+        <style>
+            /* 实现三角形的 */
+            .triangle {
+                width:50px;
+                height:50px;
+                background:purple;
+                clip-path: polygon(5px 10px, 16px 3px, 16px 17px);
+            }
+            .path {
+                width:50px;
+                height:8px;
+                background:purple;
+                clip-path: polygon(5px 3px, 46px 3px, 46px 17px,5px 17px);
+                /* clip-path: polygon(5px 10px, 16px 3px, 16px 17px); */
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="triangle"></div>
+        <div class="wrapper">
+            <div class="path path1">
+            </div>
+            <div class="path path2">
+            </div>
+            <div class="path path3">
+            </div>
+        </div>
+    </body>
+</html>
