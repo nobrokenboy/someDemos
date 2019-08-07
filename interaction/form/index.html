@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .wrapper{
+                /* font-size:0; */
+            }
+            input[type='text']{
+               height:35px;
+               line-height:35px;     
+               vertical-align: middle;
+            }
+            .code-area{
+               display:inline-block;
+               width:120px;
+               height:35px;
+               line-height:35px; 
+               vertical-align: middle;
+            }
+            .code-area span{
+                height:100%;
+
+            }
+        </style>
+       
+    </head>
+    <body>
+        <form>
+            <div class="wrapper">
+                <input type='text' placeholder="请输入图文验证码" id='codeInput'/>
+                <span class="code-area" id='code'></span>
+            </div>
+        </form>
+        <script src='./kinerCode/kinerCode.js'></script>
+        <script>
+            //实例化
+            var kinerCode=new KinerCode({
+                inputArea:document.getElementById('codeInput'),
+                codeArea:document.getElementById('code'),
+                validateEven:"blur",
+                validateFn : function(result,strCode){
+                    console.log(this);
+                    console.log(this.body);
+                    console.log(result);
+                    console.log(strCode);
+                }
+            });
+        </script>
+    </body>
+</html>
