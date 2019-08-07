@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "fis3-parser-translate-es6": "^1.0.1"
+  }
+}

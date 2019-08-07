@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <title></title>
+        <style>
+            .test{
+                width:100px;
+                height:200px;
+                transition:all .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
+        </style>
+	</head>
+	<body>
+        <div class='test'>
+
+        </div>
+        <script>
+            var colorLength=3;
+            //获取元素
+            var test=document.getElementsByClassName('test')[0];
+            //随机生成颜色加上时间
+            function generateColor(){
+                var hash="",arr=[];
+                var testArr=[];
+                for(var i=0;i<colorLength;i++){
+                    console.log(parseInt(Math.random()*255));
+                    arr.push(parseInt(Math.random()*255));
+                    // testArr.push(eval(parseInt(Math.random()*255)));
+                }
+               
+                //
+                var color16Arr=[];
+                for(var i in arr){//转化为16进制
+                    color16Arr.push(arr[i].toString(16));
+                }
+               
+                //拼接一下三个
+                for(var i in color16Arr){
+                    hash+=color16Arr[i];
+                }
+                
+                return '#'+hash;
+            }
+
+            setColor();
+            function setColor(){
+                test.style.backgroundColor=generateColor();
+                test.style.textAlign='center';
+                test.style.color='#fff';
+                test.style.lineHeight='200px';
+                test.innerHTML=generateColor();
+            }
+
+            setInterval(function(){
+                setColor();     
+            },5000);
+          
+        </script>
+	</body>
+</html>
