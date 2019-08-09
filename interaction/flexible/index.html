@@ -3,9 +3,9 @@
     <head>
         <meta http-equiv="Content-Type",content="text/html; charset=utf-8">
         <meta http-equiv="X-UA-Compatible",content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link rel="stylesheet" type='text/css' href='./rem.css'>
-        <!-- <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script> -->
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+        <!-- <link rel="stylesheet" type='text/css' href='./rem.css'> -->
+        <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
         <style>
             *{
                 padding:0;
@@ -58,12 +58,11 @@
             .nav-tab .nav-tab-item:nth-child(1):after{
                 /* right:-2.5rem; */
                 z-index:2;
-                right:-2.99rem;
+                right:-3rem;
                 border-color:transparent transparent transparent #909090;    
             }
             .nav-tab .nav-tab-item:nth-child(2):after{
-                left:-.05rem;
-                /* left:0; */
+                left:0;
                 border-color:transparent transparent transparent #eee;    
             }
             .nav-tab .nav-tab-item span{
@@ -102,6 +101,19 @@
             var vConsole = new VConsole();
          </script>
         <script>
+            (function (doc, win) {
+                var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 16* (clientWidth / 375) + 'px';
+                    };
+            
+                if (!doc.addEventListener) return;
+                win.addEventListener(resizeEvt, recalc, false);
+                doc.addEventListener('DOMContentLoaded', recalc, false);
+            })(document, window);
             console.log(document.documentElement.clientWidth);
             console.log(window.innerWidth);
             console.log(window.devicePixelRatio);
