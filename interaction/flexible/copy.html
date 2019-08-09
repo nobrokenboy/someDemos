@@ -5,7 +5,6 @@
         <meta http-equiv="X-UA-Compatible",content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" type='text/css' href='./rem.css'>
-        <!-- <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script> -->
         <style>
             *{
                 padding:0;
@@ -28,31 +27,43 @@
                 margin:1rem;
             }
             .nav-tab{
-                position:relative;
+                display:flex;
                 width:100%;
             }
             .nav-tab .nav-tab-item{
-                position:absolute;
+                position:relative;
                 display:inline-block;
-                list-style:none;   
+                list-style:none;    
+                flex:1;
+                /* height:2.5rem;
+                line-height:2.5rem; */
                 height:3rem;
                 line-height:3rem;
                 text-align:center;
                 background:#909090;
-               
             }
+
             .nav-tab .nav-tab-item:nth-child(1){
+                /* margin-right:1.25rem; */
+                margin-right:.5rem;
+            }
+            .nav-tab .nav-tab-item:after{
+                position:absolute;
+                content:"";
+                /* border-width:1.25rem; */
+                border-width:1.5rem;
+                border-style:solid;
+            }
+            .nav-tab .nav-tab-item:nth-child(1):after{
+                /* right:-2.5rem; */
+                z-index:2;
+                right:-3rem;
+                border-color:transparent transparent transparent #909090;    
+            }
+            .nav-tab .nav-tab-item:nth-child(2):after{
                 left:0;
-                z-index:1;
-                width:53%;
-                clip-path: polygon(0 0,90% 0,100% 50%,90% 100%, 0 100%);
+                border-color:transparent transparent transparent #eee;    
             }
-            .nav-tab .nav-tab-item:nth-child(2){
-                right:0;
-                width:50%;
-                clip-path: polygon(0 0,100% 0,100% 100%,0 100%,10% 50%);
-            }
-          
             .nav-tab .nav-tab-item span{
                 font-size:.875rem;
                 color:#fff;
@@ -60,7 +71,12 @@
             .nav-tab .nav-tab-item.active{
                 background:#fff;
             }
-           
+            .nav-tab .nav-tab-item.active:nth-child(1):after{
+                border-color:transparent transparent transparent #fff;    
+            }
+            .nav-tab .nav-tab-item.active:nth-child(2):after{
+                border-color:transparent transparent transparent #eee;    
+            }
             .nav-tab .nav-tab-item.active span{
                 color:#333;
             }
