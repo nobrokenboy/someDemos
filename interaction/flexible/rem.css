@@ -1,0 +1,30 @@
+@media (min-width: 320px) {
+  html {
+    font-size: 100%; } }
+@media (min-width: 360px) {
+  html {
+    font-size: 112.5%; } }
+@media (min-width: 384px) {
+  html {
+    font-size: 120%; } }
+@media (min-width: 400px) {
+  html {
+    font-size: 125%; } }
+@media (min-width: 540px) {
+  html {
+    font-size: 168.75%; } }
+@media (min-width: 600px) {
+  html {
+    font-size: 187.5%; } }
+@media (min-width: 640px) {
+  html {
+    font-size: 200%; } }
+@media (min-width: 720px) {
+  html {
+    font-size: 225%; } }
+@media (min-width: 768px) {
+  html {
+    font-size: 100%; } }
+html {
+  font-size: calc(100vw / 375 * 16);
+ }
