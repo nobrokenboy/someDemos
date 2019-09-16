@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>点击按钮触发文本框失去焦点</title>
+		<style>
+		
+		</style>
+	</head>
+	<body>
+        <form>
+            <input type="text" name='test' class='test' autofocus="autofocus"/>
+            <button type="button" id='btn'>点击我</button>
+        </form>
+        <script>
+           
+            document.getElementsByClassName('test')[0].addEventListener('blur',function(e){
+                console.log(e.target);
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('失去焦点');
+            });
+
+            // document.getElementById('btn').addEventListener('click',function(e){
+            //     e.preventDefault();
+            //     e.stopPropagation();
+            //     console.log('点击按钮');
+            // });
+
+            document.getElementById('btn').onclick=function(e){
+
+                console.log(e.target);
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('点击按钮');
+            }
+        </script>
+	</body>
+</html>

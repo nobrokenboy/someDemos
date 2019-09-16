@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CSS3瀑布布局</title>
+<style>
+   /* css文件 */
+    body{
+        background: #e5e5e5;
+    }
+    #root{
+        display: flex;
+        flex-flow: row;
+        margin: 0 auto;
+        width: 1200px;
+    }
+    .itemContainer{
+        margin-right: 10px;
+        flex-flow: column;
+        width: 240px;
+    }
+    .item{
+        margin-bottom: 10px;
+        background: #fff;
+    }
+    .itemImg{
+    width: 100%;
+    }
+    .userInfo {
+    padding: 5px 10px;
+    }
+    .avatar {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    }
+    .username {
+    margin-left: 5px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
+    }
+</style>
+</head>
+ 
+<body>
+<section>
+  <div id="root">
+      <div class="itemContainer">
+          <div class="item">
+              <img class="itemImg" src="./image/1.png" alt=""/>
+              <div class="userInfo">
+                  <img class="avatar" src="./image/travel.png" alt=""/>
+                  <span class="username">牵起你的左手护着你1</span>
+              </div>
+          </div>
+          <div class="item">
+              <img class="itemImg" src="./image/2.png" alt=""/>
+              <div class="userInfo">
+                  <img class="avatar" src="../image/travel.png" alt=""/>
+                  <span class="username">牵起你的左手护着你2</span>
+              </div>
+          </div>
+          <div class="item">
+              <img class="itemImg" src="../image/3.png" alt=""/>
+              <div class="userInfo">
+                  <img class="avatar" src="../image/travel.png" alt=""/>
+                  <span class="username">牵起你的左手护着你3</span>
+              </div>
+          </div>
+          <div class="item">
+              <img class="itemImg" src="../image/4-1.png" alt=""/>
+              <div class="userInfo">
+                  <img class="avatar" src="../image/travel.png" alt=""/>
+                  <span class="username">牵起你的左手护着你4</span>
+              </div>
+          </div>
+          <div class="item">
+              <img class="itemImg" src="../image/4-2.png" alt=""/>
+              <div class="userInfo">
+                  <img class="avatar" src="../image/travel.png" alt=""/>
+                  <span class="username">牵起你的左手护着你5</span>
+              </div>
+          </div>
+      </div>
+      <div class="itemContainer">
+          <div class="item">
+              <img class="itemImg" src="./image/2.png" alt=""/>
+              <div class="userInfo">
+                  <img class="avatar" src="../image/travel.png" alt=""/>
+                  <span class="username">牵起你的左手护着你11</span>
+              </div>
+          </div>
+          <div class="item">
+              <img class="itemImg" src="../image/3.png" alt=""/>
+              <div class="userInfo">
+                  <img class="avatar" src="../image/travel.png" alt=""/>
+                  <span class="username">牵起你的左手护着你12</span>
+              </div>
+          </div>
+          <div class="item">
+              <img class="itemImg" src="../image/4-1.png" alt=""/>
+              <div class="userInfo">
+                  <img class="avatar" src="../image/travel.png" alt=""/>
+                  <span class="username">牵起你的左手护着你13</span>
+              </div>
+          </div>
+          <div class="item">
+              <img class="itemImg" src="./image/1.png" alt=""/>
+              <div class="userInfo">
+                  <img class="avatar" src="./image/travel.png" alt=""/>
+                  <span class="username">牵起你的左手护着你14</span>
+              </div>
+          </div>
+          <div class="item">
+              <img class="itemImg" src="../image/4-2.png" alt=""/>
+              <div class="userInfo">
+                  <img class="avatar" src="../image/travel.png" alt=""/>
+                  <span class="username">牵起你的左手护着你15</span>
+              </div>
+          </div>
+      </div>
+      
+  </div>
+</section>
+</body>
+</html>
