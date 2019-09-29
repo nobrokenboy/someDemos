@@ -50,11 +50,13 @@
 			    for(var i = 0, rule; rule = rules[i++]; ){
 			        (function(rule){
 			            var strategyAry = rule.strategy.split(":");
+						console.log(strategyAry);
 			            var errorMsg = rule.errorMsg;
 			            self.cache.push(function(){
 			                var strategy = strategyAry.shift();
 			                strategyAry.unshift(dom.value);
 			                strategyAry.push(errorMsg);
+							// console.log(strategys[strategy].apply(dom,strategyAry));
 			                return strategys[strategy].apply(dom,strategyAry);
 			            });
 			            
@@ -64,6 +66,7 @@
 			};
 			Validator.prototype.start = function(){
 			    for(var i = 0, validatorFunc; validatorFunc = this.cache[i++]; ) {
+					console.log(validateFunc);
 			    var msg = validatorFunc(); // 开始效验 并取得效验后的返回信息
 			    if(msg) {
 			        return msg;

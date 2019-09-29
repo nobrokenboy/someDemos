@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+				overflow:hidden;
+			
+			}
+			.music-wrapper{
+				position:fixed;
+				z-index:99;
+				width:100%;
+			}
+			#music{
+				position:absolute;
+				top:20px;
+				right:20px;
+				width:40px;
+				height:40px;
+				display:none;
+			}
+			.icon-music{
+				position:absolute;
+				top:20px;
+				right:20px;
+				width:35px;
+				height:35px;
+				line-height:35px;
+				border-radius:50%;
+				border:2px solid #fff;
+				font-size:26px;
+				color:#fff;
+				text-align:center;
+				animation:rotate 3s ease-in infinite;
+			}
+			#music:checked~.icon-music{
+				animation:ease-in-out;
+			}
+			#music:checked~.icon-music:after{
+				position:absolute;
+				top: 17px;
+    			left: 0px;
+				content:"";
+				z-index:8;
+				width:100%;
+				height:2px;
+				background:#fff;
+				-webkit-transform:rotate(45deg);
+				transform:rotate(45deg);
+			}
+			#audio{
+				opacity:0;
+			}
+			.content-list{
+				width:100%;
+				
+			}
+			.content-list li{
+				position:relative;
+				/*width:100%;*/
+				height:100vh;
+				list-style:none;
+				padding:0 20px;
+				
+			}
+			.content-list li:nth-child(1){
+				background:orange;
+			}
+			.content-list li:nth-child(2){
+				background:gold;
+				
+			}
+			.content-list li:nth-child(3){
+				background:lightskyblue;
+				
+			}
+			.content-list li:nth-child(4){
+				background:lightcoral;
+				
+			}
+			.content-list li:nth-child(5){
+				background:salmon;
+				
+			}
+			
+			
+			.travel-all{
+				position:absolute;
+				left:50%;
+				top:50%;
+				padding:0 20px;
+				-webkit-transform:translate(-50%,-50%);
+				transform:translate(-50%,-50%);
+				/*margin:0 auto;
+				margin-top:-250px;*/
+				text-align:center;
+			}
+			.travel-all-5{
+				
+				top:0;
+	
+			}
+			.travel-all .big-img{
+				width:240px;
+				margin-bottom:10px;
+			}
+			.image-wrapper{
+				display:flex;
+				flex:1;
+				
+			}
+			.travel-all .little-img{
+				width:90px;
+				height:120px;
+				margin-bottom:10px;
+				box-shadow: 0 4px 10px rgba(255,255,255,0.3);
+				border-radius:5px;
+			
+			}
+			.travel-all .little-img~.little-img{
+				margin-left:10px;
+			}
+			.travel-title{
+				max-width:320px;
+				margin-bottom:20px;
+				text-align:center;
+				opacity:0;
+				font-size:24px;
+				color:#fff;
+				font-family: arial;
+			}
+			
+			.travel-title-little{
+				margin-bottom:5px;
+				text-align:center;
+				opacity:0;
+				font-size:16px;
+				color:#fff;
+				font-family: arial;
+			}
+			.travel-title-1{
+				-webkit-transform:translate3d(0,100%,0);
+				transform:translate3d(0,100%,0);
+			}
+			.travel-title-2{
+				-webkit-transform:scale(0.1) translate3d(0,100%,0);
+				transform:scale(0.1) translate3d(0,100%,0);
+			}
+			.travel-title-3{
+				-webkit-transform:translate3d(0,100%,0);
+				transform:translate3d(0,100%,0);
+			}
+			.travel-title-4{
+				-webkit-transform:translate3d(0,100%,0);
+				transform:translate3d(0,100%,0);
+			}
+			
+			
+			
+			.arrow-next{
+				position:fixed;
+				left:50%;
+				bottom:20px;
+				color:#fff;
+				font-size:24px;
+				opacity:0;
+				transition:all .5s ease-in;
+				animation:swipeMoveUp 1s ease-in infinite;
+			}
+			
+			
+			
+			.riseUp{
+				opacity:1;
+				-webkit-transform:translate3d(0,0,0);
+				transform:translate3d(0,0,0);
+				transition:all 2s ease-out;
+			}
+			
+			.bounceIn{
+				opacity:1;
+				-webkit-transform:scale(1.0) translate3d(0,0,0);
+				transform:scale(1.0) translate3d(0,0,0);
+				transition:all 1.2s ease-out;
+			}
+			
+			
+			.addSwing{
+				position:relative;
+				transition:all .5s ease-in;
+				/*animation:swing 1s  ease-in infinite;*/
+			}
+			.light-line{
+				position:absolute;
+				left:50%;
+				width:2px;
+				height:200px;
+				background:#000;
+				-webkit-transform:translateX(-50%);
+				transform:translateX(-50%);
+				
+			}
+			.light-head{
+				position:absolute;
+				left:50%;
+				top:200px;
+				z-index:100;
+				width:20px;
+				height:10px;
+				background:#EEE8AA;
+				border:1px solid #000;
+				/*box-shadow: 0 0 0 8px #EEE8AA, 0 0 0 10px rgba(0,0,0,0.1), 5px 5px 0 8px rgba(0,0,0,0.2);*/
+				-webkit-transform:translateX(-50%);
+				transform:translateX(-50%);
+			}
+			.light-head:before{
+				position:absolute;
+				content:"";
+				left:0;
+				top:3px;
+				width:20px;
+				height:1px;
+				background:#000;
+			}
+			.light-head:after{
+				position:absolute;
+				content:"";
+				left:0;
+				top:7px;
+				width:20px;
+				height:1px;
+				background:#000;
+			}
+			.light-body{
+				position:absolute;
+				left:50%;
+				top:209px;
+				z-index:99;
+				width:50px;
+				height:50px;
+				border-radius:50%;
+				background:#fff;
+				transition:all .5s ease-in;
+				-webkit-transform:translateX(-50%);
+				transform:translateX(-50%);
+				animation:lightChange 1.2s ease-out alternate infinite;
+			}
+		
+			.starContainer{
+				position:absolute;
+				top:0;
+			}
+			.star{
+				position:absolute;
+			    width: 1.5px;
+			    height: 1.5px;
+			    border: #f0f0f0 0px solid;
+			    background-color: #f0f0f0;
+			    border-radius: 50%;
+			    opacity: 0;
+			    box-shadow: 0px 0px 3px 2px rgba(255, 255, 255, 0.5);
+			    animation:glow 5s ease-in-out infinite;
+			}
+			.star-1{
+				left:10px;
+				top:20px;
+				animation-delay:.5s;
+			}
+			.star-2{
+				left:50px;
+				top:108px;
+				animation-delay:1s;
+			}
+			.star-3{
+				left:-100px;
+				top:450px;
+				animation-delay:1.5s;
+			}
+			.star-4{
+				left:90px;
+				top:600px;
+				animation-delay:2.0s;
+			}
+			.star-5{
+				left:-30px;
+				top:70px;
+				animation-delay:2.5s;
+			}
+			.star-6{
+				left:-70px;
+				top:329px;
+				animation-delay:3.0s;
+			}
+			.star-7{
+				left:-32px;
+				top:420px;
+				animation-delay:3.5s;
+			}
+			.star-8{
+				left:212px;
+				top:42px;
+				animation-delay:4.0s;
+			}
+			.star-9{
+				left:90px;
+				top:508px;
+				animation-delay:4.5s;
+			}
+			.star-10{
+				left:101px;
+				top:201px;
+				animation-delay:5s;
+			}
+			.star-11{
+				left:-74px;
+				top:202px;
+				animation-delay:5.5s;
+			}
+			@keyframes swipeMoveUp{
+				0%{
+					opacity:0;
+					transform: translate3d(-50%,5px,0);
+				}
+				70%{
+					opacity:1;
+					transform: translate3d(-50%,0,0);
+				}
+				100%{
+					opacity:0;
+					transform: translate3d(-50%,-5px,0);
+				}
+			}
+			
+			@keyframes rotate{
+				0%{
+					transform:rotate(0deg);
+				}
+				100%{
+					transform:rotate(360deg);
+				}
+			}
+			
+			@keyframes swing{
+				20% {
+			    -webkit-transform: rotate3d(0, 0, 1, 15deg);
+			    transform: rotate3d(0, 0, 1, 15deg);
+			  }
+			
+			  40% {
+			    -webkit-transform: rotate3d(0, 0, 1, -10deg);
+			    transform: rotate3d(0, 0, 1, -10deg);
+			  }
+			
+			  60% {
+			    -webkit-transform: rotate3d(0, 0, 1, 5deg);
+			    transform: rotate3d(0, 0, 1, 5deg);
+			  }
+			
+			  80% {
+			    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+			    transform: rotate3d(0, 0, 1, -5deg);
+			  }
+			
+			  100%{
+			    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+			    transform: rotate3d(0, 0, 1, 0deg);
+			  }
+			}
+			
+			
+			@keyframes lightChange{
+				0%{
+					box-shadow:0px 17px 25px rgba(255,255,255,.1);
+				}
+				60%{
+					box-shadow:0px 17px 25px rgba(255,255,255,.3);
+				}
+				100%{
+					box-shadow:0px 17px 25px rgba(255,255,255,.5);
+				}
+			}
+			
+			
+			@keyframes glow {
+			    0% {
+			        opacity: 0;
+			        transform: scale(1, 1);
+			    }
+			    20% {
+			        opacity: 0.5;
+			    }
+			    35% {
+			        opacity: 1;
+			    }
+			    50% {
+			        transform: scale(2, 2);
+			    }
+			    100% {
+			        transform: scale(1, 1);
+			    }
+			}
+		</style>
+	</head>
+	<body>
+		<div class="music-wrapper">
+			<input type="checkbox" id='music'/>
+			<label for="music" class="icon-music">
+				<span>♪</span>
+			</label>
+			<audio id="audio" controls="controls" autoplay="autoplay" loop="loop" src="http://sc1.111ttt.cn:8282/2017/1/11m/11/304112004168.m4a?#.mp3" type="audio/mpeg"></audio>
+		</div>
+		<ul class="content-list">
+			<li>
+				<div class="travel-all">
+					<div class="travel-title travel-title-1 animate-part-1">让我们去旅行吧</div><!--让我们去旅行吧-->
+					<div class="travel-title-1 animate-part-1">
+						<img src="./image/1.png" class="big-img" />
+					</div>
+					<!--<p class="travel-title-little travel-title-1 animate-part-1">
+						今天你的装特别着迷
+					</p>
+					<p class="travel-title-little travel-title-1 animate-part-1">
+						今天你的装特别着迷
+					</p>-->
+				</div>
+			</li>
+			<li>
+				<div class="travel-all">
+					<div class="travel-title travel-title-2 animate-part-2">Life is not only work!</div>
+					<div class="travel-title-2 animate-part-2">
+						<img src="./image/2.png" class="big-img" />
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="travel-all">
+					<div class="travel-title travel-title-3 animate-part-3">Life is full of surprise!</div>
+					<div class="travel-title-3 animate-part-3">
+						<img src="./image/3.png" class="big-img" />
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="travel-all">
+					<div class="travel-title travel-title-4 animate-part-4">Life is value of searching and exploring!</div>
+					<div class="travel-title-4 animate-part-4">
+						<div class="image-wrapper">
+							<img src="./image/4-1.png" class="little-img" />
+							<img src="./image/4-2.png" class="little-img" />
+							
+						</div>
+						<div class="image-wrapper">
+							<img src="./image/4-3.png" class="little-img" />
+							<img src="./image/4-4.png" class="little-img" />
+						</div>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="travel-all travel-all-5">
+					<!--<div class="travel-title travel-title-5 animate-part-5">So,just follow your heart!</div>-->
+					<div class="addSwing">
+						<!--灯线-->
+						<div class="light-line"></div>
+						<!--灯罩-->
+						<div class="light-head"></div>
+						<!--灯泡-->
+						<div class="light-body"></div>
+					</div>
+					
+					<!--星星-->
+					<div class="starContainer">
+						<div class="star star-1"></div>
+						<div class="star star-2"></div>
+						<div class="star star-3"></div>
+						<div class="star star-4"></div>
+						<div class="star star-5"></div>
+						<div class="star star-6"></div>
+						<div class="star star-7"></div>
+						<div class="star star-8"></div>
+						<div class="star star-9"></div>
+						<div class="star star-10"></div>
+						<div class="star star-11"></div>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<!--更多的-->
+		<div class="arrow-next">
+			<span>↑more</span>
+		</div>
+		<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+		<script>
+			$(function(){
+				/*添加动画效果*/
+				var animateEffect=['riseUp','bounceIn','riseUp','bounceIn'];
+				var currentIndex=0;
+				$('.animate-part-1').addClass(animateEffect[currentIndex]);
+				/*音频设置*/
+				var music=document.getElementById('audio');
+//				music.onloadstart=function(){
+//					$('.animate-part-1').addClass(animateEffect[currentIndex]);
+//				}
+				$('#music').on('click',function(){
+					var $this=$(this);
+					var isChecked=$this.prop('checked');
+					console.log(isChecked);
+					if(!isChecked){
+						music.play();
+					}else{
+						music.pause();
+					}
+				});
+				
+				/*箭头*/
+				var pageLength=$('.content-list>li').length;
+				$('.arrow-next').on('click',function(){
+					if(currentIndex<pageLength){
+						currentIndex++;
+					}
+					console.log(currentIndex);
+					/*跳转到不同page*/
+					$('.content-list>li').eq(currentIndex)[0].scrollIntoView({
+						behavior: "smooth",
+						block: "center", 
+						inline: "nearest"
+					});
+					
+					$('.animate-part-'+(currentIndex+1)).addClass(animateEffect[currentIndex]);
+					
+					
+					if(currentIndex===pageLength-1){
+						//隐藏more按钮
+						$('.arrow-next').hide();
+					}
+					
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "lodash": "^4.17.15"
+  },
+  "dependencies": {
+    "animate.css": "^3.7.2"
+  }
+}

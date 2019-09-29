@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>情人节心跳动动画</title>
+    <style type="text/css">
+       html, body{
+          width: 100%;
+          height: 100%;
+          min-width: 500px;
+          min-height: 500px;
+          overflow: hidden;
+        }
+        .heart {
+          position: absolute;
+          width: 100px;
+          height: 90px;
+          top: 50%;
+          left: 50%;
+          margin-top: -45px;
+          margin-left: -50px;
+        }
+        .heart:before,
+        .heart:after {
+          position: absolute;
+          content: "";
+          left: 50px;
+          top: 0;
+          width: 50px;
+          height: 80px;
+          background: #fc2e5a;
+          border-radius: 50px 50px 0 0;
+          transform: rotate(-45deg);
+          transform-origin: 0 100%;
+        }
+        .heart:after {
+          left: 0;
+          transform: rotate(45deg);
+          transform-origin :100% 100%;
+        }
+        .heart1{
+           animation: heart-anim 1s linear .4s infinite;
+        }
+        .heart2{
+           animation: pounding .5s linear infinite alternate;
+        }
+        .heart1:after, .heart1:before{
+          background-color: #ff7693;
+        }
+
+        @keyframes pounding{
+          0%{ transform: scale(1.5); }
+          100%{ transform: scale(1); }
+        }
+        @keyframes heart-anim {
+          46% {
+
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.3);
+          }
+          52% {
+            transform: scale(1.5);
+          }
+          55% {
+            transform: scale(3);
+          }
+          100% {
+            opacity: 0;
+            transform: scale(50);
+          }
+        }
+    </style>
+</head>
+<body>
+  <p>情人节到了，送给女朋友吧！</p>
+  <!--外圈大心-->
+  <div class="heart heart1"></div>
+  <!--里面小心-->
+  <div class="heart heart2"></div>
+</body>
+<script type="text/javascript">
+
+</script>
+</html>
