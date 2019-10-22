@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+            var test=[2,22,8,9,19,1,5];
+            //冒泡排序法
+            Array.prototype.sortByBubble=function(){
+                console.log('hh');
+                console.log(this);
+                for(var i=0;i<this.length;i++){
+                     for(var j=0;j<this.length-i-1;j++){
+                        if(this[j]>this[j+1]){
+                            var temp=this[j];
+                            this[j]=this[j+1];
+                            this[j+1]=temp;
+                        }    
+                     }   
+                }
+                console.log(this);
+            }
+
+            //选择排序法   
+            Array.prototype.sortByChoose=function(){
+                var length=this.length;
+                for(var i=0;i<length-1;i++){
+                    var minIndex=i;
+                    for(var j=i+1;j<length;j++){
+                        if(this[minIndex]>this[j]){
+                            minIndex=j;     
+                        }
+                    }
+
+                    //交换位置
+                    if(i!==minIndex){
+                        var temp=this[i];
+                        this[i]=this[minIndex];
+                        this[minIndex]=temp;
+                    }
+                }
+
+            }
+
+            console.log(new Date().getTime());    
+            test.sortByBubble();
+            console.log(test);
+            console.log(new Date().getTime());    
+        </script>
+    </body>
+</html>
