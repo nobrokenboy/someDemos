@@ -37,7 +37,7 @@
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.6",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
     "vue-dragging": "^1.1.0",
